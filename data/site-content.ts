@@ -16,7 +16,7 @@ export const navigationLinks = [
 
 export const siteContent = {
   seo: {
-    siteUrl: 'https://key-suites-granada.ijustdaniii.chatgpt.site',
+    siteUrl: 'https://keysuites-web3.danielgameromartinezzz.workers.dev/',
     title: 'KEY SUITES | Alojamientos en Granada y alrededores',
     titleTemplate: '%s | KEY SUITES',
     description: 'Apartamentos, suites, villas y casas gestionadas por KEY SUITES en Granada, sus alrededores y la Costa Tropical.',
