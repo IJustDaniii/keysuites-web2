@@ -15,7 +15,7 @@ export function HeroCarousel() {
     let timer: ReturnType<typeof setInterval> | undefined;
     const start = () => {
       if (timer) clearInterval(timer);
-      if (!motion.matches) timer = setInterval(() => setCurrent((index) => (index + 1) % slides.length), 10_000);
+      if (!motion.matches) timer = setInterval(() => setCurrent((index) => (index + 1) % slides.length), 4_000);
     };
     start();
     motion.addEventListener('change', start);
