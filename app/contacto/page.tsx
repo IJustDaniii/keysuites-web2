@@ -1,12 +1,15 @@
 import type { Metadata } from 'next';
 import { ReviewNotice } from '@/components/ReviewNotice';
 import { ContactPreviewForm } from '@/components/ContactPreviewForm';
+import { siteContent } from '@/data/site-content';
+import { TextLines } from '@/components/TextLines';
 
 export const metadata: Metadata = { title: 'Contacto', description: 'Contacta con KEY SUITES para consultar una estancia.' };
 
 export default function ContactPage() {
+  const copy = siteContent.contact;
   return <main className="contact-page section-shell">
-    <section className="contact-intro"><div><span className="section-kicker">CONTACTO</span><h1>Hablemos de<br />tu estancia.</h1><p>Cuéntanos qué tipo de alojamiento buscas, para cuántas personas y en qué fechas. El canal de recepción definitivo se incorporará cuando KEY SUITES confirme sus datos de contacto.</p></div><div className="contact-side"><span>Granada · España</span><p>Apartamentos · Suites · Villas · Costa</p><ReviewNotice note={{ kind: 'warning', title: 'Datos de contacto pendientes', detail: 'Confirmar teléfono, correo electrónico, horario de atención y responsable de privacidad antes de activar el formulario.' }} /></div></section>
+    <section className="contact-intro"><div><span className="section-kicker">{copy.kicker}</span><h1><TextLines lines={copy.title} /></h1><p>{copy.text}</p></div><div className="contact-side"><span>{copy.location}</span><p>{copy.types}</p><ReviewNotice note={{ kind: 'warning', title: copy.pendingTitle, detail: copy.pendingDetail }} /></div></section>
     <ContactPreviewForm />
   </main>;
 }

@@ -3,16 +3,9 @@
   "name": "key-suites-web",
   "main": "./dist/server/index.js",
   "compatibility_date": "2026-05-15",
-  "no_bundle": true,
   "assets": {
     "directory": "./dist/client"
   },
-  "rules": [
-    {
-      "type": "ESModule",
-      "globs": ["dist/server/**/*.js", "dist/server/**/*.mjs"]
-    }
-  ],
   "observability": {
     "enabled": true
   }

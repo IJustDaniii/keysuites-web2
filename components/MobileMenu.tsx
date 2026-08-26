@@ -3,14 +3,7 @@
 import Image from 'next/image';
 import { Link } from './Link';
 import { useEffect, useRef, useState } from 'react';
-
-const links = [
-  ['Alojamientos', '/alojamientos'],
-  ['Granada', '/granada'],
-  ['Villas y casas', '/villas'],
-  ['Sobre nosotros', '/sobre-key-suites'],
-  ['Contacto', '/contacto'],
-];
+import { navigationLinks, siteContent } from '@/data/site-content';
 
 export function MobileMenu() {
   const [open, setOpen] = useState(false);
@@ -46,8 +39,8 @@ export function MobileMenu() {
       <button className="menu-backdrop" type="button" aria-label="Cerrar menú" onClick={() => setOpen(false)} tabIndex={open ? 0 : -1} />
       <aside ref={panelRef} className="menu-panel" id="mobile-navigation" role="dialog" aria-modal="true" aria-label="Menú principal">
         <div className="menu-panel-head"><Link href="/" onClick={() => setOpen(false)} aria-label="KEY SUITES, inicio"><Image src="/key-suites-logo-white.png" alt="KEY SUITES" width={210} height={80} /></Link><button ref={closeRef} type="button" className="menu-close" onClick={() => setOpen(false)} aria-label="Cerrar menú"><span /><span /></button></div>
-        <nav>{links.map(([label, href], index) => <Link href={href} key={href} onClick={() => setOpen(false)} tabIndex={open ? 0 : -1}><small>{String(index + 1).padStart(2, '0')}</small><strong>{label}</strong><span>↗</span></Link>)}</nav>
-        <div className="menu-panel-foot"><span>Granada · Albaicín · Villas · Costa</span><Link href="/alojamientos" onClick={() => setOpen(false)} tabIndex={open ? 0 : -1}>Encuentra tu estancia <b>→</b></Link></div>
+        <nav>{navigationLinks.map((link, index) => <Link href={link.href} key={link.href} onClick={() => setOpen(false)} tabIndex={open ? 0 : -1}><small>{String(index + 1).padStart(2, '0')}</small><strong>{link.label}</strong><span>↗</span></Link>)}</nav>
+        <div className="menu-panel-foot"><span>{siteContent.home.hero.eyebrow}</span><Link href="/alojamientos" onClick={() => setOpen(false)} tabIndex={open ? 0 : -1}>{siteContent.home.closing.button} <b>→</b></Link></div>
       </aside>
     </div>
   </div>;

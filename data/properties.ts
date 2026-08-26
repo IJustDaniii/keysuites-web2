@@ -1,5 +1,13 @@
+/**
+ * EDITA LOS ALOJAMIENTOS EN ESTE ARCHIVO.
+ *
+ * Cada bloque comprendido entre { y }, es un alojamiento completo.
+ * Para añadir uno nuevo, copia el ejemplo de PLANTILLA_ALOJAMIENTO.ts y pégalo
+ * justo antes del cierre final `];` de la lista `properties`.
+ */
+
 export type ReviewNote = { kind: 'warning' | 'pending'; title: string; detail: string };
-export type PlatformReview = { name: 'Airbnb' | 'Booking' | 'Agoda'; rating?: string; reviews?: string; note?: string; url: null };
+export type PlatformReview = { name: 'Airbnb' | 'Booking' | 'Agoda'; rating?: string; reviews?: string; note?: string; url?: string | null };
 export type PropertyImage = { src: string; alt: string };
 
 export type Property = {

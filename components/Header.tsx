@@ -2,22 +2,15 @@ import Image from 'next/image';
 import { Link } from './Link';
 import { REVIEW_MODE } from '@/data/config';
 import { MobileMenu } from './MobileMenu';
-
-const links = [
-  ['Alojamientos', '/alojamientos'],
-  ['Granada', '/granada'],
-  ['Villas y casas', '/villas'],
-  ['Sobre nosotros', '/sobre-key-suites'],
-  ['Contacto', '/contacto'],
-];
+import { navigationLinks, siteContent } from '@/data/site-content';
 
 export function Header() {
   return <>
-    {REVIEW_MODE && <div className="review-bar"><span>Versión preliminar</span><p>Algunos datos están pendientes de validación por KEY SUITES.</p></div>}
+    {REVIEW_MODE && <div className="review-bar"><span>{siteContent.header.reviewLabel}</span><p>{siteContent.header.reviewText}</p></div>}
     <header className="site-header">
       <Link className="brand" href="/" aria-label="KEY SUITES, inicio"><Image src="/key-suites-logo-black.png" alt="KEY SUITES" width={184} height={70} priority /></Link>
-      <nav className="desktop-nav" aria-label="Navegación principal">{links.map(([label, href]) => <Link href={href} key={href}>{label}</Link>)}</nav>
-      <Link className="header-cta" href="/alojamientos">Ver alojamientos <span>↗</span></Link>
+      <nav className="desktop-nav" aria-label="Navegación principal">{navigationLinks.map((link) => <Link href={link.href} key={link.href}>{link.label}</Link>)}</nav>
+      <Link className="header-cta" href="/alojamientos">{siteContent.header.cta} <span>↗</span></Link>
       <MobileMenu />
     </header>
   </>;

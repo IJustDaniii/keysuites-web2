@@ -2,17 +2,18 @@ import type { Metadata } from 'next';
 import { Manrope } from 'next/font/google';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
+import { siteContent } from '@/data/site-content';
 import './globals.css';
 
 const manrope = Manrope({ subsets: ['latin'], variable: '--font-manrope' });
-const siteUrl = new URL('https://key-suites-granada.ijustdaniii.chatgpt.site');
+const siteUrl = new URL(siteContent.seo.siteUrl);
 
 export const metadata: Metadata = {
   metadataBase: siteUrl,
-  title: { default: 'KEY SUITES | Alojamientos en Granada y alrededores', template: '%s | KEY SUITES' },
-  description: 'Apartamentos, suites, villas y casas gestionadas por KEY SUITES en Granada, sus alrededores y la Costa Tropical.',
-  openGraph: { title: 'KEY SUITES', description: 'Alojamientos en Granada y alrededores', type: 'website', images: [{ url: '/og.png', width: 1680, height: 941, alt: 'KEY SUITES · Alojamientos en Granada y alrededores' }] },
-  twitter: { card: 'summary_large_image', title: 'KEY SUITES', description: 'Alojamientos en Granada y alrededores', images: ['/og.png'] },
+  title: { default: siteContent.seo.title, template: siteContent.seo.titleTemplate },
+  description: siteContent.seo.description,
+  openGraph: { title: siteContent.seo.socialTitle, description: siteContent.seo.socialDescription, type: 'website', images: [{ url: '/og.png', width: 1680, height: 941, alt: `${siteContent.seo.socialTitle} · ${siteContent.seo.socialDescription}` }] },
+  twitter: { card: 'summary_large_image', title: siteContent.seo.socialTitle, description: siteContent.seo.socialDescription, images: ['/og.png'] },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
