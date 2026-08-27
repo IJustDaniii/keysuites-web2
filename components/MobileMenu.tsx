@@ -2,17 +2,21 @@
 
 import Image from 'next/image';
 import { Link } from './Link';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
+import { createPortal } from 'react-dom';
 import { navigationLinks, siteContent } from '@/data/site-content';
 
 export function MobileMenu() {
   const [open, setOpen] = useState(false);
+  const mounted = useSyncExternalStore(() => () => undefined, () => true, () => false);
+  const triggerRef = useRef<HTMLButtonElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
   const panelRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     if (!open) return;
     const previous = document.body.style.overflow;
+    const trigger = triggerRef.current;
     document.body.style.overflow = 'hidden';
     closeRef.current?.focus();
     const onKeyDown = (event: KeyboardEvent) => {
@@ -30,18 +34,26 @@ export function MobileMenu() {
     document.addEventListener('keydown', onKeyDown);
     media.addEventListener('change', onDesktop);
     window.addEventListener('popstate', onHistory);
-    return () => { document.body.style.overflow = previous; document.removeEventListener('keydown', onKeyDown); media.removeEventListener('change', onDesktop); window.removeEventListener('popstate', onHistory); };
+    return () => {
+      document.body.style.overflow = previous;
+      document.removeEventListener('keydown', onKeyDown);
+      media.removeEventListener('change', onDesktop);
+      window.removeEventListener('popstate', onHistory);
+      trigger?.focus();
+    };
   }, [open]);
 
-  return <div className="mobile-menu">
-    <button className={`menu-toggle ${open ? 'open' : ''}`} type="button" aria-label={open ? 'Cerrar menú' : 'Abrir menú'} aria-expanded={open} aria-controls="mobile-navigation" onClick={() => setOpen((value) => !value)}><span /><span /><span /></button>
-    <div className={`menu-layer ${open ? 'open' : ''}`} aria-hidden={!open}>
+  const layer = <div className={`menu-layer ${open ? 'open' : ''}`} aria-hidden={!open}>
       <button className="menu-backdrop" type="button" aria-label="Cerrar menú" onClick={() => setOpen(false)} tabIndex={open ? 0 : -1} />
       <aside ref={panelRef} className="menu-panel" id="mobile-navigation" role="dialog" aria-modal="true" aria-label="Menú principal">
         <div className="menu-panel-head"><Link href="/" onClick={() => setOpen(false)} aria-label="KEY SUITES, inicio"><Image src="/key-suites-logo-white.png" alt="KEY SUITES" width={210} height={80} /></Link><button ref={closeRef} type="button" className="menu-close" onClick={() => setOpen(false)} aria-label="Cerrar menú"><span /><span /></button></div>
         <nav>{navigationLinks.map((link, index) => <Link href={link.href} key={link.href} onClick={() => setOpen(false)} tabIndex={open ? 0 : -1}><small>{String(index + 1).padStart(2, '0')}</small><strong>{link.label}</strong><span>↗</span></Link>)}</nav>
         <div className="menu-panel-foot"><span>{siteContent.home.hero.eyebrow}</span><Link href="/alojamientos" onClick={() => setOpen(false)} tabIndex={open ? 0 : -1}>{siteContent.home.closing.button} <b>→</b></Link></div>
       </aside>
-    </div>
+    </div>;
+
+  return <div className="mobile-menu">
+    <button ref={triggerRef} className={`menu-toggle ${open ? 'open' : ''}`} type="button" aria-label={open ? 'Cerrar menú' : 'Abrir menú'} aria-expanded={open} aria-controls="mobile-navigation" onClick={() => setOpen((value) => !value)}><span /><span /><span /></button>
+    {mounted && createPortal(layer, document.body)}
   </div>;
 }

@@ -4,6 +4,13 @@
  * Cada bloque comprendido entre { y }, es un alojamiento completo.
  * Para añadir uno nuevo, copia el ejemplo de PLANTILLA_ALOJAMIENTO.ts y pégalo
  * justo antes del cierre final `];` de la lista `properties`.
+ *
+ * IMÁGENES:
+ * 1. Copia el archivo de imagen en public/properties.
+ * 2. Escribe la ruta como '/properties/nombre-de-la-foto.jpg'.
+ * 3. NO escribas 'public' dentro de la ruta.
+ * 4. La primera imagen de `images` es la portada. Las demás salen en la galería.
+ * 5. `alt` es una descripción breve de la foto para accesibilidad y buscadores.
  */
 
 export type ReviewNote = { kind: 'warning' | 'pending'; title: string; detail: string };

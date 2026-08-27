@@ -25,6 +25,6 @@ export default function Home() {
 
     <section className="trust section-shell"><div className="trust-title"><span className="section-kicker">{siteContent.home.trust.kicker}</span><h2>{siteContent.home.trust.title}</h2></div><div className="trust-grid">{siteContent.home.trust.items.map((item, index) => <article key={item.title}><span>{String(index + 1).padStart(2, '0')}</span><h3>{item.title}</h3><p>{item.text}</p></article>)}</div></section>
 
-    <section className="closing-cta"><Image src="/properties/miramar-01.png" alt="Terraza de Apartamento Miramar frente al mar" fill sizes="100vw" /><div className="closing-shade" /><div><span className="section-kicker">{siteContent.home.closing.kicker}</span><h2><TextLines lines={siteContent.home.closing.title} /></h2><Link className="primary-button" href="/alojamientos">{siteContent.home.closing.button} <span>→</span></Link></div></section>
+    <section className="closing-cta"><Image src={siteContent.home.closing.image.src} alt={siteContent.home.closing.image.alt} fill sizes="100vw" /><div className="closing-shade" /><div><span className="section-kicker">{siteContent.home.closing.kicker}</span><h2><TextLines lines={siteContent.home.closing.title} /></h2><Link className="primary-button" href="/alojamientos">{siteContent.home.closing.button} <span>→</span></Link></div></section>
   </main>;
 }

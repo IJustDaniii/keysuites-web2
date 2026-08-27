@@ -30,7 +30,9 @@ export const PLANTILLA_NO_SE_PUBLICA = {
   highlights: ['Ubicación céntrica', 'Terraza', 'Ideal para familias'],
   idealFor: ['Parejas', 'Familias', 'Escapadas'],
   images: [
+    // PRIMERA FOTO = portada de la tarjeta y de la ficha.
     { src: '/properties/nombre-foto-1.jpg', alt: 'Descripción de la primera fotografía' },
+    // SEGUNDA FOTO Y SIGUIENTES = galería del alojamiento.
     { src: '/properties/nombre-foto-2.jpg', alt: 'Descripción de la segunda fotografía' },
   ],
   platforms: [

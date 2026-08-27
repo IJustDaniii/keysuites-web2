@@ -87,6 +87,20 @@ images: [
 
 No escribas `public` dentro de la ruta.
 
+### Qué fotografía se utiliza en cada lugar
+
+- En `data/properties.ts`, la primera fotografía de `images` es la portada del alojamiento.
+- Las fotografías siguientes aparecen en su galería.
+- En `data/site-content.ts`, `home.hero.slides` controla el carrusel de portada.
+- `home.closing.image` controla la fotografía de la última sección de la portada.
+- `granada.heroImage`, `villas.heroImage` y `about.heroImage` controlan las imágenes principales de esas páginas.
+
+Formatos recomendados: `.webp`, `.jpg` o `.png`. Usa nombres en minúsculas, sin
+tildes ni espacios, por ejemplo `villa-otura-piscina-01.webp`.
+
+Para añadir más imágenes a una lista, copia una línea completa, pégala debajo y
+cambia `src` y `alt`. Recuerda mantener la coma final.
+
 ## 5. Añadir un enlace de reserva
 
 Dentro de `platforms`, escribe el enlace completo:
@@ -115,6 +129,9 @@ por:
 export const REVIEW_MODE = false;
 ```
 
+En el mismo archivo puedes cambiar `CAROUSEL_INTERVAL_MS`. Por ejemplo,
+`10_000` equivale a 10 segundos y `4_000` equivale a 4 segundos.
+
 ## 7. Comprobar la web antes de publicarla
 
 La primera vez, abre una terminal en la carpeta y ejecuta:
@@ -122,6 +139,9 @@ La primera vez, abre una terminal en la carpeta y ejecuta:
 ```bash
 npm install
 ```
+
+También puedes hacer doble clic en `PREPARAR-WEB.bat`, que ejecuta esta instalación
+por ti. Solo es necesario la primera vez o cuando cambien las dependencias.
 
 Para ver la web mientras editas:
 
@@ -134,6 +154,8 @@ Para comprobar que puede publicarse:
 ```bash
 npm run build
 ```
+
+Si prefieres no usar la terminal, haz doble clic en `COMPROBAR-WEB.bat`.
 
 ## 8. Enviar cambios a GitHub sin borrar archivos
 
@@ -154,7 +176,8 @@ Puedes enviar los cambios de dos formas:
 
 Haz doble clic en `SUBIR-CAMBIOS-GITHUB.bat`, escribe una descripción breve y
 pulsa Intro. El archivo añade, guarda y envía solamente los cambios realizados.
-No borra ni vuelve a subir manualmente el proyecto.
+No borra ni vuelve a subir manualmente el proyecto. Antes de publicar, descarga
+la versión más reciente y comprueba automáticamente que la web compila.
 
 Cloudflare detectará el nuevo commit y publicará la actualización.
 

@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { siteContent } from '@/data/site-content';
+import { CAROUSEL_INTERVAL_MS } from '@/data/config';
 import { TextLines } from './TextLines';
 
 const slides = siteContent.home.hero.slides;
@@ -15,7 +16,7 @@ export function HeroCarousel() {
     let timer: ReturnType<typeof setInterval> | undefined;
     const start = () => {
       if (timer) clearInterval(timer);
-      if (!motion.matches) timer = setInterval(() => setCurrent((index) => (index + 1) % slides.length), 4_000);
+      if (!motion.matches && slides.length > 1) timer = setInterval(() => setCurrent((index) => (index + 1) % slides.length), CAROUSEL_INTERVAL_MS);
     };
     start();
     motion.addEventListener('change', start);

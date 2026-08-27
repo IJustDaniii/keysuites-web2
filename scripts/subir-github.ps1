@@ -7,6 +7,12 @@ if (-not (Test-Path -LiteralPath (Join-Path $projectDirectory '.git'))) {
   throw 'Esta carpeta no es un repositorio clonado. Clónalo una vez con GitHub Desktop y ejecuta este archivo dentro de esa carpeta.'
 }
 
+Write-Host 'Sincronizando primero con GitHub...' -ForegroundColor Cyan
+git pull --rebase --autostash
+if ($LASTEXITCODE -ne 0) {
+  throw 'No se pudo descargar la versión más reciente. Abre GitHub Desktop y revisa si solicita iniciar sesión.'
+}
+
 $changes = @(git status --porcelain)
 if ($LASTEXITCODE -ne 0) { throw 'Git no pudo leer el estado del proyecto.' }
 
@@ -17,6 +23,13 @@ if ($changes.Count -eq 0) {
 
 Write-Host 'Archivos modificados:' -ForegroundColor Cyan
 git status --short
+
+Write-Host ''
+Write-Host 'Comprobando que la web puede publicarse...' -ForegroundColor Cyan
+npm run lint
+if ($LASTEXITCODE -ne 0) { throw 'La comprobación del código encontró un problema. No se ha subido nada.' }
+npm run build
+if ($LASTEXITCODE -ne 0) { throw 'La compilación encontró un problema. No se ha subido nada.' }
 
 $message = Read-Host 'Describe el cambio (por ejemplo: Actualiza El Pino)'
 if ([string]::IsNullOrWhiteSpace($message)) {

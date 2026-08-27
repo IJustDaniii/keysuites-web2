@@ -4,6 +4,8 @@
  * - Cambia solamente el texto situado entre comillas.
  * - Conserva las comas, llaves y nombres que hay antes de los dos puntos.
  * - Los títulos separados en varias líneas usan una lista como ['Línea 1', 'Línea 2'].
+ * - Las imágenes se guardan en public. En la ruta NO se escribe la palabra public.
+ *   Ejemplo: public/properties/foto.jpg se usa como '/properties/foto.jpg'.
  */
 
 export const navigationLinks = [
@@ -81,6 +83,7 @@ export const siteContent = {
       kicker: 'TU PRÓXIMA ESTANCIA',
       title: ['Granada, sierra', 'o mar.'],
       button: 'Encuentra tu alojamiento',
+      image: { src: '/properties/miramar-01.png', alt: 'Terraza de Apartamento Miramar frente al mar' },
     },
   },
   listings: {
@@ -90,6 +93,7 @@ export const siteContent = {
     confirmedNote: 'Datos confirmados y pendientes claramente diferenciados en cada ficha',
   },
   granada: {
+    heroImage: { src: '/properties/jardines-alhambra-01.jpg', alt: 'Granada desde una terraza de KEY SUITES' },
     kicker: 'GRANADA',
     title: ['Centro histórico', 'y Albaicín.'],
     text: 'Alojamientos desde los que acercarte a Plaza Nueva, la Alhambra, la Catedral y las calles del Albaicín.',
@@ -98,6 +102,7 @@ export const siteContent = {
     allLink: 'Ver todos',
   },
   villas: {
+    heroImage: { src: '/properties/el-pino-01.jpg', alt: 'Jardín de Chalé El Pino' },
     kicker: 'VILLAS Y CASAS',
     title: ['Más espacio', 'para compartir.'],
     text: 'Casas con jardín, piscina y zonas exteriores en Cájar, Otura y Albolote.',
@@ -106,6 +111,7 @@ export const siteContent = {
     allLink: 'Ver todos',
   },
   about: {
+    heroImage: { src: '/properties/jardines-alhambra-01.jpg', alt: 'Terraza de un alojamiento gestionado por KEY SUITES' },
     kicker: 'SOBRE KEY SUITES',
     title: ['Conocemos', 'cada estancia.'],
     intro: 'KEY SUITES reúne alojamientos distintos bajo una gestión cercana y una forma común de recibir a quienes visitan Granada y sus alrededores.',
@@ -157,5 +163,40 @@ export const siteContent = {
     legalItems: ['Política de privacidad', 'Aviso legal', 'Cookies'],
     legalPending: 'Datos legales pendientes',
     location: 'Granada · España',
+  },
+  // Textos comunes de las fichas individuales de alojamiento.
+  propertyPage: {
+    breadcrumbs: 'Alojamientos',
+    groupPrefix: 'Parte de',
+    availability: 'Consultar disponibilidad',
+    stayKicker: 'LA ESTANCIA',
+    facts: { guests: 'huéspedes', bedrooms: 'dormitorios', beds: 'camas', bathrooms: 'baños', pendingSuffix: 'por confirmar' },
+    highlightsTitle: 'Características destacadas',
+    amenitiesTitle: 'Comodidades confirmadas',
+    amenitiesEmpty: 'No hay comodidades verificadas incorporadas a esta ficha todavía.',
+    distributionTitle: 'Distribución',
+    bedroomsPending: 'Número de dormitorios pendiente',
+    bedsPending: 'La asignación exacta de camas por dormitorio está pendiente de confirmar.',
+    idealForTitle: 'Ideal para',
+    reviewMode: 'Modo revisión',
+    pendingPoints: 'puntos pendientes',
+    publicInformation: 'Información pública de la estancia.',
+    locationKicker: 'UBICACIÓN',
+    privateAddress: 'La dirección exacta puede reservarse para las personas con una estancia confirmada.',
+    reputationKicker: 'REPUTACIÓN PÚBLICA',
+    reputationTitle: 'Opiniones en plataformas externas',
+    ratingMissing: 'Valoración no incorporada',
+    reviewsEmpty: 'Todavía no se han incorporado valoraciones públicas verificadas.',
+    bookingKicker: 'RESERVA TU ESTANCIA',
+    bookingTitle: 'Consulta la disponibilidad',
+    bookingText: 'Utiliza los enlaces confirmados de cada plataforma para consultar fechas y disponibilidad.',
+    openPlatform: 'Abrir plataforma',
+    linkPending: 'Enlace pendiente',
+    directBookingPending: 'PENDIENTE: integrar motor de reservas directo',
+  },
+  gallery: {
+    open: 'Ver todas las fotos',
+    close: 'Cerrar galería',
+    title: 'GALERÍA',
   },
 } as const;
