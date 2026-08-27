@@ -2,28 +2,23 @@
 
 import Image from 'next/image';
 import { Link } from './Link';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { createPortal } from 'react-dom';
 import { navigationLinks, siteContent } from '@/data/site-content';
 
 export function MobileMenu() {
   const [open, setOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
+  // Evita diferencias entre el HTML inicial y el navegador al crear el portal.
+  const mounted = useSyncExternalStore(() => () => undefined, () => true, () => false);
 
   const triggerRef = useRef<HTMLButtonElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
   const panelRef = useRef<HTMLElement>(null);
 
-  // Montamos el portal una sola vez en cliente
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
   useEffect(() => {
     if (!open) return;
 
     const body = document.body;
-    const html = document.documentElement;
     const trigger = triggerRef.current;
 
     // Compensa el ancho del scrollbar antes de ocultarlo
@@ -96,13 +91,8 @@ export function MobileMenu() {
       media.removeEventListener('change', onDesktop);
       window.removeEventListener('popstate', onHistory);
 
-      // Solo devolvemos el foco si seguimos en móvil
-      if (!html.matches?.(':has(*)')) {
-        // no-op
-      }
-
       requestAnimationFrame(() => {
-        trigger?.focus();
+        if (trigger?.isConnected && !media.matches) trigger.focus();
       });
     };
   }, [open]);
