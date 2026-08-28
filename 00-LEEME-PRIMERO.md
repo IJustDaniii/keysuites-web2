@@ -8,6 +8,8 @@ La web está preparada para que puedas actualizarla sin conocer React ni tener q
 2. Para cambiar alojamientos, abre `data/properties.ts`.
 3. Para añadir uno nuevo, copia el ejemplo de `data/PLANTILLA_ALOJAMIENTO.ts` dentro de la lista de `data/properties.ts` y sustituye sus datos.
 4. Para subir tus cambios, haz doble clic en `SUBIR-CAMBIOS-GITHUB.bat`.
+5. Para cambiar colores, tamaños, bordes o animaciones, haz doble clic en
+   `EDITAR-DISENO.bat` y sigue `GUIA-PERSONALIZAR-DISENO.md`.
 
 La primera vez que abras la carpeta en un ordenador nuevo, haz doble clic en
 `PREPARAR-WEB.bat`. Instalará automáticamente lo necesario para que VS Code no

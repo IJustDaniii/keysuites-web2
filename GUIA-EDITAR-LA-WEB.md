@@ -3,6 +3,16 @@
 No necesitas modificar los componentes ni el diseño. Casi todos los cambios de
 contenido se realizan dentro de la carpeta `data`.
 
+## 0. Cambiar colores, tamaños y aspecto visual
+
+Haz doble clic en `EDITAR-DISENO.bat`. Se abrirá el único archivo que necesitas
+para personalizar el aspecto general de la web: `app/personalizar-diseno.css`.
+
+Allí puedes cambiar colores, tipografía, tamaños, espacios, botones, tarjetas,
+cabecera, menú móvil y galería modificando únicamente los valores indicados.
+Cada opción contiene una explicación y un ejemplo. La guía completa está en
+`GUIA-PERSONALIZAR-DISENO.md`.
+
 ## 1. Cambiar textos generales
 
 Abre `data/site-content.ts` con Visual Studio Code o el editor de GitHub.
