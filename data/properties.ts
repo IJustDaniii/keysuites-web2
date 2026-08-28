@@ -106,7 +106,7 @@ export const properties: Property[] = [
     exterior: ['Jardín', 'Terraza', 'Solárium', 'Balcón'],
     views: ['Mar', 'Booking también menciona jardín, montaña y lugares de interés'], accessibility: null,
     rules: ['No fumar', 'No fiestas ni eventos', 'Mascotas bajo petición y posible suplemento', 'Niños admitidos', 'Cuna gratuita de 0 a 3 años bajo petición'],
-    checkIn: '15:00 – 00:00', checkOut: '08:00 – 11:00', images: [],
+    checkIn: '15:00 – 00:00', checkOut: '08:00 – 11:00', images: [{ src: '/properties/villa-girasol-01.png', alt: 'Vista general de Villa Girasol' }],
     platforms: [{ name: 'Booking', rating: '≈ 9,5 / 10', reviews: 'aprox. 10 reseñas', url: 'https://www.booking.com/Pulse-CZjuv3' }],
     positiveReviews: ['Ubicación junto al mar', 'Tranquilidad', 'Jardín', 'Equipamiento', 'Atención', 'Mascotas', 'Amaneceres y vistas'], negativeReviews: [],
     registration: { regional: ['VUT7GR/13871'], national: ['ESFCTU0000180250001218510000000000000000VUT/GR/138710'] },
