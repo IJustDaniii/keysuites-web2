@@ -163,7 +163,7 @@ export function MobileMenu() {
             tabIndex={open ? 0 : -1}
           >
             <Image
-              src="/key-suites-logo-white.png"
+              src="/okey-suites-logo-white.png"
               alt="OKEY SUITES"
               width={210}
               height={80}
