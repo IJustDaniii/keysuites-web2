@@ -1,4 +1,4 @@
-# KEY SUITES para Cloudflare Workers
+# OKEY SUITES para Cloudflare Workers
 
 Este proyecto utiliza Vinext y el plugin oficial de Cloudflare para Vite. La
 compilación genera automáticamente el Worker y su configuración dentro de

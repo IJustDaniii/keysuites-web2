@@ -1,13 +1,14 @@
 import Image from 'next/image';
 import { Link } from '@/components/Link';
 import { PropertyCard } from '@/components/PropertyCard';
+import { PropertyGroupCard } from '@/components/PropertyGroupCard';
 import { HeroCarousel } from '@/components/HeroCarousel';
-import { properties } from '@/data/properties';
+import { catalogItems } from '@/data/properties';
 import { siteContent } from '@/data/site-content';
 import { TextLines } from '@/components/TextLines';
 
 const featuredSlugs = siteContent.home.featured.slugs;
-const featured = featuredSlugs.map((slug) => properties.find((item) => item.slug === slug)!).filter(Boolean);
+const featured = featuredSlugs.map((slug) => catalogItems.find((item) => item.slug === slug)!).filter(Boolean);
 
 export default function Home() {
   return <main>
@@ -19,7 +20,7 @@ export default function Home() {
 
     <section className="intro section-shell"><div><span className="section-kicker">{siteContent.home.intro.kicker}</span><h2><TextLines lines={siteContent.home.intro.title} /></h2></div><div className="intro-copy"><p>{siteContent.home.intro.text}</p><Link className="arrow-link" href="/sobre-key-suites">{siteContent.home.intro.link}</Link></div></section>
 
-    <section className="featured section-shell"><div className="section-heading"><div><span className="section-kicker">{siteContent.home.featured.kicker}</span><h2>{siteContent.home.featured.title}</h2></div><Link className="arrow-link" href="/alojamientos">{siteContent.home.featured.link}</Link></div><div className="property-grid">{featured.map((property, index) => <PropertyCard property={property} index={index} key={property.slug} />)}</div></section>
+    <section className="featured section-shell"><div className="section-heading"><div><span className="section-kicker">{siteContent.home.featured.kicker}</span><h2>{siteContent.home.featured.title}</h2></div><Link className="arrow-link" href="/alojamientos">{siteContent.home.featured.link}</Link></div><div className="property-grid">{featured.map((item, index) => item.kind === 'group' ? <PropertyGroupCard group={item} index={index} key={item.slug} /> : <PropertyCard property={item} index={index} key={item.slug} />)}</div></section>
 
     <section className="destinations"><div className="section-shell destinations-inner"><div className="destination-copy"><span className="section-kicker">{siteContent.home.destinations.kicker}</span><h2><TextLines lines={siteContent.home.destinations.title} /></h2><p>{siteContent.home.destinations.text}</p></div><div className="destination-list">{siteContent.home.destinations.items.map((item, index) => <Link href={item.href} key={item.href}><span>{String(index + 1).padStart(2, '0')}</span><strong>{item.name}</strong><i>{item.detail}</i></Link>)}</div></div></section>
 

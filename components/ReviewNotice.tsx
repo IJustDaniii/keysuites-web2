@@ -7,8 +7,10 @@ export function ReviewNotice({ note }: { note: ReviewNote }) {
 }
 
 export function PendingPhoto({ compact = false }: { compact?: boolean }) {
-  return <div className={`photo-placeholder ${compact ? 'compact' : ''}`} aria-label="Fotografía pendiente">
+  return <div className={`photo-placeholder ${compact ? 'compact' : ''}`} aria-label={REVIEW_MODE ? 'Fotografía pendiente' : 'Imagen de marca OKEY SUITES'}>
     <div className="placeholder-mark"><i /><i /></div>
-    {REVIEW_MODE && <p>Fotografía pendiente<br /><small>Material original por incorporar</small></p>}
+    {REVIEW_MODE
+      ? <p>Fotografía pendiente<br /><small>Material original por incorporar</small></p>
+      : <p className="public-placeholder">OKEY SUITES</p>}
   </div>;
 }

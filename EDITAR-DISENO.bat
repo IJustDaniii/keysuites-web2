@@ -1,5 +1,5 @@
 @echo off
-title Personalizar diseno de KEY SUITES
+title Personalizar diseno de OKEY SUITES
 cd /d "%~dp0"
 where code >nul 2>nul
 if errorlevel 1 (

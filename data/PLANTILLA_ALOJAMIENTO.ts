@@ -1,45 +1,57 @@
 import type { Property } from './properties';
 
 /**
- * PLANTILLA PARA CREAR UN ALOJAMIENTO.
+ * PLANTILLA PARA AÑADIR UN ALOJAMIENTO INDIVIDUAL.
  *
- * 1. Copia solamente el bloque que empieza por `{` y termina por `},`.
- * 2. Pégalo dentro de la lista `properties` de properties.ts, antes de `];`.
- * 3. Sustituye los textos de ejemplo por los datos reales.
- * 4. Copia las fotos a public/properties y escribe aquí su ruta.
+ * 1. Copia el bloque que empieza por { y termina por }.
+ * 2. Pégalo dentro de la lista properties de properties.ts.
+ * 3. Cambia los ejemplos. Utiliza null cuando no conozcas un dato.
+ * 4. Para public/properties/foto.jpg escribe '/properties/foto.jpg'.
  *
- * Esta plantilla no aparece en la web mientras permanezca en este archivo.
+ * Esta plantilla no se publica mientras permanezca en este archivo.
  */
 
 export const PLANTILLA_NO_SE_PUBLICA = {
-  id: 16,
+  kind: 'property',
+  id: 99,
   slug: 'nombre-del-alojamiento-sin-espacios',
-  name: 'Nombre visible del alojamiento',
-  alternativeName: 'Nombre alternativo opcional',
+  name: 'Nombre visible',
+  groupSlug: null,
   category: 'Granada centro',
-  type: 'Apartamento',
-  location: 'Granada, España',
-  area: 'Centro de Granada',
+  type: 'Apartamento completo',
+  location: 'Granada',
+  address: null,
+  shortDescription: 'Frase breve para la tarjeta.',
+  description: 'Descripción completa basada únicamente en datos confirmados.',
   guests: 4,
   bedrooms: 2,
   beds: 3,
   bathrooms: 1,
-  shortDescription: 'Una frase corta que aparecerá como presentación.',
-  description: 'Escribe aquí la descripción completa del alojamiento. Este texto aparece dentro de su página individual.',
-  amenities: ['Wi-Fi', 'Cocina', 'Aire acondicionado'],
-  highlights: ['Ubicación céntrica', 'Terraza', 'Ideal para familias'],
-  idealFor: ['Parejas', 'Familias', 'Escapadas'],
+  areaM2: null,
+  distribution: ['Dormitorio 1: cama doble', 'Salón: sofá cama'],
+  amenities: ['TV', 'Lavadora'],
+  kitchen: 'Cocina completa',
+  airConditioning: 'Sí',
+  heating: null,
+  wifi: 'Sí',
+  parking: null,
+  pool: null,
+  exterior: ['Terraza'],
+  views: [],
+  accessibility: null,
+  rules: ['No fumar'],
+  checkIn: null,
+  checkOut: null,
   images: [
-    // PRIMERA FOTO = portada de la tarjeta y de la ficha.
-    { src: '/properties/nombre-foto-1.jpg', alt: 'Descripción de la primera fotografía' },
-    // SEGUNDA FOTO Y SIGUIENTES = galería del alojamiento.
-    { src: '/properties/nombre-foto-2.jpg', alt: 'Descripción de la segunda fotografía' },
+    { src: '/properties/foto-01.jpg', alt: 'Descripción de la fotografía' },
   ],
   platforms: [
-    { name: 'Airbnb', rating: '4,9 / 5', reviews: '25 reseñas', url: 'https://enlace-real.example' },
-    { name: 'Booking', rating: '9,2 / 10', url: null },
+    { name: 'Booking', rating: '9,0 / 10', reviews: '20 reseñas', url: null },
   ],
-  reviewNotes: [
-    { kind: 'pending', title: 'Dato pendiente', detail: 'Explica aquí qué información falta por confirmar.' },
+  positiveReviews: ['Ubicación', 'Limpieza'],
+  negativeReviews: [],
+  registration: { regional: [], national: [] },
+  warnings: [
+    { kind: 'pending', title: 'Dato pendiente', detail: 'Explica qué debe confirmar el gestor.' },
   ],
 } satisfies Property;

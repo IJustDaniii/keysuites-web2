@@ -1,200 +1,154 @@
-# Guía sencilla para editar KEY SUITES
+# Guía sencilla para editar OKEY SUITES
 
-No necesitas modificar los componentes ni el diseño. Casi todos los cambios de
-contenido se realizan dentro de la carpeta `data`.
-
-## 0. Cambiar colores, tamaños y aspecto visual
-
-Haz doble clic en `EDITAR-DISENO.bat`. Se abrirá el único archivo que necesitas
-para personalizar el aspecto general de la web: `app/personalizar-diseno.css`.
-
-Allí puedes cambiar colores, tipografía, tamaños, espacios, botones, tarjetas,
-cabecera, menú móvil y galería modificando únicamente los valores indicados.
-Cada opción contiene una explicación y un ejemplo. La guía completa está en
-`GUIA-PERSONALIZAR-DISENO.md`.
+No necesitas modificar los componentes de React. El contenido editable está
+centralizado en la carpeta `data` y cada archivo contiene comentarios de ayuda.
 
 ## 1. Cambiar textos generales
 
-Abre `data/site-content.ts` con Visual Studio Code o el editor de GitHub.
+Abre `data/site-content.ts`. Sus secciones principales son:
 
-Dentro encontrarás los textos separados por páginas:
-
-- `home`: portada.
-- `listings`: catálogo.
-- `granada`: página de Granada.
-- `villas`: página de villas.
-- `about`: Sobre KEY SUITES.
-- `contact`: contacto y formulario.
+- `seo`: dominio público, título y descripción para buscadores.
+- `header`: aviso superior y botón de cabecera.
+- `home`: portada, carrusel, destacados y secciones de inicio.
+- `listings`: título y texto del catálogo.
+- `about`: página Sobre nosotros.
+- `contact`: textos, teléfono, WhatsApp y correo.
 - `footer`: pie de página.
-- `seo`: título, descripción y dirección pública de la web.
+- `futurePages`: textos mínimos de Espectáculos y Restaurantes.
 
-Cambia solamente lo que está entre comillas. Por ejemplo:
+Cambia solo lo situado entre comillas y conserva las comas. Los títulos que usan
+una lista como `['Primera línea', 'Segunda línea']` muestran una línea por elemento.
 
-```ts
-title: 'Alojamientos destacados',
-```
-
-Los títulos con varias líneas usan una lista:
-
-```ts
-title: ['Tu estancia', 'empieza aquí.'],
-```
-
-Cada elemento de la lista es una línea del título.
+Para cambiar el dominio, sustituye `siteUrl` por la dirección final completa,
+incluyendo `https://`.
 
 ## 2. Modificar un alojamiento
 
-Abre `data/properties.ts`, busca su nombre y cambia los valores del mismo bloque.
+Abre `data/properties.ts` y busca el nombre. Cada bloque individual contiene:
 
-Los campos más importantes son:
+- `name`, `slug`, `category`, `type`, `location` y `address`.
+- `shortDescription` y `description`.
+- `guests`, `bedrooms`, `beds`, `bathrooms` y `areaM2`.
+- `distribution`, `amenities`, `kitchen`, climatización, Wi-Fi y aparcamiento.
+- piscina, exteriores, vistas, accesibilidad, normas y horarios.
+- `images`, `platforms`, reseñas, registros y avisos pendientes.
 
-- `name`: nombre visible.
-- `slug`: dirección de la página, sin espacios ni tildes.
-- `category`: categoría del catálogo.
-- `location`: ubicación visible.
-- `shortDescription`: frase principal de la ficha.
-- `description`: descripción completa.
-- `amenities`: comodidades.
-- `highlights`: características destacadas.
-- `idealFor`: tipos de huéspedes.
-- `images`: fotografías.
-- `platforms`: valoraciones y enlaces de reserva.
-- `reviewNotes`: información pendiente.
+Usa `null` cuando no conozcas un dato. No uses `0` para representar información
+desconocida. Con el modo de revisión activo se señalará el dato pendiente; en la
+versión pública se ocultará sin dejar huecos grandes.
 
-Usa `null` cuando todavía no conozcas un número. La web mostrará que está por
-confirmar sin inventar información.
+Las categorías válidas son exactamente:
 
-## 3. Añadir un alojamiento
+- `Costa`
+- `Albaicín`
+- `Casas rurales`
+- `Granada centro`
+
+## 3. Edificios o colecciones con varias unidades
+
+Al final de `data/properties.ts` existe `propertyGroups`. Cada grupo tiene su
+propia tarjeta y página. `unitSlugs` indica qué unidades aparecen dentro:
+
+```ts
+unitSlugs: ['unidad-uno', 'unidad-dos'],
+```
+
+El texto debe coincidir exactamente con el `slug` de cada unidad. Para añadir una
+unidad a Suites Jardines, Torre de la Vela, Mesones o Carmen San Luis:
+
+1. Crea el alojamiento individual en `properties`.
+2. Escribe en él el `groupSlug` de su edificio.
+3. Añade su `slug` a `unitSlugs` del grupo.
+
+`catalogSlugs` controla las nueve tarjetas principales y su orden. Añade allí
+solo alojamientos independientes o grupos; no añadas también todas las unidades
+si no quieres duplicarlas en el catálogo.
+
+## 4. Añadir un alojamiento nuevo
 
 1. Abre `data/PLANTILLA_ALOJAMIENTO.ts`.
-2. Copia el bloque que comienza por `{` y termina por `},`.
-3. Pégalo en `data/properties.ts`, justo antes del cierre final `];`.
-4. Cambia todos los textos y números del ejemplo.
-5. Asigna un `id` que no esté utilizado.
-6. Utiliza un `slug` único, en minúsculas y separado con guiones.
+2. Copia el bloque de ejemplo dentro de la lista `properties`.
+3. Cambia textos y números, asigna un `id` libre y un `slug` único.
+4. Si es independiente, añade su `slug` a `catalogSlugs`.
+5. Si pertenece a un grupo, sigue la sección anterior.
 
-Categorías disponibles:
+El `slug` debe estar en minúsculas, sin tildes ni espacios: por ejemplo
+`apartamento-plaza-nueva`.
 
-- `Granada centro`
-- `Albaicín`
-- `Villas y casas`
-- `Costa`
+## 5. Añadir y utilizar fotografías
 
-## 4. Añadir fotografías
-
-1. Copia la fotografía dentro de `public/properties`.
-2. Usa un nombre sencillo, por ejemplo `apartamento-nuevo-01.jpg`.
-3. Añádela al alojamiento:
+1. Copia la imagen dentro de `public/properties`.
+2. Usa un nombre en minúsculas y sin espacios, como `miramar-terraza-02.webp`.
+3. Añádela al alojamiento o grupo:
 
 ```ts
 images: [
-  {
-    src: '/properties/apartamento-nuevo-01.jpg',
-    alt: 'Salón del apartamento nuevo',
-  },
+  { src: '/properties/miramar-terraza-02.webp', alt: 'Terraza de Miramar frente al mar' },
 ],
 ```
 
-No escribas `public` dentro de la ruta.
+No escribas `public` en `src`. La primera imagen es la portada de la tarjeta; las
+demás forman la galería. Un grupo puede tener sus propias imágenes aunque sus
+unidades tengan galerías diferentes.
 
-### Qué fotografía se utiliza en cada lugar
+Otros usos:
 
-- En `data/properties.ts`, la primera fotografía de `images` es la portada del alojamiento.
-- Las fotografías siguientes aparecen en su galería.
-- En `data/site-content.ts`, `home.hero.slides` controla el carrusel de portada.
-- `home.closing.image` controla la fotografía de la última sección de la portada.
-- `granada.heroImage`, `villas.heroImage` y `about.heroImage` controlan las imágenes principales de esas páginas.
+- `siteContent.home.hero.slides`: carrusel de portada.
+- `siteContent.home.closing.image`: imagen final de inicio.
+- `siteContent.about.heroImage`: imagen principal de Sobre nosotros.
 
-Formatos recomendados: `.webp`, `.jpg` o `.png`. Usa nombres en minúsculas, sin
-tildes ni espacios, por ejemplo `villa-otura-piscina-01.webp`.
+Escribe siempre un `alt` breve que describa lo visible. Se recomiendan WebP o JPG
+optimizados, evitando archivos enormes.
 
-Para añadir más imágenes a una lista, copia una línea completa, pégala debajo y
-cambia `src` y `alt`. Recuerda mantener la coma final.
+## 6. Enlaces de Booking o Airbnb
 
-## 5. Añadir un enlace de reserva
-
-Dentro de `platforms`, escribe el enlace completo:
+Cada elemento de `platforms` admite valoración, número de reseñas y URL:
 
 ```ts
 {
   name: 'Booking',
   rating: '9,2 / 10',
+  reviews: '30 reseñas',
   url: 'https://www.booking.com/enlace-real',
 },
 ```
 
-Con `url: null` la ficha indicará que el enlace sigue pendiente.
+Deja `url: null` si no existe un enlace confirmado. No inventes enlaces ni datos.
 
-## 6. Ocultar el modo revisión
+## 7. Contacto y modo de revisión
 
-Abre `data/config.ts` y cambia:
+Los datos de contacto están en `siteContent.contact.details`. Sustituye `null` por
+los datos reales entre comillas.
+
+En `data/config.ts`:
 
 ```ts
 export const REVIEW_MODE = true;
 ```
 
-por:
+`true` muestra avisos de datos pendientes. Cambia a `false` para la web pública:
+desaparecen avisos, campos desconocidos y textos de validación.
 
-```ts
-export const REVIEW_MODE = false;
-```
+`CAROUSEL_INTERVAL_MS` controla el carrusel. `4_000` son cuatro segundos y
+`10_000` son diez segundos.
 
-En el mismo archivo puedes cambiar `CAROUSEL_INTERVAL_MS`. Por ejemplo,
-`10_000` equivale a 10 segundos y `4_000` equivale a 4 segundos.
+## 8. Comprobar y publicar sin borrar archivos
 
-## 7. Comprobar la web antes de publicarla
+Guarda con `Ctrl + S` y ejecuta `COMPROBAR-WEB.bat`. Si termina correctamente,
+ejecuta `SUBIR-CAMBIOS-GITHUB.bat`, escribe una descripción y pulsa Intro.
 
-La primera vez, abre una terminal en la carpeta y ejecuta:
+El proceso descarga primero la versión más reciente, ejecuta las comprobaciones,
+crea un commit y hace `push`. Cloudflare publicará automáticamente el nuevo commit
+de `main`.
 
-```bash
-npm install
-```
-
-También puedes hacer doble clic en `PREPARAR-WEB.bat`, que ejecuta esta instalación
-por ti. Solo es necesario la primera vez o cuando cambien las dependencias.
-
-Para ver la web mientras editas:
-
-```bash
-npm run dev
-```
-
-Para comprobar que puede publicarse:
-
-```bash
-npm run build
-```
-
-Si prefieres no usar la terminal, haz doble clic en `COMPROBAR-WEB.bat`.
-
-## 8. Enviar cambios a GitHub sin borrar archivos
-
-Clona el repositorio una única vez mediante GitHub Desktop. A partir de entonces,
-trabaja siempre dentro de esa carpeta clonada.
-
-Puedes enviar los cambios de dos formas:
-
-### Con GitHub Desktop
-
-1. Abre GitHub Desktop.
-2. Revisa los archivos modificados.
-3. Escribe un resumen, por ejemplo `Actualiza Apartamento Miramar`.
-4. Pulsa `Commit to main`.
-5. Pulsa `Push origin`.
-
-### Con el archivo automático
-
-Haz doble clic en `SUBIR-CAMBIOS-GITHUB.bat`, escribe una descripción breve y
-pulsa Intro. El archivo añade, guarda y envía solamente los cambios realizados.
-No borra ni vuelve a subir manualmente el proyecto. Antes de publicar, descarga
-la versión más reciente y comprueba automáticamente que la web compila.
-
-Cloudflare detectará el nuevo commit y publicará la actualización.
+También puedes usar GitHub Desktop: revisa los cambios, escribe un resumen, pulsa
+`Commit to main` y después `Push origin`.
 
 ## Consejos para no romper el archivo
 
-- Conserva las comas entre campos y alojamientos.
-- Usa comillas simples alrededor de los textos.
+- Conserva las comas, llaves y corchetes.
+- Cambia el contenido, no los nombres situados antes de `:`.
 - Si un texto contiene una comilla simple, escribe `\'`.
-- No cambies los nombres situados antes de los dos puntos.
-- Ejecuta `npm run build` antes de subir cambios grandes.
+- No repitas `id` ni `slug`.
+- No borres el repositorio para actualizarlo.
+- Si algo falla, revisa el mensaje de `COMPROBAR-WEB.bat` antes de publicar.

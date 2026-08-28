@@ -1,5 +1,5 @@
 @echo off
-title Comprobar KEY SUITES
+title Comprobar OKEY SUITES
 cd /d "%~dp0"
 echo Comprobando el codigo y creando la version de produccion...
 echo.

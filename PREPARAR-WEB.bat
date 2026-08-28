@@ -1,7 +1,7 @@
 @echo off
-title Preparar KEY SUITES
+title Preparar OKEY SUITES
 cd /d "%~dp0"
-echo Instalando todo lo necesario para editar KEY SUITES...
+echo Instalando todo lo necesario para editar OKEY SUITES...
 echo.
 call npm install
 if errorlevel 1 (

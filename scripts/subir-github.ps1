@@ -33,7 +33,7 @@ if ($LASTEXITCODE -ne 0) { throw 'La compilación encontró un problema. No se h
 
 $message = Read-Host 'Describe el cambio (por ejemplo: Actualiza El Pino)'
 if ([string]::IsNullOrWhiteSpace($message)) {
-  $message = 'Actualiza contenido de KEY SUITES'
+  $message = 'Actualiza contenido de OKEY SUITES'
 }
 
 git add --all

@@ -14,12 +14,15 @@ export function MobileMenu() {
   const triggerRef = useRef<HTMLButtonElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
   const panelRef = useRef<HTMLElement>(null);
+  const layerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!open) return;
 
     const body = document.body;
+    const html = document.documentElement;
     const trigger = triggerRef.current;
+    const scrollY = window.scrollY;
 
     // Compensa el ancho del scrollbar antes de ocultarlo
     // para evitar que toda la web "salte" horizontalmente.
@@ -28,12 +31,30 @@ export function MobileMenu() {
 
     const previousOverflow = body.style.overflow;
     const previousPaddingRight = body.style.paddingRight;
+    const previousPosition = body.style.position;
+    const previousTop = body.style.top;
+    const previousWidth = body.style.width;
+    const previousHtmlOverflow = html.style.overflow;
+    const previousOverscroll = html.style.overscrollBehavior;
 
     body.style.overflow = 'hidden';
+    body.style.position = 'fixed';
+    body.style.top = `-${scrollY}px`;
+    body.style.width = '100%';
+    html.style.overflow = 'hidden';
+    html.style.overscrollBehavior = 'none';
 
     if (scrollbarWidth > 0) {
       body.style.paddingRight = `${scrollbarWidth}px`;
     }
+
+    // Safari móvil cambia la altura útil cuando sus barras aparecen o
+    // desaparecen. visualViewport ofrece la altura real y evita saltos.
+    const syncViewportHeight = () => {
+      const height = window.visualViewport?.height ?? window.innerHeight;
+      layerRef.current?.style.setProperty('--mobile-menu-height', `${Math.round(height)}px`);
+    };
+    syncViewportHeight();
 
     // Esperamos un frame para que el panel termine de mostrarse
     // antes de mover el foco.
@@ -80,16 +101,29 @@ export function MobileMenu() {
     document.addEventListener('keydown', onKeyDown);
     media.addEventListener('change', onDesktop);
     window.addEventListener('popstate', onHistory);
+    window.addEventListener('resize', syncViewportHeight);
+    window.addEventListener('orientationchange', syncViewportHeight);
+    window.visualViewport?.addEventListener('resize', syncViewportHeight);
 
     return () => {
       cancelAnimationFrame(focusFrame);
 
       body.style.overflow = previousOverflow;
       body.style.paddingRight = previousPaddingRight;
+      body.style.position = previousPosition;
+      body.style.top = previousTop;
+      body.style.width = previousWidth;
+      html.style.overflow = previousHtmlOverflow;
+      html.style.overscrollBehavior = previousOverscroll;
 
       document.removeEventListener('keydown', onKeyDown);
       media.removeEventListener('change', onDesktop);
       window.removeEventListener('popstate', onHistory);
+      window.removeEventListener('resize', syncViewportHeight);
+      window.removeEventListener('orientationchange', syncViewportHeight);
+      window.visualViewport?.removeEventListener('resize', syncViewportHeight);
+
+      window.scrollTo(0, scrollY);
 
       requestAnimationFrame(() => {
         if (trigger?.isConnected && !media.matches) trigger.focus();
@@ -101,6 +135,7 @@ export function MobileMenu() {
 
   const layer = (
     <div
+      ref={layerRef}
       className={`menu-layer ${open ? 'open' : ''}`}
       aria-hidden={!open}
     >
@@ -124,12 +159,12 @@ export function MobileMenu() {
           <Link
             href="/"
             onClick={closeMenu}
-            aria-label="KEY SUITES, inicio"
+            aria-label="OKEY SUITES, inicio"
             tabIndex={open ? 0 : -1}
           >
             <Image
               src="/key-suites-logo-white.png"
-              alt="KEY SUITES"
+              alt="OKEY SUITES"
               width={210}
               height={80}
               priority

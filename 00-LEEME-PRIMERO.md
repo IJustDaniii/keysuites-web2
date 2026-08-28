@@ -1,23 +1,25 @@
-# KEY SUITES — empieza aquí
+# OKEY SUITES — empieza aquí
 
-La web está preparada para que puedas actualizarla sin conocer React ni tener que borrar archivos de GitHub.
+La web está preparada para actualizarse sin saber React y sin borrar archivos de
+GitHub. La mayoría de los cambios se hacen en tres sitios:
 
-## Las cuatro cosas que usarás normalmente
+1. `data/site-content.ts`: textos generales, navegación, SEO, portada y contacto.
+2. `data/properties.ts`: alojamientos, edificios, fotos, datos y enlaces de reserva.
+3. `app/personalizar-diseno.css`: colores, tamaños, bordes y animaciones.
 
-1. Para cambiar textos generales, abre `data/site-content.ts`.
-2. Para cambiar alojamientos, abre `data/properties.ts`.
-3. Para añadir uno nuevo, copia el ejemplo de `data/PLANTILLA_ALOJAMIENTO.ts` dentro de la lista de `data/properties.ts` y sustituye sus datos.
-4. Para subir tus cambios, haz doble clic en `SUBIR-CAMBIOS-GITHUB.bat`.
-5. Para cambiar colores, tamaños, bordes o animaciones, haz doble clic en
-   `EDITAR-DISENO.bat` y sigue `GUIA-PERSONALIZAR-DISENO.md`.
+Para añadir un alojamiento individual, copia el ejemplo de
+`data/PLANTILLA_ALOJAMIENTO.ts`. Si forma parte de un edificio, añádelo también a
+la lista `unitSlugs` del grupo correspondiente en `data/properties.ts`.
 
-La primera vez que abras la carpeta en un ordenador nuevo, haz doble clic en
-`PREPARAR-WEB.bat`. Instalará automáticamente lo necesario para que VS Code no
-muestre el código en rojo.
+## Botones que simplifican el trabajo
 
-Antes de publicar un cambio importante puedes ejecutar `COMPROBAR-WEB.bat`.
-Si termina correctamente, la web está preparada para compilarse en Cloudflare.
+- `PREPARAR-WEB.bat`: instala lo necesario la primera vez.
+- `EDITAR-DISENO.bat`: abre el archivo de personalización visual.
+- `COMPROBAR-WEB.bat`: revisa el código y crea la versión de producción.
+- `SUBIR-CAMBIOS-GITHUB.bat`: guarda y envía únicamente tus cambios a GitHub.
 
-La primera vez debes descargar el repositorio con GitHub Desktop. Después no tienes que borrar ni volver a subir todos los archivos: el botón detecta y publica únicamente los cambios.
+Cloudflare detectará automáticamente cada cambio enviado a `main`. No necesitas
+borrar ni volver a cargar la carpeta del proyecto.
 
-Lee `GUIA-EDITAR-LA-WEB.md` para ver las instrucciones completas y ejemplos.
+Lee `GUIA-EDITAR-LA-WEB.md` antes de cambiar alojamientos o fotografías y
+`GUIA-PERSONALIZAR-DISENO.md` para modificar el aspecto visual.

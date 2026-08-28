@@ -5,7 +5,7 @@ import { ReviewNotice } from '@/components/ReviewNotice';
 import { siteContent } from '@/data/site-content';
 import { TextLines } from '@/components/TextLines';
 
-export const metadata: Metadata = { title: 'Sobre KEY SUITES', description: 'Conoce la gestión cercana de Manuel y Alicia detrás de KEY SUITES.' };
+export const metadata: Metadata = { title: 'Sobre OKEY SUITES', description: 'Conoce la gestión cercana detrás de OKEY SUITES.' };
 
 export default function AboutPage() {
   const copy = siteContent.about;
