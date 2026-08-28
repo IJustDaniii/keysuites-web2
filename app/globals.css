@@ -142,6 +142,8 @@
 .gallery img { object-fit:cover; transition:transform .6s; }
 .gallery img:hover { transform:scale(1.02); }
 .gallery-side { display:grid; grid-template-rows:1fr 1fr; gap:10px; overflow:hidden; }
+.gallery.gallery-1 { grid-template-columns:1fr; }
+.gallery.gallery-2 .gallery-side { grid-template-rows:1fr; }
 .gallery-button { position:absolute; right:18px; bottom:18px; z-index:3; border:0; background:white; padding:13px 16px; font-size:10px; font-weight:700; box-shadow:var(--floating-shadow); }
 .gallery-modal { position:fixed; inset:0; z-index:160; visibility:hidden; pointer-events:none; }
 .gallery-modal.open { visibility:visible; pointer-events:auto; }
