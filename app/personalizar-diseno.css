@@ -1,6 +1,6 @@
 /**
  * ================================================================
- * PERSONALIZA EL DISEÑO DE KEY SUITES DESDE ESTE ARCHIVO
+ * PERSONALIZA EL DISEÑO DE OKEY SUITES DESDE ESTE ARCHIVO
  * ================================================================
  *
  * Puedes cambiar los valores situados después de los dos puntos.
@@ -18,7 +18,7 @@
   /* 1. COLORES PRINCIPALES */
   --ink: #111111;                /* Texto y botones oscuros */
   --muted: #626a68;              /* Texto secundario */
-  --aqua: #19c6cc;               /* Color principal de KEY SUITES */
+  --aqua: #19c6cc;               /* Color principal de OKEY SUITES */
   --deep: #159ea4;               /* Aqua oscuro para enlaces */
   --soft: #eaf8f4;               /* Fondos suaves */
   --paper: #ffffff;              /* Fondo general */

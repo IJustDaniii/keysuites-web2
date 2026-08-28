@@ -19,15 +19,15 @@ export const navigationLinks = [
 export const siteContent = {
   seo: {
     siteUrl: 'https://keysuites-web3.danielgameromartinezzz.workers.dev/',
-    title: 'KEY SUITES | Alojamientos en Granada y alrededores',
-    titleTemplate: '%s | KEY SUITES',
+    title: 'OKEY SUITES | Alojamientos en Granada y alrededores',
+    titleTemplate: '%s | OKEY SUITES',
     description: 'Apartamentos, suites, villas y casas gestionadas por KEY SUITES en Granada, sus alrededores y la Costa Tropical.',
-    socialTitle: 'KEY SUITES',
+    socialTitle: 'OKEY SUITES',
     socialDescription: 'Alojamientos en Granada y alrededores',
   },
   header: {
     reviewLabel: 'Versión preliminar',
-    reviewText: 'Algunos datos están pendientes de validación por KEY SUITES.',
+    reviewText: 'Algunos datos están pendientes de validación por OKEY SUITES.',
     cta: 'Ver alojamientos',
   },
   home: {
@@ -36,7 +36,7 @@ export const siteContent = {
       title: ['Tu estancia', 'empieza aquí.'],
       text: 'Alojamientos seleccionados en Granada y alrededores, gestionados personalmente para que disfrutes de cada destino con comodidad.',
       primaryButton: 'Explorar alojamientos',
-      secondaryButton: 'Conoce KEY SUITES',
+      secondaryButton: 'Conoce OKEY SUITES',
       note: ['Estancias con', 'carácter propio'],
       // Puedes cambiar el orden, los textos o las fotos del carrusel.
       // Las fotos deben estar dentro de la carpeta public.
@@ -48,7 +48,7 @@ export const siteContent = {
       ],
     },
     intro: {
-      kicker: 'KEY SUITES',
+      kicker: 'OKEY SUITES',
       title: ['Un mismo cuidado.', 'Distintas formas de alojarte.'],
       text: 'Manuel y Alicia gestionan una selección diversa de apartamentos, suites, villas y casas entre el centro de Granada, el Albaicín, sus alrededores y la Costa Tropical.',
       link: 'Conoce cómo trabajamos',
@@ -75,7 +75,7 @@ export const siteContent = {
       title: 'Cada estancia forma parte de una misma experiencia.',
       items: [
         { title: 'Atención cercana', text: 'Una gestión personal antes y durante la estancia.' },
-        { title: 'Alojamientos seleccionados', text: 'Distintos formatos y ubicaciones reunidos bajo KEY SUITES.' },
+        { title: 'Alojamientos seleccionados', text: 'Distintos formatos y ubicaciones reunidos bajo OKEY SUITES.' },
         { title: 'Experiencia pública', text: 'Algunos alojamientos cuentan con cientos de valoraciones en plataformas externas.' },
       ],
     },
@@ -89,11 +89,11 @@ export const siteContent = {
   listings: {
     kicker: 'ALOJAMIENTOS · 4 ZONAS',
     title: ['Encuentra tu', 'lugar en Granada.'],
-    text: 'Apartamentos urbanos, suites con carácter, villas para compartir y una estancia frente al mar. Todos, bajo la gestión de KEY SUITES.',
+    text: 'Apartamentos urbanos, suites con carácter, villas para compartir y una estancia frente al mar. Todos, bajo la gestión de OKEY SUITES.',
     confirmedNote: 'Datos confirmados y pendientes claramente diferenciados en cada ficha',
   },
   granada: {
-    heroImage: { src: '/properties/jardines-alhambra-01.jpg', alt: 'Granada desde una terraza de KEY SUITES' },
+    heroImage: { src: '/properties/jardines-alhambra-01.jpg', alt: 'Granada desde una terraza de OKEY SUITES' },
     kicker: 'GRANADA',
     title: ['Centro histórico', 'y Albaicín.'],
     text: 'Alojamientos desde los que acercarte a Plaza Nueva, la Alhambra, la Catedral y las calles del Albaicín.',
@@ -111,10 +111,10 @@ export const siteContent = {
     allLink: 'Ver todos',
   },
   about: {
-    heroImage: { src: '/properties/jardines-alhambra-01.jpg', alt: 'Terraza de un alojamiento gestionado por KEY SUITES' },
-    kicker: 'SOBRE KEY SUITES',
+    heroImage: { src: '/properties/jardines-alhambra-01.jpg', alt: 'Terraza de un alojamiento gestionado por OKEY SUITES' },
+    kicker: 'SOBRE OKEY SUITES',
     title: ['Conocemos', 'cada estancia.'],
-    intro: 'KEY SUITES reúne alojamientos distintos bajo una gestión cercana y una forma común de recibir a quienes visitan Granada y sus alrededores.',
+    intro: 'OKEY SUITES reúne alojamientos distintos bajo una gestión cercana y una forma común de recibir a quienes visitan Granada y sus alrededores.',
     teamKicker: 'EL EQUIPO',
     teamTitle: ['Manuel (Lolo)', 'y Alicia.'],
     paragraphs: [
@@ -130,13 +130,13 @@ export const siteContent = {
       { title: 'Información clara', text: 'Esta versión preliminar separa los datos confirmados de aquello que todavía debe revisarse antes de publicar.' },
     ],
     ctaLabel: '¿Buscas una estancia concreta?',
-    ctaTitle: 'Explora todos los alojamientos gestionados por KEY SUITES.',
+    ctaTitle: 'Explora todos los alojamientos gestionados por OKEY SUITES.',
     ctaButton: 'Ver alojamientos',
   },
   contact: {
     kicker: 'CONTACTO',
     title: ['Hablemos de', 'tu estancia.'],
-    text: 'Cuéntanos qué tipo de alojamiento buscas, para cuántas personas y en qué fechas. El canal de recepción definitivo se incorporará cuando KEY SUITES confirme sus datos de contacto.',
+    text: 'Cuéntanos qué tipo de alojamiento buscas, para cuántas personas y en qué fechas. El canal de recepción definitivo se incorporará cuando OKEY SUITES confirme sus datos de contacto.',
     location: 'Granada · España',
     types: 'Apartamentos · Suites · Villas · Costa',
     pendingTitle: 'Datos de contacto pendientes',
@@ -152,13 +152,13 @@ export const siteContent = {
       messagePlaceholder: 'Fechas, número de huéspedes y cualquier detalle útil',
       button: 'Preparar consulta',
       idleNote: 'La consulta no se enviará fuera de este prototipo.',
-      successNote: 'Consulta preparada. El envío real se activará cuando KEY SUITES confirme su canal de contacto.',
+      successNote: 'Consulta preparada. El envío real se activará cuando OKEY SUITES confirme su canal de contacto.',
     },
   },
   footer: {
     description: 'Alojamientos seleccionados y gestionados en Granada, sus alrededores y la Costa Tropical.',
     exploreTitle: 'Explorar',
-    brandTitle: 'KEY SUITES',
+    brandTitle: 'OKEY SUITES',
     legalTitle: 'Información legal',
     legalItems: ['Política de privacidad', 'Aviso legal', 'Cookies'],
     legalPending: 'Datos legales pendientes',
