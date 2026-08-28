@@ -24,7 +24,6 @@ export const siteContent = {
     description: 'Apartamentos, suites, villas y casas gestionadas por KEY SUITES en Granada, sus alrededores y la Costa Tropical.',
     socialTitle: 'KEY SUITES',
     socialDescription: 'Alojamientos en Granada y alrededores',
-    image: '/key-suites-logo-white.png',
   },
   header: {
     reviewLabel: 'Versión preliminar',
