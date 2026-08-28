@@ -89,7 +89,7 @@ function PlatformLinks({ platforms }: { platforms: PlatformReview[] }) {
 
 function Reputation({ item }: { item: CatalogItem }) {
   const reviewPlatforms = item.platforms.filter((platform) => platform.rating || platform.reviews || platform.note);
-  const hasContent = reviewPlatforms.length > 0 || item.positiveReviews.length > 0 || item.negativeReviews.length > 0;
+  const hasContent = reviewPlatforms.length > 0 || item.positiveReviews.length > 0;
   if (!hasContent) return null;
   return <section className="reputation-section section-shell">
     <div className="reputation-heading"><span className="section-kicker">OPINIONES PÚBLICAS</span><h2>Lo que cuentan los huéspedes</h2></div>
@@ -100,7 +100,6 @@ function Reputation({ item }: { item: CatalogItem }) {
       </article>)}</div>}
       <div className="review-summaries">
         {item.positiveReviews.length > 0 && <div><h3>Los huéspedes destacan especialmente</h3><ul>{item.positiveReviews.map((point) => <li key={point}>{point}</li>)}</ul></div>}
-        {item.negativeReviews.length > 0 && <div className="guest-mentions"><h3>Algunos huéspedes han mencionado</h3><ul>{item.negativeReviews.map((point) => <li key={point}>{point}</li>)}</ul><p>Son comentarios puntuales de huéspedes, no defectos confirmados.</p></div>}
       </div>
     </div>
   </section>;
