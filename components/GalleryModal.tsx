@@ -21,11 +21,11 @@ export function GalleryModal({ images, propertyName }: { images: PropertyImage[]
 
   if (images.length < 2) return null;
   return <>
-    <button className="gallery-button" type="button" onClick={() => setOpen(true)}>{siteContent.gallery.open} <span>↗</span></button>
+    <button className="gallery-button" type="button" onClick={() => setOpen(true)}>{siteContent.gallery.open}</button>
     <div className={`gallery-modal ${open ? 'open' : ''}`} aria-hidden={!open}>
       <button className="gallery-backdrop" type="button" aria-label={siteContent.gallery.close} onClick={() => setOpen(false)} tabIndex={open ? 0 : -1} />
       <section role="dialog" aria-modal="true" aria-label={`Galería de ${propertyName}`}>
-        <header><div><small>{siteContent.gallery.title}</small><h2>{propertyName}</h2></div><button ref={closeRef} type="button" onClick={() => setOpen(false)} aria-label={siteContent.gallery.close}>{siteContent.gallery.close} <span>×</span></button></header>
+        <header><div><small>{siteContent.gallery.title}</small><h2>{propertyName}</h2></div><button ref={closeRef} type="button" onClick={() => setOpen(false)} aria-label={siteContent.gallery.close}>{siteContent.gallery.close}</button></header>
         <div className="gallery-modal-grid">{images.map((image, index) => <figure key={image.src}><div><Image src={image.src} alt={image.alt} fill sizes="(max-width: 720px) 100vw, 50vw" /></div><figcaption>{String(index + 1).padStart(2, '0')} · {image.alt}</figcaption></figure>)}</div>
       </section>
     </div>

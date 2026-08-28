@@ -12,7 +12,7 @@ export function ContactPreviewForm() {
     <label>{copy.email}<input name="email" type="email" placeholder={copy.emailPlaceholder} required /></label>
     <label>{copy.property}<input name="property" type="text" placeholder={copy.propertyPlaceholder} /></label>
     <label className="wide">{copy.message}<textarea name="message" placeholder={copy.messagePlaceholder} rows={5} required /></label>
-    <button type="submit">{copy.button} <span>→</span></button>
+    <button type="submit">{copy.button}</button>
     <small>{prepared ? copy.successNote : copy.idleNote}</small>
   </form>;
 }

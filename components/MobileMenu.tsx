@@ -159,7 +159,6 @@ export function MobileMenu() {
             >
               <small>{String(index + 1).padStart(2, '0')}</small>
               <strong>{link.label}</strong>
-              <span>↗</span>
             </Link>
           ))}
         </nav>
@@ -172,7 +171,7 @@ export function MobileMenu() {
             onClick={closeMenu}
             tabIndex={open ? 0 : -1}
           >
-            {siteContent.home.closing.button} <b>→</b>
+            {siteContent.home.closing.button}
           </Link>
         </div>
       </aside>
