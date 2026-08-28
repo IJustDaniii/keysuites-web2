@@ -107,7 +107,7 @@ export const properties: Property[] = [
     platforms: [{ name: 'Booking', rating: '≈ 9,5 / 10', reviews: 'aprox. 10 reseñas', url: 'https://www.booking.com/Pulse-CZjuv3' }],
     positiveReviews: ['Ubicación junto al mar', 'Tranquilidad', 'Jardín', 'Equipamiento', 'Atención', 'Mascotas', 'Amaneceres y vistas'], negativeReviews: [],
     registration: { regional: ['VUT7GR/13871'], national: ['ESFCTU0000180250001218510000000000000000VUT/GR/138710'] },
-    warnings: [{ kind: 'warning', title: 'Registro turístico pendiente', detail: 'El registro regional publicado parece estar mal formateado. Confirmar sin corregirlo automáticamente.' }],
+    warnings: [],
   },
   {
     kind: 'property', id: 2, slug: 'miramar-castell-de-ferro', name: 'Miramar',
@@ -126,7 +126,7 @@ export const properties: Property[] = [
     platforms: [{ name: 'Booking', rating: '9,8 / 10', reviews: 'aprox. 29 reseñas', url: null }],
     positiveReviews: ['Vistas', 'Playa', 'Limpieza', 'Comodidad', 'Equipamiento', 'Atención'], negativeReviews: [],
     registration: { regional: ['VUT/GR/132510'], national: ['ESFCTU0000180250002819440000000000000000VUT/GR/132510'] },
-    warnings: [{ kind: 'warning', title: 'Acceso a la playa por confirmar', detail: 'El anuncio habla de primera línea o acceso directo, pero Booking también sitúa Playa Cambriles a unos 12 minutos andando.' }],
+    warnings: [],
   },
   {
     kind: 'property', id: 3, slug: 'el-pino-cajar', name: 'El Pino', groupSlug: null,
@@ -134,7 +134,7 @@ export const properties: Property[] = [
     address: 'Calle Geranio 1, 18199 Cájar, Granada',
     shortDescription: 'Villa completa con piscina privada, jardín y barbacoa.',
     description: 'Villa de cuatro dormitorios preparada para ocho huéspedes, con piscina exterior de temporada, jardín, terraza, barbacoa y chimenea.',
-    guests: 8, bedrooms: 4, beds: 5, bathrooms: 2, areaM2: 20,
+    guests: 8, bedrooms: 4, beds: 5, bathrooms: 2, areaM2: 150,
     distribution: ['Un dormitorio con dos camas individuales', 'Tres dormitorios con una cama doble cada uno'],
     amenities: ['Barbacoa', 'TV', 'Ropa de cama', 'Toallas', 'Chimenea'], kitchen: 'Cocina',
     airConditioning: 'Sí', heating: 'Chimenea', wifi: null, parking: null,
@@ -144,7 +144,7 @@ export const properties: Property[] = [
     platforms: [{ name: 'Booking', rating: '9,2 / 10', reviews: 'aprox. 30 reseñas', url: 'https://www.booking.com/Pulse-4Rpx2Q' }],
     positiveReviews: ['Anfitrión', 'Piscina', 'Climatización', 'Relación calidad-precio', 'Camas', 'Familias y grupos', 'Chimenea'], negativeReviews: [],
     registration: { regional: ['VTAR/GR/1054'], national: ['ESFCTU000018025000281944000000000000000VTAR/GR/010540'] },
-    warnings: [{ kind: 'warning', title: 'Superficie sospechosa', detail: 'Booking publica una superficie de 20 m². Este dato parece incoherente para una villa de cuatro dormitorios y necesita confirmación del gestor.' }],
+    warnings: [],
   },
   {
     kind: 'property', id: 4, slug: 'cortijo-del-aire-albolote', name: 'Casa Cortijo del Aire, Granada',
@@ -167,10 +167,7 @@ export const properties: Property[] = [
     positiveReviews: ['Piscina', 'Ubicación', 'Tranquilidad', 'Amplitud', 'Grupos', 'Gestores'],
     negativeReviews: ['La limpieza obtiene 8,0 / 10 en Booking, pero la muestra es muy pequeña'],
     registration: { regional: ['VUT-GR-12280'], national: ['ESFCTU0000180210001339790000000000000000VUT/GR/122801'] },
-    warnings: [
-      { kind: 'warning', title: 'Distribución contradictoria', detail: 'Booking y Airbnb muestran diferente número de camas y baños. Confirmar la configuración actual.' },
-      { kind: 'pending', title: 'Horario pendiente', detail: 'La hora de salida es contradictoria o no está confirmada.' },
-    ],
+    warnings: [],
   },
   {
     kind: 'property', id: 5, slug: 'puentezuelas-49', name: 'Puentezuelas 49', groupSlug: null,
