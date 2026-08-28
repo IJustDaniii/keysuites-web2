@@ -32,11 +32,23 @@ export const metadata: Metadata = {
 
   // Descripción que pueden mostrar Google y otros buscadores en sus resultados.
   description: siteContent.seo.description,
-  // Icono de la pestaña: usa el logo negro con tema claro y el blanco con tema oscuro.
+  // Icono de la pestaña: los archivos cuadrados evitan que el navegador descarte
+  // los logos originales (que son rectangulares). La primera entrada sirve de respaldo.
   icons: {
     icon: [
-      { url: '/key-suites-logo-black.png', media: '(prefers-color-scheme: light)' },
-      { url: '/key-suites-logo-white.png', media: '(prefers-color-scheme: dark)' },
+      { url: '/favicon-light.png?v=2', type: 'image/png', sizes: '256x256' },
+      {
+        url: '/favicon-light.png?v=2',
+        type: 'image/png',
+        sizes: '256x256',
+        media: '(prefers-color-scheme: light)',
+      },
+      {
+        url: '/favicon-dark.png?v=2',
+        type: 'image/png',
+        sizes: '256x256',
+        media: '(prefers-color-scheme: dark)',
+      },
     ],
   },
 
