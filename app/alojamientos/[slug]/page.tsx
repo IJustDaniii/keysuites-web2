@@ -127,6 +127,7 @@ function EssentialDetailInfo({ label, value }: { label: string; value: string | 
 function PropertyPage({ property }: { property: Property }) {
   const group = property.groupSlug ? getPropertyGroup(property.groupSlug) : null;
   const facts = [
+    ...(property.inventoryCount === undefined ? [] : [{ label: 'Unidades de esta tipología', value: property.inventoryCount }]),
     { label: 'Huéspedes', value: property.guests },
     { label: 'Dormitorios', value: property.bedrooms },
     { label: 'Camas', value: property.beds },
@@ -179,6 +180,9 @@ function PropertyPage({ property }: { property: Property }) {
 
 function GroupPage({ group }: { group: PropertyGroup }) {
   const units = getGroupUnits(group);
+  const hasInventory = units.some((property) => property.inventoryCount !== undefined);
+  const inventoryTotal = units.reduce((total, property) => total + (property.inventoryCount ?? 1), 0);
+  const unitsHeading = hasInventory ? `${inventoryTotal} habitaciones en ${units.length} tipologías` : group.countLabel;
   const importantWarnings = getImportantWarnings(group.warnings);
   return <main className="detail-page group-page">
     <div className="breadcrumbs section-shell"><Link href="/alojamientos">Alojamientos</Link><span>/</span><span>{group.name}</span></div>
@@ -191,7 +195,7 @@ function GroupPage({ group }: { group: PropertyGroup }) {
       <ReviewPanel item={group} />
     </section>
     <section className="group-units section-shell">
-      <div className="section-heading"><div><span className="section-kicker">ELIGE TU ALOJAMIENTO</span><h2>{group.countLabel}</h2></div></div>
+      <div className="section-heading"><div><span className="section-kicker">ELIGE TU ALOJAMIENTO</span><h2>{unitsHeading}</h2></div></div>
       <div className="catalog-grid">{units.map((property, index) => <PropertyCard property={property} index={index} key={property.slug} />)}</div>
     </section>
     <section className="group-information"><div className="section-shell">

@@ -27,6 +27,7 @@ incluyendo `https://`.
 Abre `data/properties.ts` y busca el nombre. Cada bloque individual contiene:
 
 - `name`, `slug`, `category`, `type`, `location` y `address`.
+- `inventoryCount`: número de habitaciones físicas cuando varias comparten tipología.
 - `shortDescription` y `description`.
 - `guests`, `bedrooms`, `beds`, `bathrooms` y `areaM2`.
 - `distribution`, `amenities`, `kitchen`, climatización, Wi-Fi y aparcamiento.

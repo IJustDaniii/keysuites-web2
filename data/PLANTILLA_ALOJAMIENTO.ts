@@ -17,6 +17,8 @@ export const PLANTILLA_NO_SE_PUBLICA = {
   slug: 'nombre-del-alojamiento-sin-espacios',
   name: 'Nombre visible',
   groupSlug: null,
+  // Cantidad de habitaciones físicas de esta tipología. Bórralo si no aplica.
+  inventoryCount: 1,
   category: 'Granada centro',
   type: 'Apartamento completo',
   location: 'Granada',

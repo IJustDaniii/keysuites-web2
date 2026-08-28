@@ -16,6 +16,9 @@ export function PropertyCard({ property, index }: { property: Property; index?: 
         ? <Image src={property.images[0].src} alt={property.images[0].alt} fill sizes="(max-width: 760px) 100vw, 33vw" />
         : <PendingPhoto compact />}
       {index !== undefined && <span className="card-number">{String(index + 1).padStart(2, '0')}</span>}
+      {property.inventoryCount !== undefined && <span className="inventory-chip">
+        {property.inventoryCount} {property.inventoryCount === 1 ? 'habitación' : 'habitaciones'}
+      </span>}
       <span className="category-chip">{property.category}</span>
     </Link>
     <div className="property-meta">

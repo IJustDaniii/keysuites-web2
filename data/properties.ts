@@ -51,6 +51,9 @@ export type Property = CatalogBase & {
   kind: 'property';
   id: number;
   groupSlug: string | null;
+  // Úsalo cuando una misma tipología representa varias habitaciones físicas.
+  // Ejemplo: Carmen San Luis tiene 5 habitaciones dobles del mismo tipo.
+  inventoryCount?: number;
   guests: number | null;
   bedrooms: number | null;
   beds: number | null;
@@ -310,7 +313,7 @@ export const properties: Property[] = [
   // CARMEN SAN LUIS · ALBAICÍN
   {
     kind: 'property', id: 13, slug: 'carmen-san-luis-doble-bano-privado', name: 'Habitación doble con baño privado',
-    groupSlug: 'carmen-san-luis-albaicin', category: 'Albaicín', type: 'Habitación doble · 5 unidades', location: 'Carmen San Luis, Albaicín',
+    groupSlug: 'carmen-san-luis-albaicin', inventoryCount: 5, category: 'Albaicín', type: 'Habitación doble', location: 'Carmen San Luis, Albaicín',
     address: '7 Calle de San Luis, Albaicín, 18010 Granada',
     shortDescription: 'Cinco habitaciones dobles de 15 m², cada una con baño privado.',
     description: 'Carmen San Luis dispone de cinco habitaciones de esta tipología. Cada una ofrece una cama doble, entrada privada, baño privado con ducha, calefacción, aire acondicionado individual y Wi-Fi gratuito.',
@@ -326,7 +329,7 @@ export const properties: Property[] = [
   },
   {
     kind: 'property', id: 14, slug: 'carmen-san-luis-deluxe-vistas', name: 'Habitación doble Deluxe con vistas al castillo',
-    groupSlug: 'carmen-san-luis-albaicin', category: 'Albaicín', type: 'Habitación doble Deluxe · 1 unidad', location: 'Carmen San Luis, Albaicín',
+    groupSlug: 'carmen-san-luis-albaicin', inventoryCount: 1, category: 'Albaicín', type: 'Habitación doble Deluxe', location: 'Carmen San Luis, Albaicín',
     address: '7 Calle de San Luis, Albaicín, 18010 Granada',
     shortDescription: 'Habitación Deluxe de 15 m² con piscina privada y vistas al castillo.',
     description: 'La sexta habitación de Carmen San Luis es una doble Deluxe con una cama doble, piscina privada y vistas al castillo. Incluye entrada privada, baño privado con ducha, calefacción, aire acondicionado individual y Wi-Fi gratuito.',
