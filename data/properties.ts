@@ -143,7 +143,7 @@ export const properties: Property[] = [
     airConditioning: 'Sí', heating: 'Chimenea', wifi: null, parking: null,
     pool: 'Piscina privada exterior de temporada', exterior: ['Jardín', 'Balcón', 'Terraza'], views: [], accessibility: null,
     rules: ['No se admiten mascotas', 'No fumar', 'No fiestas'], checkIn: '14:00 – 22:00', checkOut: '10:00 – 12:00',
-    images: [{ src: '/properties/el-pino-01.jpg', alt: 'Jardín y barbacoa de El Pino' }, { src: '/properties/el-pino-02.jpg', alt: 'Exterior de El Pino en Cájar' }],
+    images: [{ src: '/properties/el-pino-01.jpg', alt: 'Piscina de El Pino' }, { src: '/properties/el-pino-02.jpg', alt: 'Jardín y barbacoa de El Pino' }, { src: '/properties/el-pino-03.jpg', alt: 'Exterior de El Pino en Cájar' }],
     platforms: [{ name: 'Booking', rating: '9,2 / 10', reviews: 'aprox. 30 reseñas', url: 'https://www.booking.com/Pulse-4Rpx2Q' }],
     positiveReviews: ['Anfitrión', 'Piscina', 'Climatización', 'Relación calidad-precio', 'Camas', 'Familias y grupos', 'Chimenea'], negativeReviews: [],
     registration: { regional: ['VTAR/GR/1054'], national: ['ESFCTU000018025000281944000000000000000VTAR/GR/010540'] },
