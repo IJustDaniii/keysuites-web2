@@ -42,7 +42,7 @@ export const siteContent = {
       // Las fotos deben estar dentro de la carpeta public.
       slides: [
         { src: '/properties/jardines-alhambra-01.jpg', alt: 'Terraza de Suites Jardines de la Alhambra al atardecer', label: 'Granada' },
-        { src: '/properties/el-pino-01.jpg', alt: 'Jardín y barbacoa de El Pino', label: 'Casas rurales' },
+        { src: '/properties/el-pino-02.jpg', alt: 'Jardín y barbacoa de El Pino', label: 'Casas rurales' },
         { src: '/properties/miramar-01.png', alt: 'Terraza de Apartamento Miramar frente al mar', label: 'Costa Tropical' },
         { src: '/properties/puentezuelas-01.jpg', alt: 'Salón de Puentezuelas 49 en el centro de Granada', label: 'Granada centro' },
       ],
