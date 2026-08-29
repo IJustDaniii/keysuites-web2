@@ -117,35 +117,25 @@ export const siteContent = {
   },
   contact: {
     kicker: 'CONTACTO',
-    title: ['Hablemos de', 'tu estancia.'],
-    text: 'Cuéntanos qué tipo de alojamiento buscas, para cuántas personas y en qué fechas. El canal de recepción definitivo se incorporará cuando OKEY SUITES confirme sus datos de contacto.',
+    title: ['Hablemos de', 'tu estancia'],
+    text: 'Estamos al otro lado para ayudarte a elegir alojamiento, resolver tus dudas y preparar tu próxima estancia.',
     location: 'Granada · España',
     types: 'Apartamentos · Suites · Villas · Costa',
-    pendingTitle: 'Datos de contacto pendientes',
-    pendingDetail: 'Confirmar teléfono, correo electrónico, horario de atención y responsable de privacidad antes de activar el formulario.',
     /**
-     * EDITA AQUÍ EL TELÉFONO, WHATSAPP Y CORREO.
-     * Sustituye null por el dato entre comillas. Ejemplo: phone: '+34 600 000 000'.
-     * En WhatsApp escribe el número completo sin espacios dentro del enlace.
+     * EDITA AQUÍ EL TELÉFONO DE CONTACTO.
+     * - phoneDisplay: es el número grande que verá el visitante.
+     * - phoneUrl: escribe "tel:+34" seguido del número, sin espacios.
+     * - whatsappUrl: escribe "https://wa.me/34" seguido del número, sin espacios.
+     * El 34 es el prefijo internacional de España.
      */
     details: {
-      phone: null,
-      whatsappUrl: null,
-      email: null,
+      phoneDisplay: '687 86 40 72',
+      phoneUrl: 'tel:+34687864072',
+      whatsappUrl: 'https://wa.me/34687864072',
     },
-    form: {
-      name: 'Nombre',
-      namePlaceholder: 'Tu nombre',
-      email: 'Correo electrónico',
-      emailPlaceholder: 'nombre@ejemplo.com',
-      property: 'Alojamiento de interés',
-      propertyPlaceholder: 'Nombre del alojamiento, si ya lo sabes',
-      message: 'Mensaje',
-      messagePlaceholder: 'Fechas, número de huéspedes y cualquier detalle útil',
-      button: 'Preparar consulta',
-      idleNote: 'La consulta no se enviará fuera de este prototipo.',
-      successNote: 'Consulta preparada. El envío real se activará cuando OKEY SUITES confirme su canal de contacto.',
-    },
+    callButton: 'Llamar',
+    whatsappButton: 'WhatsApp',
+    desktopNote: 'En ordenador, puedes abrir WhatsApp Web o marcar este número desde tu teléfono.',
   },
   footer: {
     description: 'Alojamientos seleccionados y gestionados en Granada, sus alrededores y la Costa Tropical.',
