@@ -1,5 +1,5 @@
 // Tipo de Next.js que valida la configuración SEO definida más abajo.
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 
 // Carga la fuente Manrope mediante el sistema optimizado de fuentes de Next.js.
 import { Manrope } from 'next/font/google';
@@ -75,6 +75,13 @@ export const metadata: Metadata = {
     description: siteContent.seo.socialDescription,
     images: ['/og.png'],
   },
+};
+
+// Permite que el panel móvil use correctamente las zonas seguras del iPhone.
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  viewportFit: 'cover',
 };
 
 // Layout raíz que envuelve todas las páginas de la aplicación.

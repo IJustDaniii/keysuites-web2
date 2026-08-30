@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { Link } from './Link';
-import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
+import { useLayoutEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { createPortal } from 'react-dom';
 import { navigationLinks, siteContent } from '@/data/site-content';
 
@@ -14,9 +14,8 @@ export function MobileMenu() {
   const triggerRef = useRef<HTMLButtonElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
   const panelRef = useRef<HTMLElement>(null);
-  const layerRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!open) return;
 
     const body = document.body;
@@ -33,28 +32,25 @@ export function MobileMenu() {
     const previousPaddingRight = body.style.paddingRight;
     const previousPosition = body.style.position;
     const previousTop = body.style.top;
+    const previousLeft = body.style.left;
+    const previousRight = body.style.right;
     const previousWidth = body.style.width;
     const previousHtmlOverflow = html.style.overflow;
     const previousOverscroll = html.style.overscrollBehavior;
+    const previousScrollBehavior = html.style.scrollBehavior;
 
     body.style.overflow = 'hidden';
     body.style.position = 'fixed';
     body.style.top = `-${scrollY}px`;
-    body.style.width = '100%';
+    body.style.left = '0';
+    body.style.right = '0';
+    body.style.width = 'auto';
     html.style.overflow = 'hidden';
     html.style.overscrollBehavior = 'none';
 
     if (scrollbarWidth > 0) {
       body.style.paddingRight = `${scrollbarWidth}px`;
     }
-
-    // Safari móvil cambia la altura útil cuando sus barras aparecen o
-    // desaparecen. visualViewport ofrece la altura real y evita saltos.
-    const syncViewportHeight = () => {
-      const height = window.visualViewport?.height ?? window.innerHeight;
-      layerRef.current?.style.setProperty('--mobile-menu-height', `${Math.round(height)}px`);
-    };
-    syncViewportHeight();
 
     // Esperamos un frame para que el panel termine de mostrarse
     // antes de mover el foco.
@@ -101,9 +97,6 @@ export function MobileMenu() {
     document.addEventListener('keydown', onKeyDown);
     media.addEventListener('change', onDesktop);
     window.addEventListener('popstate', onHistory);
-    window.addEventListener('resize', syncViewportHeight);
-    window.addEventListener('orientationchange', syncViewportHeight);
-    window.visualViewport?.addEventListener('resize', syncViewportHeight);
 
     return () => {
       cancelAnimationFrame(focusFrame);
@@ -112,21 +105,26 @@ export function MobileMenu() {
       body.style.paddingRight = previousPaddingRight;
       body.style.position = previousPosition;
       body.style.top = previousTop;
+      body.style.left = previousLeft;
+      body.style.right = previousRight;
       body.style.width = previousWidth;
       html.style.overflow = previousHtmlOverflow;
       html.style.overscrollBehavior = previousOverscroll;
 
+      // globals.css activa scroll suave. Si se restaura la posición con ese
+      // comportamiento, Safari anima el documento detrás del panel al cerrar.
+      html.style.scrollBehavior = 'auto';
+      window.scrollTo(0, scrollY);
+      html.style.scrollBehavior = previousScrollBehavior;
+
       document.removeEventListener('keydown', onKeyDown);
       media.removeEventListener('change', onDesktop);
       window.removeEventListener('popstate', onHistory);
-      window.removeEventListener('resize', syncViewportHeight);
-      window.removeEventListener('orientationchange', syncViewportHeight);
-      window.visualViewport?.removeEventListener('resize', syncViewportHeight);
-
-      window.scrollTo(0, scrollY);
 
       requestAnimationFrame(() => {
-        if (trigger?.isConnected && !media.matches) trigger.focus();
+        if (trigger?.isConnected && !media.matches) {
+          trigger.focus({ preventScroll: true });
+        }
       });
     };
   }, [open]);
@@ -135,7 +133,6 @@ export function MobileMenu() {
 
   const layer = (
     <div
-      ref={layerRef}
       className={`menu-layer ${open ? 'open' : ''}`}
       aria-hidden={!open}
     >
@@ -163,7 +160,7 @@ export function MobileMenu() {
             tabIndex={open ? 0 : -1}
           >
             <Image
-              src="/okey-suites-logo-white.png"
+              src="/key-suites-logo-black.png"
               alt="OKEY SUITES"
               width={210}
               height={80}

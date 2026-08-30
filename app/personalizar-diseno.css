@@ -61,13 +61,11 @@
   /* 6. MENÚ MÓVIL */
   --menu-width: 420px;
   --menu-mobile-gap: 18px;       /* Franja visible a la izquierda */
-  --menu-radius: 26px;
-  --menu-duration: .62s;
-  --menu-overlay: rgba(3, 10, 9, .44);
-  --menu-panel-start: #111b1a;
-  --menu-panel-end: #08100f;
-  --menu-glow: rgba(25, 198, 204, .13);
-  --menu-shadow: -24px 0 70px rgba(0, 0, 0, .30);
+  --menu-radius: 18px;
+  --menu-duration: .46s;
+  --menu-overlay: rgba(8, 20, 18, .38);
+  --menu-panel-background: #f7faf9;
+  --menu-shadow: -18px 0 48px rgba(8, 20, 18, .16);
 
   /* 7. GALERÍA Y FOTOGRAFÍAS */
   --gallery-max-height: 680px;
