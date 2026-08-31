@@ -2,7 +2,7 @@
 import type { Metadata, Viewport } from 'next';
 
 // Carga la fuente Manrope mediante el sistema optimizado de fuentes de Next.js.
-import { Manrope } from 'next/font/google';
+import { DM_Serif_Display, Manrope } from 'next/font/google';
 
 // Elementos comunes que aparecen en todas las páginas del sitio.
 import { Header } from '@/components/Header';
@@ -17,6 +17,11 @@ import './globals.css';
 // Descarga solamente los caracteres latinos y expone la fuente mediante la
 // variable CSS --font-manrope, que se añade al <body> al final del archivo.
 const manrope = Manrope({ subsets: ['latin'], variable: '--font-manrope' });
+const editorial = DM_Serif_Display({
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-editorial',
+});
 
 // Convierte la URL principal configurada en site-content en un objeto URL.
 // Next.js la usa como base para transformar rutas relativas en URL absolutas.
@@ -91,7 +96,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     // Indica a navegadores y lectores de pantalla que el contenido está en español.
     <html lang="es">
       {/* Activa la variable de la fuente y mantiene cabecera y pie en todas las páginas. */}
-      <body className={manrope.variable}>
+      <body className={`${manrope.variable} ${editorial.variable}`}>
         <Header />
         {children}
         <Footer />

@@ -16,13 +16,13 @@
 
 :root {
   /* 1. COLORES PRINCIPALES */
-  --ink: #111111;                /* Texto y botones oscuros */
-  --muted: #69716f;              /* Texto secundario */
-  --aqua: #19c6cc;               /* Color principal de OKEY SUITES */
-  --deep: #159ea4;               /* Aqua oscuro para enlaces */
-  --soft: #f1f8f7;               /* Fondos suaves */
-  --paper: #ffffff;              /* Fondo general */
-  --line: #dfe7e5;               /* Líneas y bordes */
+  --ink: #11191d;                /* Texto y botones oscuros */
+  --muted: #68727a;              /* Texto secundario */
+  --aqua: #13b7c4;               /* Color principal de OKEY SUITES */
+  --deep: #079faa;               /* Aqua oscuro para enlaces */
+  --soft: #f3f7f7;               /* Fondos suaves */
+  --paper: #fafaf8;              /* Fondo general */
+  --line: #e5ebea;               /* Líneas y bordes */
   --dark-section: #0c1514;       /* Secciones oscuras */
   --footer-background: #080c0c;  /* Pie de página */
   --hero-background: #171c1b;    /* Color mientras cargan las fotos */
@@ -36,12 +36,12 @@
   --section-space: 136px;
 
   /* 3. BOTONES, TARJETAS Y SOMBRAS */
-  --button-radius: 3px;
-  --small-radius: 3px;
+  --button-radius: 10px;
+  --small-radius: 22px;
   --card-image-ratio: 4 / 5;
   --card-gap: 28px;
-  --header-shadow: none;
-  --floating-shadow: 0 8px 22px rgba(0, 0, 0, .08);
+  --header-shadow: 0 12px 38px rgba(17, 25, 29, .07);
+  --floating-shadow: 0 20px 55px rgba(17, 25, 29, .09);
 
   /* 4. TÍTULOS */
   --font-family: var(--font-manrope), Arial, sans-serif;
@@ -61,7 +61,7 @@
   /* 6. MENÚ MÓVIL */
   --menu-width: 420px;
   --menu-mobile-gap: 18px;       /* Franja visible a la izquierda */
-  --menu-radius: 3px;
+  --menu-radius: 28px;
   --menu-duration: .46s;
   --menu-overlay: rgba(8, 20, 18, .38);
   --menu-panel-background: #f7faf9;
