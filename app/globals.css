@@ -665,6 +665,21 @@ body { background:var(--paper); color:var(--ink); }
   .property-card:hover,.header-cta:hover,.primary-button:hover { transform:none; }
 }
 
+/* Equipamiento: tarjetas compactas y con el texto bien centrado. */
+.property-content .amenities-grid { gap:12px 14px; }
+.property-content .amenities-grid span { display:flex; align-items:center; min-height:50px; margin:0; padding:13px 16px; border:1px solid var(--line); border-radius:12px; background:#fff; color:#35413f; font-size:14px; line-height:1.35; }
+
+@media (max-width:720px) {
+  .property-content .amenities-grid { grid-template-columns:1fr; gap:9px; }
+  .property-content .amenities-grid span { min-height:48px; padding:13px 15px; font-size:14px; }
+}
+
+.reputation-content .platform-list { grid-template-columns:1fr; }
+
+@media (max-width:720px) {
+  html,body { width:100%; max-width:100%; overflow-x:hidden; }
+}
+
 @media (max-width:720px) {
   .mobile-booking { position:fixed; left:0; right:0; bottom:0; width:100%; box-sizing:border-box; }
 }
