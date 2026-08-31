@@ -698,8 +698,8 @@ export const properties: Property[] = [
     kitchen: 'Cocina privada', airConditioning: 'Sí', heating: null, wifi: null, parking: null, pool: null,
     exterior: ['Balcón o patio'], views: ['Calle'], accessibility: null, rules: [], checkIn: '16:00 - 22:00', checkOut: '09:00 – 11:00',
     images: [
-      { src: '/properties/alhambra-mesones-apartamento-superior-01.png', alt: 'Lavabo con espejo y toallas del Apartamento Superior de Alhambra Mesones' },
       { src: '/properties/alhambra-mesones-apartamento-superior-02.png', alt: 'Patio privado con comedor y zona infantil del Apartamento Superior' },
+      { src: '/properties/alhambra-mesones-apartamento-superior-01.png', alt: 'Lavabo con espejo y toallas del Apartamento Superior de Alhambra Mesones' },
       { src: '/properties/alhambra-mesones-apartamento-superior-03.png', alt: 'Comedor exterior del patio del Apartamento Superior' },
       { src: '/properties/alhambra-mesones-apartamento-superior-04.png', alt: 'Salón comedor luminoso del Apartamento Superior' },
       { src: '/properties/alhambra-mesones-apartamento-superior-05.png', alt: 'Dormitorio doble con cabecero de madera del Apartamento Superior' },
