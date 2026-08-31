@@ -442,7 +442,6 @@ export const properties: Property[] = [
     exterior: ['Terraza privada', 'Acceso a terraza común'], views: ['Catedral', 'Albaicín', 'Alhambra'], accessibility: null,
     rules: [], checkIn: 'Desde las 15:00', checkOut: 'Antes de las 11:00',
     images: [
-      { src: '/properties/torre-vela-alcazaba-01.png', alt: 'Vista general del salón-comedor de Torre de la Vela en Suites Jardines' },
       { src: '/properties/torre-vela-alcazaba-02.png', alt: 'Dormitorio de Torre de la Vela con cama de matrimonio y aire acondicionado' },
       { src: '/properties/torre-vela-alcazaba-03.png', alt: 'Dormitorio de Torre de la Vela con vistas de Granada al atardecer' },
       { src: '/properties/torre-vela-alcazaba-04.png', alt: 'Terraza privada de Torre de la Vela con sillones y mesa auxiliar' },
