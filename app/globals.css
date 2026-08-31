@@ -68,7 +68,7 @@
 .menu-panel nav strong { font-size:20px; font-weight:500; }
 .menu-panel-foot { margin-top:auto; padding-top:35px; display:grid; gap:18px; }
 .menu-panel-foot>span { color:var(--muted); font-size:9px; letter-spacing:.13em; text-transform:uppercase; }
-.menu-panel-foot a { min-height:48px; display:flex; justify-content:center; align-items:center; padding:0 16px; background:var(--ink); color:white; font-size:12px; font-weight:800; }
+.menu-panel-foot a { min-height:48px; display:flex; justify-content:center; align-items:center; padding:0 16px; background:var(--aqua); color:white; font-size:12px; font-weight:800; }
 .category-chip { position:absolute; z-index:2; bottom:15px; left:15px; padding:8px 10px; background:rgba(4,17,17,.75); color:white; font-size:9px; letter-spacing:.1em; text-transform:uppercase; backdrop-filter:blur(8px); }
 .photo-placeholder { min-height:100%; height:100%; display:grid; place-content:center; text-align:center; gap:18px; background:linear-gradient(145deg,#eef8f5,#d9eeea); color:#52706b; overflow:hidden; }
 .photo-placeholder.compact { min-height:210px; }
@@ -339,9 +339,9 @@
 .desktop-nav a::after { content:""; position:absolute; right:0; bottom:3px; left:0; height:1px; background:var(--aqua); transform:scaleX(0); transform-origin:right; transition:transform var(--motion-fast) var(--smooth-easing); }
 .desktop-nav a:hover { color:var(--ink); }
 .desktop-nav a:hover::after { transform:scaleX(1); transform-origin:left; }
-.header-cta,.primary-button { border-radius:var(--button-radius); background:var(--ink); color:white; letter-spacing:.055em; text-transform:uppercase; transition:background-color var(--motion-fast),transform var(--motion-fast); }
+.header-cta,.primary-button { border-radius:var(--button-radius); background:var(--aqua); color:white; letter-spacing:.055em; text-transform:uppercase; transition:background-color var(--motion-fast),transform var(--motion-fast); }
 .header-cta { min-height:42px; padding:12px 17px; }
-.header-cta:hover,.primary-button:hover { background:#26302e; transform:translateY(-1px); }
+.header-cta:hover,.primary-button:hover { background:var(--deep); transform:translateY(-1px); }
 .hero { min-height:calc(100svh - 108px); }
 .hero-slide { transform:scale(1.025); transition:opacity 1.1s ease,transform 7s ease; }
 .hero-slide.active { transform:scale(1); }
