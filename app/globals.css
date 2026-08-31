@@ -101,7 +101,7 @@
 .closing-cta { min-height:600px; position:relative; display:grid; place-items:center; overflow:hidden; color:white; }
 .closing-cta>img { object-fit:cover; }
 .closing-shade { position:absolute; inset:0; background:linear-gradient(90deg,rgba(0,0,0,.62),rgba(0,0,0,.08)); }
-.closing-cta>div:last-child { position:relative; z-index:2; width:min(1400px,86vw); }
+.closing-cta>div:last-child { position:relative; z-index:2; width:min(1180px,calc(100% - clamp(48px,14%,196px))); }
 .closing-cta h2 { margin:0 0 35px; font-size:clamp(60px,7vw,100px); line-height:.9; letter-spacing:-.06em; font-weight:500; }
 
 .site-footer { background:var(--footer-background); color:white; padding:85px 0 22px; }
@@ -475,6 +475,7 @@ body { background:var(--paper); color:var(--ink); }
 .menu-panel-foot a { border-radius:10px; background:var(--aqua); }
 
 .hero {
+  --hero-inline-inset:clamp(56px,8%,112px);
   width:calc(100% - 48px);
   max-width:var(--content-max-width);
   min-height:clamp(650px,78svh,900px);
@@ -483,11 +484,12 @@ body { background:var(--paper); color:var(--ink); }
   box-shadow:0 25px 70px rgba(17,25,29,.11);
 }
 .hero-shade { background:linear-gradient(90deg,rgba(6,14,16,.62),rgba(6,14,16,.20) 60%,rgba(6,14,16,.05)),linear-gradient(0deg,rgba(6,14,16,.30),transparent 45%); }
-.hero-content { width:min(820px,84vw); padding-left:clamp(34px,7vw,118px); }
+.hero-content { width:min(800px,calc(100% - 320px)); padding-left:var(--hero-inline-inset); }
 .hero h1 { max-width:810px; font-size:clamp(66px,7.6vw,122px); line-height:.91; letter-spacing:-.028em; }
 .hero-content>p { font-size:16px; }
 .hero .primary-button { background:var(--aqua); }
-.hero-note { padding:20px 24px; border:1px solid rgba(255,255,255,.24); border-radius:18px; background:rgba(255,255,255,.10); backdrop-filter:blur(10px); }
+.hero-note { width:clamp(150px,13vw,210px); right:var(--hero-inline-inset); bottom:64px; padding:20px 24px; border:1px solid rgba(255,255,255,.24); border-radius:18px; background:rgba(255,255,255,.10); backdrop-filter:blur(10px); }
+.hero-progress { left:var(--hero-inline-inset); }
 .hero-progress button span { height:3px; border-radius:3px; }
 
 .intro { padding:clamp(110px,12vw,180px) 0; align-items:center; }
