@@ -15,7 +15,7 @@ export default async function PropertiesPage({ searchParams }: { searchParams: P
   return <main className="listing-page">
     <section className="page-hero section-shell">
       <span className="section-kicker">{catalogItems.length} {siteContent.listings.kicker}</span>
-      <div><h1><TextLines lines={siteContent.listings.title} /></h1><p>{siteContent.listings.text}</p></div>
+      <h1><TextLines lines={siteContent.listings.title} /></h1>
     </section>
     <section className="catalog section-shell">
       <PropertyCatalog items={catalogItems} initialFilter={categoria} />

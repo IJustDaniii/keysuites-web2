@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { siteContent } from '@/data/site-content';
+import { PhoneIcon } from '@/components/PhoneIcon';
 
 export const metadata: Metadata = { title: 'Contacto', description: 'Contacta con OKEY SUITES para consultar una estancia.' };
 
@@ -9,7 +10,7 @@ export default function ContactPage() {
     <section className="contact-intro">
       <div>
         <span className="section-kicker">{copy.kicker}</span>
-        <h1>{copy.title.map((line, index) => <span key={line} className={index === 1 ? 'contact-title-accent' : undefined}>{index > 0 && <br />}{line}</span>)}</h1>
+        <h1>{copy.title.map((line, index) => <span key={line} className={index === 1 ? 'contact-title-accent' : undefined}>{line}</span>)}</h1>
         <p>{copy.text}</p>
       </div>
       <div className="contact-side">
@@ -31,7 +32,7 @@ export default function ContactPage() {
       <h2 id="contact-phone-title">{copy.details.phoneDisplay}</h2>
       <div className="contact-actions">
         <a className="contact-action contact-action-call" href={copy.details.phoneUrl} aria-label={`Llamar al ${copy.details.phoneDisplay}`}>
-          {copy.callButton}
+          <PhoneIcon />{copy.callButton}
         </a>
         <a className="contact-action contact-action-whatsapp" href={copy.details.whatsappUrl} target="_blank" rel="noopener noreferrer" aria-label={`Hablar por WhatsApp con el ${copy.details.phoneDisplay}`}>
           <svg className="contact-action-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
