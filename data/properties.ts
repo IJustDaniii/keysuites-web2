@@ -347,7 +347,6 @@ export const properties: Property[] = [
     exterior: ['Terraza común'], views: ['Ciudad'], accessibility: 'Segunda planta sin ascensor', rules: [],
     checkIn: 'Desde las 15:00', checkOut: 'Antes de las 11:00',
     images: [
-      { src: '/properties/alcazaba-01.png', alt: 'Vista general del salón-comedor de Alcazaba' },
       { src: '/properties/alcazaba-02.png', alt: 'Dormitorio de Alcazaba con cama de matrimonio y cabecero de ratán' },
       { src: '/properties/alcazaba-03.png', alt: 'Zona de estar de Alcazaba con sofá cama y comedor al fondo' },
       { src: '/properties/alcazaba-04.png', alt: 'Cocina equipada de Alcazaba con barra y taburetes' },
