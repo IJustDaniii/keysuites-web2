@@ -378,8 +378,8 @@ export const properties: Property[] = [
     kitchen: 'Sí', airConditioning: null, heating: null, wifi: 'Sí', parking: null, pool: null,
     exterior: [], views: [], accessibility: null, rules: [], checkIn: null, checkOut: null,
     images: [
+      { src: '/properties/generalife-02.png', alt: 'Vista amplia de la zona de estar y la cocina de Generalife' },
       { src: '/properties/generalife-01.png', alt: 'Cocina abierta y barra de desayuno de Generalife' },
-      { src: '/properties/generalife-02.png', alt: 'Zona de estar de Generalife con sofá cama y cocina al fondo' },
       { src: '/properties/generalife-03.png', alt: 'Dormitorio de Generalife con cama de matrimonio y ventana exterior' },
       { src: '/properties/generalife-04.png', alt: 'Barra de la cocina de Generalife preparada con vajilla y vino' },
       { src: '/properties/generalife-05.png', alt: 'Baño de Generalife con ducha y espejo iluminado' },
@@ -656,7 +656,7 @@ export const properties: Property[] = [
     kitchen: 'Cocina privada', airConditioning: 'Sí', heating: null, wifi: null, parking: null, pool: null,
     exterior: ['Balcón'], views: ['Calle tranquila'], accessibility: null, rules: [], checkIn: '16:00 - 22:00', checkOut: '09:00 – 11:00',
     images: [
-      { src: '/properties/alhambra-mesones-apartamento-balcon-01.png', alt: 'Detalle floral del salón del Apartamento con balcón A de Alhambra Mesones' },
+      { src: '/properties/alhambra-mesones-apartamento-balcon-015.png', alt: 'Vista general del salón-comedor luminoso del Apartamento con balcón A' },
       { src: '/properties/alhambra-mesones-apartamento-balcon-02.png', alt: 'Comedor luminoso junto al balcón del Apartamento con balcón A' },
       { src: '/properties/alhambra-mesones-apartamento-balcon-03.png', alt: 'Vista frontal del comedor del Apartamento con balcón A' },
       { src: '/properties/alhambra-mesones-apartamento-balcon-04.png', alt: 'Salón comedor con amplios ventanales del Apartamento con balcón A' },

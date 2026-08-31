@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import { siteContent } from '@/data/site-content';
-import { TextLines } from '@/components/TextLines';
 
 export const metadata: Metadata = { title: 'Contacto', description: 'Contacta con OKEY SUITES para consultar una estancia.' };
 
@@ -10,7 +9,7 @@ export default function ContactPage() {
     <section className="contact-intro">
       <div>
         <span className="section-kicker">{copy.kicker}</span>
-        <h1><TextLines lines={copy.title} /></h1>
+        <h1>{copy.title.map((line, index) => <span key={line} className={index === 1 ? 'contact-title-accent' : undefined}>{index > 0 && <br />}{line}</span>)}</h1>
         <p>{copy.text}</p>
       </div>
       <div className="contact-side">

@@ -260,6 +260,7 @@
 .contact-page { padding:100px 0 140px; }
 .contact-intro { display:grid; grid-template-columns:1.2fr .8fr; gap:10vw; align-items:end; }
 .contact-intro>div>p { max-width:650px; }
+.contact-title-accent { color:var(--aqua); }
 .contact-side>span { font-size:18px; }
 .contact-side>p { color:var(--muted); font-size:11px; }
 .contact-card { margin-top:90px; padding:72px clamp(24px,6vw,88px); background:linear-gradient(135deg,#eaf8f6 0%,#f5fbfa 100%); border:1px solid #d6e6e2; text-align:center; }
@@ -457,6 +458,7 @@ body { background:var(--paper); color:var(--ink); }
 .desktop-nav { gap:clamp(22px,2.6vw,44px); font-size:10px; letter-spacing:.04em; }
 .desktop-nav a::after { bottom:0; height:2px; border-radius:2px; }
 .header-cta,.primary-button { min-height:50px; padding:15px 22px; border-radius:var(--button-radius); box-shadow:0 8px 22px rgba(19,183,196,.16); }
+.home-icon { width:16px; height:16px; flex:0 0 16px; }
 .header-cta:hover,.primary-button:hover { box-shadow:0 12px 28px rgba(7,159,170,.20); transform:translateY(-2px); }
 .menu-toggle { border-radius:12px; transition:background-color var(--motion-fast); }
 .menu-toggle:hover { background:var(--soft); }
@@ -471,6 +473,7 @@ body { background:var(--paper); color:var(--ink); }
   max-width:var(--content-max-width);
   min-height:clamp(650px,78svh,900px);
   margin:18px auto 0;
+  align-items:center;
   border-radius:clamp(28px,4vw,60px) clamp(28px,9vw,150px) clamp(28px,4vw,60px) clamp(28px,4vw,60px);
   box-shadow:0 25px 70px rgba(17,25,29,.11);
 }
@@ -621,9 +624,13 @@ body { background:var(--paper); color:var(--ink); }
   .contact-card h2 { font-size:clamp(48px,14vw,68px); }
   .contact-side { padding:22px; }
   .group-information,.principles,.booking-section { border-radius:28px; }
-  .site-footer { border-radius:0; }
+  .site-footer { width:100%; margin:0; border-radius:0; }
 }
 
 @media (prefers-reduced-motion:reduce) {
   .property-card:hover,.header-cta:hover,.primary-button:hover { transform:none; }
+}
+
+@media (max-width:720px) {
+  .mobile-booking { position:fixed; left:0; right:0; bottom:0; width:100%; box-sizing:border-box; }
 }

@@ -5,6 +5,7 @@ import { Link } from './Link';
 import { useLayoutEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { createPortal } from 'react-dom';
 import { navigationLinks, siteContent } from '@/data/site-content';
+import { HomeIcon } from './HomeIcon';
 
 export function MobileMenu() {
   const [open, setOpen] = useState(false);
@@ -203,7 +204,7 @@ export function MobileMenu() {
             onClick={closeMenu}
             tabIndex={open ? 0 : -1}
           >
-            {siteContent.home.closing.button}
+            <HomeIcon />{siteContent.home.closing.button}
           </Link>
         </div>
       </aside>
