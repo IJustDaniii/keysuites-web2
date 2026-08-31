@@ -339,7 +339,7 @@
 .desktop-nav a::after { content:""; position:absolute; right:0; bottom:3px; left:0; height:1px; background:var(--aqua); transform:scaleX(0); transform-origin:right; transition:transform var(--motion-fast) var(--smooth-easing); }
 .desktop-nav a:hover { color:var(--ink); }
 .desktop-nav a:hover::after { transform:scaleX(1); transform-origin:left; }
-.header-cta,.primary-button { border-radius:var(--button-radius); background:var(--ink); letter-spacing:.055em; text-transform:uppercase; transition:background-color var(--motion-fast),transform var(--motion-fast); }
+.header-cta,.primary-button { border-radius:var(--button-radius); background:var(--ink); color:white; letter-spacing:.055em; text-transform:uppercase; transition:background-color var(--motion-fast),transform var(--motion-fast); }
 .header-cta { min-height:42px; padding:12px 17px; }
 .header-cta:hover,.primary-button:hover { background:#26302e; transform:translateY(-1px); }
 .hero { min-height:calc(100svh - 108px); }
