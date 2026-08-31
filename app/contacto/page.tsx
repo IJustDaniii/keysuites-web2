@@ -13,6 +13,15 @@ export default function ContactPage() {
         <p>{copy.text}</p>
       </div>
       <div className="contact-side">
+        <div className="contact-art" aria-hidden="true">
+          <svg viewBox="0 0 320 250" focusable="false">
+            <path className="contact-art-orbit" d="M46 177c-20-52 9-108 65-132 58-25 133-11 166 33 30 40 11 91-39 119-56 31-165 35-192-20Z" />
+            <path className="contact-art-house" d="m107 141 49-42 49 42v55a6 6 0 0 1-6 6h-86a6 6 0 0 1-6-6v-55Z" />
+            <path className="contact-art-house" d="M96 143 156 91l60 52M142 202v-37h28v37" />
+            <path className="contact-art-bubble" d="M207 62h48a13 13 0 0 1 13 13v28a13 13 0 0 1-13 13h-19l-15 14 3-14h-17a13 13 0 0 1-13-13V75a13 13 0 0 1 13-13Z" />
+            <path className="contact-art-dots" d="M218 89h2m12 0h2m12 0h2" />
+          </svg>
+        </div>
         <span>{copy.location}</span>
         <p>{copy.types}</p>
       </div>

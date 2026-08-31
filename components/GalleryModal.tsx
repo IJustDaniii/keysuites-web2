@@ -42,7 +42,7 @@ export function GalleryModal({ images, propertyName }: { images: PropertyImage[]
 
   return <>
     <button className="gallery-button" type="button" onClick={() => setOpen(true)}>{siteContent.gallery.open}</button>
-    <div className={`gallery-modal ${open ? 'open' : ''}`} aria-hidden={!open}>
+    <div className={`gallery-modal ${open ? 'open' : ''} ${selectedImage ? 'is-lightbox-open' : ''}`} aria-hidden={!open}>
       <button className="gallery-backdrop" type="button" aria-label={siteContent.gallery.close} onClick={closeGallery} tabIndex={open ? 0 : -1} />
       <section role="dialog" aria-modal="true" aria-label={`Galería de ${propertyName}`}>
         <header>

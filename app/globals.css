@@ -148,6 +148,7 @@
 .gallery-modal.open .gallery-backdrop { opacity:1; }
 .gallery-modal>section { position:absolute; inset:3vw; padding:28px; background:var(--paper); overflow-y:auto; opacity:0; transform:translateY(18px); transition:opacity .3s,transform .35s; }
 .gallery-modal.open>section { opacity:1; transform:translateY(0); }
+.gallery-modal.is-lightbox-open>section { overflow:hidden; }
 .gallery-modal header { position:sticky; top:-28px; z-index:2; margin:-28px -28px 25px; padding:20px 28px; display:flex; justify-content:space-between; align-items:center; background:rgba(255,255,255,.96); border-bottom:1px solid var(--line); backdrop-filter:blur(10px); }
 .gallery-modal header small { color:var(--deep); font-size:8px; letter-spacing:.16em; }
 .gallery-modal header h2 { margin:5px 0 0; font-size:25px; }
@@ -278,6 +279,12 @@
 .contact-title-accent { color:var(--aqua); text-shadow:2px 3px 0 rgba(17,25,29,.12), 0 0 16px rgba(19,183,196,.42); }
 .contact-side>span { font-size:18px; }
 .contact-side>p { color:var(--muted); font-size:11px; }
+.contact-art { width:100%; max-width:390px; margin:0 auto 28px; color:var(--aqua); }
+.contact-art svg { display:block; width:100%; height:auto; overflow:visible; }
+.contact-art-orbit { fill:rgba(19,183,196,.055); stroke:rgba(19,183,196,.42); stroke-width:1.5; }
+.contact-art-house,.contact-art-bubble { fill:none; stroke:currentColor; stroke-width:2.4; stroke-linecap:round; stroke-linejoin:round; }
+.contact-art-bubble { stroke:var(--deep); }
+.contact-art-dots { fill:none; stroke:var(--deep); stroke-width:4; stroke-linecap:round; }
 .contact-card { margin-top:90px; padding:72px clamp(24px,6vw,88px); background:linear-gradient(135deg,#eaf8f6 0%,#f5fbfa 100%); border:1px solid #d6e6e2; text-align:center; }
 .contact-card h2 { margin:22px 0 34px; color:var(--ink); font-size:clamp(48px,8vw,92px); font-weight:500; line-height:1; letter-spacing:-.055em; }
 .contact-actions { display:flex; justify-content:center; gap:14px; }
@@ -638,6 +645,7 @@ body { background:var(--paper); color:var(--ink); }
   .contact-card { width:calc(100% - 24px); margin-top:-48px; padding:46px 20px; border-radius:20px; }
   .contact-card h2 { font-size:clamp(48px,14vw,68px); }
   .contact-side { padding:22px; }
+  .contact-art { max-width:280px; margin-bottom:20px; }
   .group-information,.principles,.booking-section { border-radius:28px; }
   .site-footer { width:100%; margin:0; border-radius:0; }
   .gallery-modal>section { inset:0; padding:18px; }
@@ -659,4 +667,23 @@ body { background:var(--paper); color:var(--ink); }
 
 @media (max-width:720px) {
   .mobile-booking { position:fixed; left:0; right:0; bottom:0; width:100%; box-sizing:border-box; }
+}
+
+.contact-intro h1 { font-size:clamp(38px,7vw,100px); }
+.contact-intro h1 span { display:block; white-space:nowrap; }
+
+@media (max-width:720px) {
+  .contact-intro h1 { font-size:clamp(36px,10vw,64px); }
+}
+
+/* Decoración aqua global: acompaña los márgenes blancos sin interferir con el contenido. */
+body { position:relative; isolation:isolate; }
+body::before,body::after { content:""; position:fixed; z-index:0; pointer-events:none; }
+body::before { top:17vh; left:-150px; width:320px; height:560px; border:1px solid rgba(19,183,196,.22); border-radius:48% 52% 42% 58%; transform:rotate(-24deg); box-shadow:0 0 0 18px rgba(19,183,196,.035),0 0 0 42px rgba(19,183,196,.025); }
+body::after { right:-82px; bottom:8vh; width:210px; height:210px; border:1px solid rgba(19,183,196,.28); border-radius:50%; box-shadow:-105px -128px 0 -88px rgba(19,183,196,.38),-105px -128px 0 -82px transparent,-165px 55px 0 -101px rgba(19,183,196,.26),-165px 55px 0 -95px transparent; }
+body>* { position:relative; z-index:1; }
+
+@media (max-width:720px) {
+  body::before { top:30vh; left:-185px; width:250px; height:390px; opacity:.8; }
+  body::after { right:-105px; bottom:12vh; width:150px; height:150px; opacity:.75; box-shadow:-76px -92px 0 -64px rgba(19,183,196,.38),-124px 38px 0 -74px rgba(19,183,196,.26); }
 }
