@@ -11,15 +11,13 @@ export function PropertyGroupCard({ group, index }: { group: PropertyGroup; inde
       {group.images[0]
         ? <Image src={group.images[0].src} alt={group.images[0].alt} fill sizes="(max-width: 760px) 100vw, 33vw" />
         : <PendingPhoto compact />}
-      {index !== undefined && <span className="card-number">{String(index + 1).padStart(2, '0')}</span>}
-      <span className="category-chip">{group.category}</span>
-      <span className="group-count">{group.countLabel}</span>
     </Link>
     <div className="group-card-copy">
-      <span>COLECCIÓN OKEY SUITES</span>
+      <div className="property-label"><span>{index !== undefined ? String(index + 1).padStart(2, '0') : '—'}</span><span>{group.category}</span></div>
+      <span>COLECCIÓN KEY SUITES</span>
       <h3><Link href={`/alojamientos/${group.slug}`}>{group.name}</Link></h3>
       <p>{group.location}</p>
-      <div className="unit-preview">{units.map((unit) => unit.name).join(' · ')}</div>
+      <div className="unit-preview"><span>{group.countLabel}</span>{units.map((unit) => unit.name).join(' · ')}</div>
       <Link className="group-card-link" href={`/alojamientos/${group.slug}`}>Ver alojamientos <span aria-hidden="true">→</span></Link>
     </div>
   </article>;

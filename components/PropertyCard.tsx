@@ -15,15 +15,16 @@ export function PropertyCard({ property, index }: { property: Property; index?: 
       {property.images[0]
         ? <Image src={property.images[0].src} alt={property.images[0].alt} fill sizes="(max-width: 760px) 100vw, 33vw" />
         : <PendingPhoto compact />}
-      {index !== undefined && <span className="card-number">{String(index + 1).padStart(2, '0')}</span>}
+    </Link>
+    <div className="property-meta">
+      <div>
+        <div className="property-label"><span>{index !== undefined ? String(index + 1).padStart(2, '0') : property.category}</span><span>{index !== undefined ? property.category : ''}</span></div>
+        <h3><Link href={`/alojamientos/${property.slug}`}>{property.name}</Link></h3><p>{property.location}</p>
+      </div>
+      <p className="property-facts">{facts}<span aria-hidden="true">→</span></p>
       {property.inventoryCount !== undefined && <span className="inventory-chip">
         {property.inventoryCount} {property.inventoryCount === 1 ? 'habitación' : 'habitaciones'}
       </span>}
-      <span className="category-chip">{property.category}</span>
-    </Link>
-    <div className="property-meta">
-      <div><h3><Link href={`/alojamientos/${property.slug}`}>{property.name}</Link></h3><p>{property.location}</p></div>
-      <p>{facts}</p>
     </div>
   </article>;
 }

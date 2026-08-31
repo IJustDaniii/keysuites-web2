@@ -17,10 +17,10 @@
 :root {
   /* 1. COLORES PRINCIPALES */
   --ink: #111111;                /* Texto y botones oscuros */
-  --muted: #626a68;              /* Texto secundario */
+  --muted: #69716f;              /* Texto secundario */
   --aqua: #19c6cc;               /* Color principal de OKEY SUITES */
   --deep: #159ea4;               /* Aqua oscuro para enlaces */
-  --soft: #eaf8f4;               /* Fondos suaves */
+  --soft: #f1f8f7;               /* Fondos suaves */
   --paper: #ffffff;              /* Fondo general */
   --line: #dfe7e5;               /* Líneas y bordes */
   --dark-section: #0c1514;       /* Secciones oscuras */
@@ -33,15 +33,15 @@
   --content-width: 90vw;
   --header-height: 78px;
   --header-side-padding: 4vw;
-  --section-space: 120px;
+  --section-space: 136px;
 
   /* 3. BOTONES, TARJETAS Y SOMBRAS */
   --button-radius: 3px;
   --small-radius: 3px;
   --card-image-ratio: 4 / 5;
   --card-gap: 28px;
-  --header-shadow: 0 5px 22px rgba(8, 20, 18, .035);
-  --floating-shadow: 0 6px 25px rgba(0, 0, 0, .12);
+  --header-shadow: none;
+  --floating-shadow: 0 8px 22px rgba(0, 0, 0, .08);
 
   /* 4. TÍTULOS */
   --font-family: var(--font-manrope), Arial, sans-serif;
@@ -54,14 +54,14 @@
   --section-title-max: 67px;
 
   /* 5. OSCURECIMIENTO DE LAS FOTOS PRINCIPALES */
-  --hero-shade-left: rgba(0, 0, 0, .72);
-  --hero-shade-middle: rgba(0, 0, 0, .30);
-  --hero-shade-right: rgba(0, 0, 0, .14);
+  --hero-shade-left: rgba(0, 0, 0, .60);
+  --hero-shade-middle: rgba(0, 0, 0, .20);
+  --hero-shade-right: rgba(0, 0, 0, .08);
 
   /* 6. MENÚ MÓVIL */
   --menu-width: 420px;
   --menu-mobile-gap: 18px;       /* Franja visible a la izquierda */
-  --menu-radius: 18px;
+  --menu-radius: 3px;
   --menu-duration: .46s;
   --menu-overlay: rgba(8, 20, 18, .38);
   --menu-panel-background: #f7faf9;
