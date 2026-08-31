@@ -90,7 +90,6 @@ export const siteContent = {
     kicker: 'SELECCIONES · 4 ZONAS',
     title: ['Encuentra tu', 'lugar en Granada.'],
     text: 'Apartamentos urbanos, suites con carácter, casas para compartir y estancias frente al mar. Los edificios muestran sus unidades en una página propia.',
-    confirmedNote: 'Datos confirmados y pendientes claramente diferenciados en cada ficha',
   },
   about: {
     heroImage: { src: '/properties/jardines-alhambra-01.jpg', alt: 'Terraza de un alojamiento gestionado por OKEY SUITES' },

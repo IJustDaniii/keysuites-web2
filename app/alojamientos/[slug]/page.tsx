@@ -47,7 +47,7 @@ function PropertyGallery({ images, name }: { images: PropertyImage[]; name: stri
   return <section className={`gallery section-shell gallery-${Math.min(images.length, 3)}`} id="galeria">
     <div className="gallery-main"><Image src={images[0].src} alt={images[0].alt} fill priority sizes="(max-width: 800px) 100vw, 70vw" /></div>
     {images.length > 1 && <div className="gallery-side">
-      {images.slice(1, 3).map((image) => <div key={image.src}><Image src={image.src} alt={image.alt} fill sizes="30vw" /></div>)}
+      {images.slice(1, 3).map((image) => <div key={image.src}><Image src={image.src} alt={image.alt} fill sizes="(max-width: 720px) 1px, 30vw" /></div>)}
     </div>}
     <GalleryModal images={images} propertyName={name} />
   </section>;
