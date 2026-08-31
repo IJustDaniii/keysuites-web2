@@ -154,7 +154,7 @@
 .gallery-modal header h2 { margin:5px 0 0; font-size:25px; }
 .gallery-modal header button { min-height:44px; padding:0 15px; border:1px solid var(--line); background:white; font-size:10px; }
 .gallery-modal-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:14px; }
-.gallery-thumbnail { position:relative; display:block; min-width:0; padding:0; overflow:hidden; border:0; border-radius:16px; background:#edf3f1; cursor:zoom-in; box-shadow:0 10px 28px rgba(17,25,29,.08); }
+.gallery-thumbnail { position:relative; display:block; min-width:0; padding:0; overflow:hidden; border:0; border-radius:16px; background:#edf3f1; cursor:pointer; box-shadow:0 10px 28px rgba(17,25,29,.08); }
 .gallery-thumbnail>span { position:relative; display:block; aspect-ratio:1/1; overflow:hidden; }
 .gallery-thumbnail img { object-fit:cover; transition:transform var(--motion-fast); }
 .gallery-thumbnail:hover img,.gallery-thumbnail:focus-visible img { transform:scale(1.05); }
@@ -687,7 +687,16 @@ body { background:var(--paper); color:var(--ink); }
 
 body:has(.contact-page) { background-image:none; }
 body:has(.contact-page)::before,body:has(.contact-page)::after { display:none; }
-.contact-page::before { display:none; }
+.contact-page { overflow:hidden; }
+.contact-page>section { position:relative; z-index:1; }
+.contact-page::before { content:""; display:block; position:absolute; z-index:0; top:8%; right:-150px; width:360px; height:720px; border:1px solid rgba(19,183,196,.25); border-radius:48% 52% 42% 58%; transform:rotate(-10deg); box-shadow:0 0 0 18px rgba(19,183,196,.035),0 0 0 42px rgba(19,183,196,.02); pointer-events:none; }
+.contact-page::after { content:""; display:block; position:absolute; z-index:0; top:18%; left:-34px; width:170px; height:170px; border:1px solid rgba(19,183,196,.2); border-radius:50%; box-shadow:112px 270px 0 -76px rgba(19,183,196,.42),112px 270px 0 -69px transparent,35px 560px 0 -80px rgba(19,183,196,.25); pointer-events:none; }
+.contact-page .contact-intro,.contact-page .contact-card { box-shadow:none; }
+
+@media (max-width:720px) {
+  .contact-page::before { top:9%; right:-128px; width:250px; height:520px; opacity:.75; }
+  .contact-page::after { top:15%; left:-62px; width:120px; height:120px; box-shadow:88px 205px 0 -56px rgba(19,183,196,.38),28px 410px 0 -60px rgba(19,183,196,.24); }
+}
 
 /* Sobre nosotros: composición más compacta entre título, identidad y texto. */
 .about-story { grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr); gap:clamp(48px,7vw,92px); padding-block:clamp(100px,9vw,130px); }
@@ -706,14 +715,67 @@ body:has(.contact-page)::before,body:has(.contact-page)::after { display:none; }
 }
 
 /* Decoración aqua global: acompaña los márgenes blancos sin interferir con el contenido. */
-body { position:relative; isolation:isolate; background-color:var(--paper); background-image:radial-gradient(circle at 5% 12%, transparent 0 34px, rgba(19,183,196,.14) 35px 36px, transparent 37px),radial-gradient(circle at 95% 32%, transparent 0 52px, rgba(19,183,196,.12) 53px 54px, transparent 55px),radial-gradient(circle at 7% 66%, rgba(19,183,196,.18) 0 4px, transparent 5px),radial-gradient(circle at 93% 82%, rgba(19,183,196,.16) 0 7px, transparent 8px); background-size:100% 1500px; background-repeat:repeat-y; }
+body { position:relative; isolation:isolate; background-color:var(--paper); background-image:radial-gradient(circle at 5% 12%, transparent 0 34px, rgba(19,183,196,.14) 35px 36px, transparent 37px),radial-gradient(circle at 95% 32%, transparent 0 52px, rgba(19,183,196,.12) 53px 54px, transparent 55px),radial-gradient(circle at 7% 66%, rgba(19,183,196,.18) 0 4px, transparent 5px),radial-gradient(circle at 93% 82%, rgba(19,183,196,.16) 0 7px, transparent 8px),radial-gradient(ellipse at 88% 8%, transparent 0 105px, rgba(19,183,196,.08) 106px 107px, transparent 108px),radial-gradient(ellipse at 13% 43%, transparent 0 68px, rgba(19,183,196,.08) 69px 70px, transparent 71px),radial-gradient(circle at 18% 88%, rgba(19,183,196,.12) 0 3px, transparent 4px),radial-gradient(circle at 82% 57%, rgba(19,183,196,.13) 0 5px, transparent 6px); background-size:100% 1200px; background-repeat:repeat-y; }
 body::before,body::after { content:""; position:absolute; z-index:0; pointer-events:none; }
 body::before { top:520px; left:-150px; width:320px; height:560px; border:1px solid rgba(19,183,196,.22); border-radius:48% 52% 42% 58%; transform:rotate(-24deg); box-shadow:0 0 0 18px rgba(19,183,196,.035),0 0 0 42px rgba(19,183,196,.025); }
 body::after { top:2050px; right:-82px; width:210px; height:210px; border:1px solid rgba(19,183,196,.28); border-radius:50%; box-shadow:-105px -128px 0 -88px rgba(19,183,196,.38),-165px 55px 0 -101px rgba(19,183,196,.26); }
 body>* { position:relative; z-index:1; }
 
 @media (max-width:720px) {
-  body { background-size:100% 1100px; background-image:radial-gradient(circle at 4% 12%, transparent 0 22px, rgba(19,183,196,.12) 23px 24px, transparent 25px),radial-gradient(circle at 96% 34%, transparent 0 34px, rgba(19,183,196,.10) 35px 36px, transparent 37px),radial-gradient(circle at 7% 70%, rgba(19,183,196,.15) 0 3px, transparent 4px),radial-gradient(circle at 93% 88%, rgba(19,183,196,.13) 0 5px, transparent 6px); }
+  body { background-size:100% 900px; background-image:radial-gradient(circle at 4% 12%, transparent 0 22px, rgba(19,183,196,.12) 23px 24px, transparent 25px),radial-gradient(circle at 96% 34%, transparent 0 34px, rgba(19,183,196,.10) 35px 36px, transparent 37px),radial-gradient(circle at 7% 70%, rgba(19,183,196,.15) 0 3px, transparent 4px),radial-gradient(circle at 93% 88%, rgba(19,183,196,.13) 0 5px, transparent 6px),radial-gradient(ellipse at 88% 9%, transparent 0 58px, rgba(19,183,196,.07) 59px 60px, transparent 61px),radial-gradient(circle at 17% 48%, rgba(19,183,196,.11) 0 3px, transparent 4px),radial-gradient(circle at 83% 66%, rgba(19,183,196,.10) 0 4px, transparent 5px); }
   body::before { top:420px; left:-185px; width:250px; height:390px; opacity:.8; }
   body::after { top:1500px; right:-105px; width:150px; height:150px; opacity:.75; box-shadow:-76px -92px 0 -64px rgba(19,183,196,.38),-124px 38px 0 -74px rgba(19,183,196,.26); }
+}
+
+/* Detalle de alojamiento: más información visible y menos espacio vacío entre bloques. */
+.property-overview { padding-block:clamp(72px,7vw,100px) clamp(64px,6vw,88px); gap:clamp(42px,6vw,78px); }
+.property-content>h2 { margin-bottom:34px; font-size:clamp(40px,4.8vw,68px); }
+.fact-row { padding:24px 0; }
+.fact-row strong { font-size:clamp(25px,2.2vw,32px); }
+.fact-row span { font-size:11px; }
+.description { margin:32px 0 58px; font-size:18px; line-height:1.72; }
+.content-block { padding:28px 0 36px; }
+.block-heading { margin-bottom:22px; }
+.block-heading h3 { font-size:22px; }
+.plain-list { gap:8px; }
+.plain-list li { padding-bottom:11px; font-size:14px; line-height:1.55; }
+.amenities-grid span { padding:15px 0; font-size:13px; }
+.detail-info-grid,.address-registration { gap:14px; margin-block:26px 46px; }
+.detail-info-card { min-height:104px; padding:22px; }
+.detail-info-card>span { margin-bottom:12px; font-size:10px; }
+.detail-info-card p { font-size:13px; line-height:1.6; }
+.review-panel { padding:24px; }
+.review-panel-head { font-size:10px; }
+.review-notice strong { font-size:12px; }
+.review-notice p { font-size:11px; }
+.reputation-section { padding-block:76px; gap:clamp(42px,6vw,80px); }
+.reputation-heading h2 { font-size:clamp(42px,4.6vw,66px); }
+.review-summaries { gap:14px; margin-top:20px; }
+.review-summaries>div { padding:22px; }
+.review-summaries h3 { margin-bottom:14px; font-size:16px; }
+.review-summaries ul { font-size:13px; line-height:1.7; }
+
+@media (max-width:720px) {
+  .property-overview { padding-block:58px 68px; gap:38px; }
+  .property-content>h2 { margin-bottom:28px; font-size:clamp(35px,9.5vw,48px); }
+  .fact-row { padding:22px 0; gap:22px 0; }
+  .fact-row strong { font-size:24px; }
+  .fact-row span { font-size:10px; }
+  .description { margin:28px 0 46px; font-size:16px; line-height:1.7; }
+  .content-block { padding:24px 0 30px; }
+  .block-heading { margin-bottom:18px; }
+  .block-heading h3 { font-size:20px; }
+  .plain-list li { font-size:13px; }
+  .amenities-grid { gap:0 16px; }
+  .amenities-grid span { padding:13px 0; font-size:12px; }
+  .detail-info-grid,.address-registration { gap:10px; margin-block:22px 38px; }
+  .detail-info-card { min-height:0; padding:18px; }
+  .detail-info-card>span { margin-bottom:9px; font-size:9px; }
+  .detail-info-card p { font-size:12px; }
+  .review-panel { padding:20px; }
+  .reputation-section { padding-block:64px 76px; gap:36px; }
+  .reputation-heading h2 { font-size:clamp(38px,11vw,52px); }
+  .review-summaries>div { padding:20px; }
+  .review-summaries h3 { font-size:15px; }
+  .review-summaries ul { font-size:12px; }
 }
