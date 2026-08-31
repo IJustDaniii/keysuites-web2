@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, type TouchEvent } from 'react';
 import type { PropertyImage } from '@/data/properties';
 import { siteContent } from '@/data/site-content';
 
@@ -9,6 +9,7 @@ export function GalleryModal({ images, propertyName }: { images: PropertyImage[]
   const [open, setOpen] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
+  const touchStart = useRef<{ x: number; y: number } | null>(null);
 
   const closeGallery = () => {
     setSelectedIndex(null);
@@ -16,6 +17,20 @@ export function GalleryModal({ images, propertyName }: { images: PropertyImage[]
   };
   const showPrevious = () => setSelectedIndex((index) => index === null ? null : (index - 1 + images.length) % images.length);
   const showNext = () => setSelectedIndex((index) => index === null ? null : (index + 1) % images.length);
+  const handleTouchStart = (event: TouchEvent) => {
+    const touch = event.changedTouches[0];
+    touchStart.current = { x: touch.clientX, y: touch.clientY };
+  };
+  const handleTouchEnd = (event: TouchEvent) => {
+    if (!touchStart.current) return;
+    const touch = event.changedTouches[0];
+    const deltaX = touch.clientX - touchStart.current.x;
+    const deltaY = touch.clientY - touchStart.current.y;
+    touchStart.current = null;
+    if (Math.abs(deltaX) < 50 || Math.abs(deltaX) <= Math.abs(deltaY)) return;
+    if (deltaX < 0) showNext();
+    else showPrevious();
+  };
 
   useEffect(() => {
     if (!open) return;
@@ -58,7 +73,7 @@ export function GalleryModal({ images, propertyName }: { images: PropertyImage[]
       </section>
       {selectedImage && <div className="gallery-lightbox" role="dialog" aria-modal="true" aria-label={`Imagen ${selectedIndex + 1} de ${images.length}`}>
         <button className="gallery-lightbox-backdrop" type="button" aria-label="Cerrar imagen ampliada" onClick={() => setSelectedIndex(null)} />
-        <div className="gallery-lightbox-content">
+        <div className="gallery-lightbox-content" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
           <button className="gallery-lightbox-close" type="button" onClick={() => setSelectedIndex(null)} aria-label="Cerrar imagen ampliada">×</button>
           <button className="gallery-lightbox-nav previous" type="button" onClick={showPrevious} aria-label="Foto anterior">←</button>
           <figure>
