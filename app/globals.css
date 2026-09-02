@@ -814,3 +814,23 @@ body>* { position:relative; z-index:1; }
   .review-summaries h3 { font-size:15px; }
   .review-summaries ul { font-size:12px; }
 }
+
+/* Cabecera móvil siempre visible durante el desplazamiento. */
+@media (max-width:720px) {
+  .site-header {
+    position:fixed !important;
+    top:8px;
+    left:50%;
+    right:auto;
+    width:calc(100% - 20px);
+    margin:0;
+    transform:translateX(-50%);
+    z-index:900;
+  }
+
+  body:has(.gallery-modal.open) .site-header {
+    visibility:hidden;
+    pointer-events:none;
+    transform:translate(-50%,-120%);
+  }
+}
