@@ -35,7 +35,11 @@ export function GalleryModal({ images, propertyName }: { images: PropertyImage[]
   useEffect(() => {
     if (!open) return;
     const previousOverflow = document.body.style.overflow;
+    const previousHtmlOverflow = document.documentElement.style.overflow;
+    const previousOverscroll = document.documentElement.style.overscrollBehavior;
     document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
+    document.documentElement.style.overscrollBehavior = 'none';
     closeRef.current?.focus();
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
@@ -48,6 +52,8 @@ export function GalleryModal({ images, propertyName }: { images: PropertyImage[]
     document.addEventListener('keydown', onKeyDown);
     return () => {
       document.body.style.overflow = previousOverflow;
+      document.documentElement.style.overflow = previousHtmlOverflow;
+      document.documentElement.style.overscrollBehavior = previousOverscroll;
       document.removeEventListener('keydown', onKeyDown);
     };
   }, [open, selectedIndex, images.length]);
@@ -73,11 +79,11 @@ export function GalleryModal({ images, propertyName }: { images: PropertyImage[]
       </section>
       {selectedImage && <div className="gallery-lightbox" role="dialog" aria-modal="true" aria-label={`Imagen ${selectedIndex + 1} de ${images.length}`}>
         <button className="gallery-lightbox-backdrop" type="button" aria-label="Cerrar imagen ampliada" onClick={() => setSelectedIndex(null)} />
-        <div className="gallery-lightbox-content" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
+        <div className="gallery-lightbox-content" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd} onTouchMove={(event) => event.preventDefault()}>
           <button className="gallery-lightbox-close" type="button" onClick={() => setSelectedIndex(null)} aria-label="Cerrar imagen ampliada">×</button>
           <button className="gallery-lightbox-nav previous" type="button" onClick={showPrevious} aria-label="Foto anterior">←</button>
           <figure>
-            <div><Image src={selectedImage.src} alt={selectedImage.alt} fill sizes="100vw" priority /></div>
+            <div key={selectedImage.src} className="gallery-lightbox-image"><Image src={selectedImage.src} alt={selectedImage.alt} fill sizes="100vw" priority /></div>
             <figcaption><span>{String(selectedIndex + 1).padStart(2, '0')} / {String(images.length).padStart(2, '0')}</span>{selectedImage.alt}</figcaption>
           </figure>
           <button className="gallery-lightbox-nav next" type="button" onClick={showNext} aria-label="Foto siguiente">→</button>
