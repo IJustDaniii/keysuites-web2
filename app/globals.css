@@ -313,6 +313,8 @@
   .site-header{grid-template-columns:1fr auto}.desktop-nav,.header-cta{display:none}.mobile-menu{display:block}.destinations-inner,.about-hero,.about-story,.contact-intro{grid-template-columns:1fr}.destination-copy{position:static}.property-overview{grid-template-columns:1fr}.review-panel{position:static}.footer-main{grid-template-columns:1.5fr 1fr 1fr}.footer-col:last-child{grid-column:2}.catalog-grid{grid-template-columns:repeat(2,1fr)}.gallery{height:600px}.trust-grid,.principles-grid{grid-template-columns:1fr}.trust-grid article+article,.principles-grid article+article{border-left:0;border-top:1px solid var(--line);padding-left:0}.page-hero>div{grid-template-columns:1fr}.about-hero{min-height:auto;gap:45px}.contact-intro{gap:50px}
 }
 @media (max-width:720px) {
+  .site-header { position:fixed; top:0; left:0; right:0; width:100%; z-index:160; }
+  body:has(.gallery-modal.open) .site-header { visibility:hidden; pointer-events:none; transform:translateY(-100%); }
   .listing-title-row { align-items:stretch; flex-direction:column; gap:28px; }
   .listing-title-action { width:100%; }
   .listing-title-row { align-items:flex-start; flex-direction:column; gap:22px; }
