@@ -834,3 +834,23 @@ body>* { position:relative; z-index:1; }
     transform:translate(-50%,-120%);
   }
 }
+
+/* La capa portalizada no se necesita en escritorio y no debe entrar en su layout. */
+@media (min-width:981px) {
+  .menu-layer {
+    display:none;
+  }
+}
+
+/* Recorta las decoraciones posicionadas fuera del lienzo sin ampliar el documento. */
+html {
+  overflow-x:clip;
+}
+
+/* En pantallas estrechas, los filtros deben permanecer visibles y alcanzables. */
+@media (max-width:720px) {
+  .filter-bar {
+    flex-wrap:wrap;
+    overflow:visible;
+  }
+}
