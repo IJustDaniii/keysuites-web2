@@ -56,6 +56,22 @@ test('restaurant cards do not eagerly prefetch every detail page', async () => {
   assert.match(source, /<Link\b[^>]*\bprefetch=\{false\}/s);
 });
 
+test('restaurant detail routes are statically generated from the local catalogue', async () => {
+  const source = await readFile(path.join(process.cwd(), 'app', 'restaurantes', '[slug]', 'page.tsx'), 'utf8');
+  assert.match(source, /export const dynamic = ['"]force-static['"]/);
+  assert.match(source, /export const dynamicParams = false/);
+});
+
+test('restaurant cards prefetch only after user intent and keep card media low priority', async () => {
+  const source = await readFile(path.join(process.cwd(), 'components', 'RestaurantCard.tsx'), 'utf8');
+  const prefetchSource = await readFile(path.join(process.cwd(), 'components', 'RestaurantNavigationPrefetch.tsx'), 'utf8');
+  assert.match(source, /data-restaurant-link/);
+  assert.match(prefetchSource, /router\.prefetch\(href\)/);
+  assert.match(prefetchSource, /pointerover/);
+  assert.match(prefetchSource, /pointerdown/);
+  assert.match(source, /fetchPriority="low"/);
+});
+
 test('the full gallery is only mounted while it is open', async () => {
   const source = await readFile(path.join(process.cwd(), 'components', 'GalleryModal.tsx'), 'utf8');
   assert.match(source, /\{open\s*&&\s*<div/);

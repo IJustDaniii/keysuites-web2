@@ -8,6 +8,11 @@ import { PendingPhoto } from '@/components/ReviewNotice';
 import { getRestaurant, getRestaurantImages, getRestaurantMapUrl, restaurants, type RestaurantImage } from '@/data/restaurants';
 import { siteContent } from '@/data/site-content';
 
+// Todas las fichas salen del catálogo local; se pueden servir como HTML estático
+// y así la navegación no tiene que esperar un render en el Worker.
+export const dynamic = 'force-static';
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return restaurants.map(({ slug }) => ({ slug }));
 }
