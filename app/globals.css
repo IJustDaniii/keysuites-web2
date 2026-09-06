@@ -940,3 +940,120 @@ html {
   .restaurant-back-section>div { grid-template-columns:1fr; }
   .restaurant-back-section .primary-button { width:100%; }
 }
+
+/* Espectáculo: identidad flamenca roja, negra y blanca solo en esta página */
+body:has(.spectacle-page) { --flamenco-red:#e3262e; --flamenco-deep:#a70e17; --flamenco-black:#090909; background:#fff; background-image:radial-gradient(circle at 7% 28%,rgba(227,38,46,.12) 0 4px,transparent 5px),radial-gradient(circle at 93% 58%,transparent 0 62px,rgba(227,38,46,.14) 63px 64px,transparent 65px); color:#141414; }
+body:has(.spectacle-page)::before,body:has(.spectacle-page)::after { border-color:rgba(227,38,46,.22); box-shadow:none; }
+body:has(.spectacle-page) .site-header { border-top-color:var(--flamenco-red); border-bottom-color:rgba(255,255,255,.12); background:rgba(8,8,8,.97); color:white; }
+body:has(.spectacle-page) .brand img { filter:invert(1); }
+body:has(.spectacle-page) .desktop-nav a:hover { color:#ff5960; }
+body:has(.spectacle-page) .header-cta { background:var(--flamenco-red); }
+body:has(.spectacle-page) .menu-toggle span { background:white; }
+body:has(.spectacle-page) .review-bar { background:#fff1f1; color:#74161b; }
+body:has(.spectacle-page) .review-bar span { border-color:#e9b8bb; }
+.spectacle-kicker { color:var(--flamenco-red); font-size:10px; font-weight:850; letter-spacing:.18em; text-transform:uppercase; }
+.spectacle-hero { min-height:calc(100svh - 110px); position:relative; display:flex; align-items:flex-end; overflow:hidden; background:var(--flamenco-black); color:white; }
+.spectacle-hero>img { object-fit:cover; object-position:center 28%; }
+.spectacle-hero-shade { position:absolute; inset:0; z-index:1; background:linear-gradient(90deg,rgba(0,0,0,.88) 0%,rgba(0,0,0,.52) 52%,rgba(0,0,0,.18)),linear-gradient(0deg,rgba(0,0,0,.52),transparent 46%); }
+.spectacle-hero-content { position:relative; z-index:2; padding:clamp(65px,8vw,120px) 0; }
+.spectacle-hero h1 { max-width:980px; margin:18px 0 24px; font-size:clamp(62px,9vw,132px); line-height:.82; letter-spacing:-.07em; font-weight:500; }
+.spectacle-hero h1 em { color:var(--flamenco-red); font-family:Georgia,serif; font-weight:400; }
+.spectacle-hero-content>p { max-width:610px; margin:0 0 34px; color:rgba(255,255,255,.82); font-size:18px; line-height:1.65; }
+.spectacle-hero-actions { display:flex; align-items:center; gap:28px; }
+.spectacle-book-button { min-height:58px; padding:0 22px; display:inline-flex; align-items:center; justify-content:space-between; gap:34px; border-radius:var(--button-radius); background:var(--flamenco-red); color:white; font-size:12px; font-weight:850; letter-spacing:.05em; text-transform:uppercase; box-shadow:0 14px 38px rgba(227,38,46,.28); transition:transform var(--motion-fast),background-color var(--motion-fast); }
+.spectacle-book-button:hover { background:#bd1720; transform:translateY(-2px); }
+.spectacle-text-link { padding:12px 0; border-bottom:1px solid rgba(255,255,255,.55); font-size:12px; font-weight:750; }
+.spectacle-hero-note { position:absolute; right:5vw; bottom:6vw; z-index:2; padding-left:20px; border-left:2px solid var(--flamenco-red); }
+.spectacle-hero-note small { display:block; margin-bottom:8px; color:#ff7278; font-size:9px; letter-spacing:.15em; }
+.spectacle-hero-note strong { font-size:15px; }
+.spectacle-facts { display:grid; grid-template-columns:repeat(4,1fr); padding:52px 0; border-bottom:1px solid #e7e1df; }
+.spectacle-facts article { min-width:0; padding:8px 28px; border-left:1px solid #e7e1df; }
+.spectacle-facts article:first-child { padding-left:0; border-left:0; }
+.spectacle-facts span { display:block; margin-bottom:20px; color:var(--flamenco-red); font-size:9px; font-weight:800; letter-spacing:.12em; }
+.spectacle-facts strong { display:block; font-size:22px; font-weight:650; }
+.spectacle-facts small { display:block; margin-top:7px; color:#74706d; font-size:10px; }
+.spectacle-intro { padding:clamp(90px,10vw,150px) 0; display:grid; grid-template-columns:1.15fr .85fr; gap:10vw; align-items:start; }
+.spectacle-intro h2,.spectacle-details-title h2,.spectacle-dinner h2,.spectacle-booking h2 { margin:18px 0 0; font-size:clamp(45px,5.3vw,78px); line-height:.98; letter-spacing:-.055em; font-weight:500; }
+.spectacle-intro>div:last-child p { margin:0 0 24px; color:#5f5a57; font-size:16px; line-height:1.85; }
+.spectacle-gallery { height:clamp(520px,52vw,720px); position:relative; display:grid; grid-template-columns:1.65fr .85fr; gap:10px; }
+.spectacle-gallery-main,.spectacle-gallery-side>div { position:relative; overflow:hidden; }
+.spectacle-gallery-main { border-radius:24px 0 0 24px; }
+.spectacle-gallery-side { display:grid; grid-template-rows:1fr 1fr; gap:10px; }
+.spectacle-gallery-side>div:first-child { border-radius:0 24px 0 0; }
+.spectacle-gallery-side>div:last-child { border-radius:0 0 24px 0; }
+.spectacle-gallery img { object-fit:cover; }
+.spectacle-gallery .gallery-button { background:var(--flamenco-red); color:white; }
+.spectacle-page .gallery-lightbox-nav:hover,.spectacle-page .gallery-lightbox-close:hover { background:var(--flamenco-red); border-color:var(--flamenco-red); }
+.spectacle-page .gallery-lightbox figcaption span { color:#ff5960; }
+.spectacle-details { margin-top:clamp(90px,10vw,150px); padding:clamp(90px,10vw,145px) 0; background:var(--flamenco-black); color:white; }
+.spectacle-details-grid { display:grid; grid-template-columns:.9fr 1.1fr; gap:10vw; }
+.spectacle-details-title { position:sticky; top:130px; align-self:start; }
+.spectacle-details-title h2 { font-size:clamp(45px,5vw,72px); }
+.spectacle-detail-list { display:grid; }
+.spectacle-detail-list article { display:grid; grid-template-columns:42px 1fr; gap:20px; padding:34px 0; border-top:1px solid rgba(255,255,255,.17); }
+.spectacle-detail-list>article>span { color:var(--flamenco-red); font-size:10px; letter-spacing:.12em; }
+.spectacle-detail-list h3 { margin:0 0 12px; font-size:24px; font-weight:550; }
+.spectacle-detail-list p { margin:0; color:#a9a5a2; font-size:14px; line-height:1.8; }
+.spectacle-detail-list a { display:inline-block; margin-top:18px; padding-bottom:5px; border-bottom:1px solid #ff5960; color:#ff7379; font-size:11px; font-weight:750; }
+.spectacle-dinner { padding:clamp(90px,10vw,150px) 0; display:grid; grid-template-columns:.9fr 1.1fr; gap:9vw; align-items:center; }
+.spectacle-dinner-image { min-height:650px; position:relative; overflow:hidden; border-radius:24px 90px 24px 24px; background:#171717; }
+.spectacle-dinner-image img { object-fit:cover; }
+.spectacle-dinner-copy>p { margin:28px 0; color:#5f5a57; font-size:16px; line-height:1.8; }
+.spectacle-dinner ul { margin:0 0 30px; padding:0; list-style:none; }
+.spectacle-dinner li { padding:13px 0; border-bottom:1px solid #e3dcd9; font-size:13px; }
+.spectacle-dinner-copy>a { display:inline-block; padding-bottom:7px; border-bottom:1px solid var(--flamenco-red); color:var(--flamenco-deep); font-size:12px; font-weight:800; }
+.spectacle-booking { padding:clamp(85px,9vw,130px) 0; background:#f4eeee; }
+.spectacle-booking-grid { display:grid; grid-template-columns:1fr 360px; gap:10vw; align-items:center; }
+.spectacle-booking h2 { max-width:750px; font-size:clamp(55px,7vw,100px); }
+.spectacle-booking p { max-width:700px; margin:28px 0 32px; color:#5f5a57; font-size:14px; line-height:1.8; }
+.spectacle-contact { display:flex; flex-wrap:wrap; gap:10px 24px; margin-top:32px; color:#625b58; font-size:11px; }
+.spectacle-contact a { padding-bottom:3px; border-bottom:1px solid #a8a09c; font-weight:750; }
+.spectacle-qr { margin:0; padding:24px; border-radius:22px; background:white; box-shadow:0 18px 55px rgba(73,19,22,.10); }
+.spectacle-qr>div { padding:12px; border:1px solid #e4dddd; }
+.spectacle-qr img { display:block; width:100%; height:auto; }
+.spectacle-qr figcaption { display:flex; flex-direction:column; gap:5px; padding:17px 4px 1px; }
+.spectacle-qr figcaption strong { font-size:14px; }
+.spectacle-qr figcaption span { color:#77706d; font-size:10px; }
+.spectacle-mobile-booking { display:none; }
+
+@media (max-width:980px) {
+  .spectacle-hero-note { display:none; }
+  .spectacle-facts { grid-template-columns:repeat(2,1fr); }
+  .spectacle-facts article:nth-child(3) { border-left:0; }
+  .spectacle-intro,.spectacle-details-grid,.spectacle-dinner { grid-template-columns:1fr; }
+  .spectacle-details-title { position:static; }
+  .spectacle-dinner-image { min-height:520px; }
+  .spectacle-booking-grid { grid-template-columns:1fr 300px; gap:6vw; }
+}
+
+@media (max-width:720px) {
+  body:has(.spectacle-page) { padding-bottom:68px; }
+  .spectacle-hero { min-height:720px; width:calc(100% - 20px); margin:88px auto 0; border-radius:22px 60px 22px 22px; }
+  .spectacle-hero>img { object-position:60% center; }
+  .spectacle-hero-shade { background:linear-gradient(0deg,rgba(0,0,0,.92),rgba(0,0,0,.16) 72%); }
+  .spectacle-hero-content { padding:56px 20px; }
+  .spectacle-hero h1 { font-size:clamp(52px,16vw,72px); line-height:.86; }
+  .spectacle-hero-content>p { font-size:15px; }
+  .spectacle-hero-actions { align-items:stretch; flex-direction:column; gap:10px; }
+  .spectacle-text-link { width:max-content; }
+  .spectacle-facts { grid-template-columns:1fr 1fr; padding:38px 0; }
+  .spectacle-facts article { padding:18px 14px; }
+  .spectacle-facts article:nth-child(odd) { padding-left:0; border-left:0; }
+  .spectacle-facts strong { font-size:17px; }
+  .spectacle-intro { padding:78px 0; gap:38px; }
+  .spectacle-intro h2,.spectacle-details-title h2,.spectacle-dinner h2 { font-size:clamp(39px,11.5vw,54px); }
+  .spectacle-gallery { width:calc(100% - 20px); height:560px; grid-template-columns:1fr; }
+  .spectacle-gallery-main { border-radius:20px; }
+  .spectacle-gallery-side { display:none; }
+  .spectacle-details { width:calc(100% - 20px); margin:82px auto 0; padding:76px 20px; border-radius:22px; }
+  .spectacle-details-grid { width:100%; gap:44px; }
+  .spectacle-detail-list article { grid-template-columns:30px 1fr; gap:12px; }
+  .spectacle-dinner { padding:84px 0; gap:48px; }
+  .spectacle-dinner-image { min-height:460px; border-radius:20px 58px 20px 20px; }
+  .spectacle-booking-grid { grid-template-columns:1fr; }
+  .spectacle-booking h2 { font-size:clamp(52px,15vw,76px); }
+  .spectacle-qr { width:min(100%,360px); }
+  .spectacle-booking .spectacle-book-button { display:none; }
+  .spectacle-mobile-booking { position:fixed; left:0; right:0; bottom:0; z-index:950; display:block; padding:9px max(10px,env(safe-area-inset-right)) max(9px,env(safe-area-inset-bottom)) max(10px,env(safe-area-inset-left)); background:white; border-top:1px solid #ead8d9; }
+  .spectacle-mobile-booking a { min-height:52px; padding:0 18px; display:flex; align-items:center; justify-content:space-between; border-radius:9px; background:var(--flamenco-red); color:white; font-size:12px; font-weight:850; letter-spacing:.05em; text-transform:uppercase; }
+}
