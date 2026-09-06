@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { GalleryModal } from '@/components/GalleryModal';
 import { Link } from '@/components/Link';
+import { ExternalLinkIcon } from '@/components/LinkIcons';
 import { PendingPhoto } from '@/components/ReviewNotice';
 import { getRestaurant, getRestaurantImages, getRestaurantMapUrl, restaurants, type RestaurantImage } from '@/data/restaurants';
 import { siteContent } from '@/data/site-content';
@@ -51,8 +52,8 @@ export default async function RestaurantDetailPage({ params }: { params: Promise
     <section className="detail-title section-shell restaurant-detail-title">
       <div><span className="property-type">{restaurant.category} · {restaurant.zone}</span><h1>{restaurant.name}</h1><p>{restaurant.address}</p></div>
       <div className="restaurant-title-actions">
-        <a className="outline-button" href={mapsUrl} target="_blank" rel="noopener noreferrer">Cómo llegar ↗</a>
-        <a className="primary-button" href={restaurant.website} target="_blank" rel="noopener noreferrer">Ver web o carta ↗</a>
+        <a className="outline-button" href={mapsUrl} target="_blank" rel="noopener noreferrer">Cómo llegar <ExternalLinkIcon /></a>
+        <a className="primary-button" href={restaurant.website} target="_blank" rel="noopener noreferrer">Ver web o carta <ExternalLinkIcon /></a>
       </div>
     </section>
     <RestaurantGallery images={images} name={restaurant.name} />
@@ -78,8 +79,8 @@ export default async function RestaurantDetailPage({ params }: { params: Promise
         <div><small>Dirección</small><p>{restaurant.address}</p></div>
         {restaurant.schedule && <div><small>Horario orientativo</small><p>{restaurant.schedule}</p></div>}
         <p className="restaurant-current-note">Los horarios, cartas y condiciones pueden cambiar. Consulta siempre la información actualizada antes de desplazarte.</p>
-        <a href={mapsUrl} target="_blank" rel="noopener noreferrer">Abrir en Google Maps <span>↗</span></a>
-        <a href={restaurant.website} target="_blank" rel="noopener noreferrer">Web, carta o ficha <span>↗</span></a>
+        <a href={mapsUrl} target="_blank" rel="noopener noreferrer">Abrir en Google Maps <ExternalLinkIcon /></a>
+        <a href={restaurant.website} target="_blank" rel="noopener noreferrer">Web, carta o ficha <ExternalLinkIcon /></a>
       </aside>
     </section>
 
