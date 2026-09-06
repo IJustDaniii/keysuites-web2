@@ -1,15 +1,13 @@
-import type { AnchorHTMLAttributes } from 'react';
+import NextLink from 'next/link';
+import type { ComponentProps } from 'react';
 
-type LinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
-  href: string;
-};
+type LinkProps = ComponentProps<typeof NextLink>;
 
 /**
- * Enlace compatible con Vinext y Cloudflare.
- *
- * Conserva un enlace HTML real para que abrir en una pestaña nueva, copiar la
- * dirección y usar atrás/adelante funcionen incluso antes de cargar JavaScript.
+ * Enlace interno con navegación cliente y precarga automática de Next.js.
+ * NextLink sigue renderizando un enlace HTML real, por lo que conserva las
+ * acciones nativas del navegador y funciona aunque JavaScript todavía no cargue.
  */
 export function Link(props: LinkProps) {
-  return <a {...props} />;
+  return <NextLink {...props} />;
 }
