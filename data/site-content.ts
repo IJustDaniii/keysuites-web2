@@ -121,20 +121,28 @@ export const siteContent = {
     location: 'Granada · España',
     types: 'Apartamentos · Suites · Villas · Costa',
     /**
-     * EDITA AQUÍ EL TELÉFONO DE CONTACTO.
+     * EDITA AQUÍ LOS TELÉFONOS DE CONTACTO.
      * - phoneDisplay: es el número grande que verá el visitante.
      * - phoneUrl: escribe "tel:+34" seguido del número, sin espacios.
      * - whatsappUrl: escribe "https://wa.me/34" seguido del número, sin espacios.
      * El 34 es el prefijo internacional de España.
      */
-    details: {
-      phoneDisplay: '687 86 40 72',
-      phoneUrl: 'tel:+34687864072',
-      whatsappUrl: 'https://wa.me/34687864072',
-    },
+    directTitle: 'Teléfonos de contacto',
+    contacts: [
+      {
+        phoneDisplay: '687 86 40 72',
+        phoneUrl: 'tel:+34687864072',
+        whatsappUrl: 'https://wa.me/34687864072',
+      },
+      {
+        phoneDisplay: '631 99 45 25',
+        phoneUrl: 'tel:+34631994525',
+        whatsappUrl: 'https://wa.me/34631994525',
+      },
+    ],
     callButton: 'Llamar',
     whatsappButton: 'WhatsApp',
-    desktopNote: 'En ordenador, puedes abrir WhatsApp Web o marcar este número desde tu teléfono.',
+    desktopNote: 'En ordenador, puedes abrir WhatsApp Web o llamar desde tu teléfono.',
   },
   footer: {
     description: 'Alojamientos seleccionados y gestionados en Granada, sus alrededores y la Costa Tropical.',

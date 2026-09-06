@@ -14,7 +14,7 @@ export function PropertyGroupCard({ group, index }: { group: PropertyGroup; inde
     </div>
     <div className="group-card-copy">
       <div className="property-label"><span>{index !== undefined ? String(index + 1).padStart(2, '0') : '—'}</span><span>{group.category}</span></div>
-      <span>COLECCIÓN KEY SUITES</span>
+      <span>COLECCIÓN OKEYSUITES</span>
       <h3>{group.name}</h3>
       <p>{group.location}</p>
       <div className="unit-preview"><span>{group.countLabel}</span>{units.map((unit) => unit.name).join(' · ')}</div>

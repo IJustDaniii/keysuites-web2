@@ -157,12 +157,12 @@ export function MobileMenu() {
           <Link
             href="/"
             onClick={closeMenu}
-            aria-label="KEY SUITES, inicio"
+            aria-label="OkeySuites, inicio"
             tabIndex={open ? 0 : -1}
           >
             <Image
               src="/key-suites-logo-black.png"
-              alt="KEY SUITES"
+              alt="OkeySuites"
               width={210}
               height={80}
               priority
