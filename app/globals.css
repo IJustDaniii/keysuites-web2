@@ -859,6 +859,7 @@ html {
 .restaurant-page-hero .listing-title-row { align-items:stretch; }
 .restaurant-page-hero .listing-title-row>div:first-child { align-self:center; max-width:780px; }
 .restaurant-page-hero h1 { font-size:clamp(52px,6.3vw,92px) !important; }
+.restaurant-page-title-line { display:inline-block; white-space:nowrap; }
 .restaurant-page-hero p { max-width:650px; margin:28px 0 0; }
 .restaurant-hero-image { position:relative; width:min(36vw,460px); min-height:340px; overflow:hidden; border-radius:22px 72px 22px 22px; }
 .restaurant-hero-image img { object-fit:cover; }

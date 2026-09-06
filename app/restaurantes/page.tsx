@@ -14,7 +14,7 @@ export default function RestaurantsPage() {
       <span className="section-kicker">GUÍA LOCAL · {restaurants.length} RECOMENDACIONES</span>
       <div className="listing-title-row">
         <div>
-          <h1>OkeySuites<br />te recomienda:</h1>
+          <h1>OkeySuites<br /><span className="restaurant-page-title-line">te recomienda</span></h1>
           <p>Sabores que merecen una parada: desde el tapeo más auténtico del Albaicín hasta mesas especiales en el centro de Granada.</p>
         </div>
         <div className="restaurant-hero-image">
