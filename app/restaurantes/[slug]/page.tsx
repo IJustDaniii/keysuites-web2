@@ -32,9 +32,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 function RestaurantGallery({ images, name }: { images: RestaurantImage[]; name: string }) {
   if (images.length === 0) return <section className="restaurant-empty-gallery section-shell" aria-label={`Galería de ${name}`}><PendingPhoto /></section>;
   return <section className={`gallery section-shell gallery-${Math.min(images.length, 3)}`} id="galeria">
-    <div className="gallery-main"><Image src={images[0].src} alt={images[0].alt} fill priority sizes="(max-width: 800px) 100vw, 70vw" /></div>
+    <div className="gallery-main"><Image src={images[0].src} alt={images[0].alt} fill priority sizes="(max-width: 800px) 100vw, 70vw" unoptimized /></div>
     {images.length > 1 && <div className="gallery-side">
-      {images.slice(1, 3).map((image) => <div key={image.src}><Image src={image.src} alt={image.alt} fill sizes="(max-width: 720px) 1px, 30vw" /></div>)}
+      {images.slice(1, 3).map((image) => <div key={image.src}><Image src={image.src} alt={image.alt} fill sizes="(max-width: 720px) 1px, 30vw" unoptimized /></div>)}
     </div>}
     <GalleryModal images={images} propertyName={name} />
   </section>;

@@ -290,12 +290,21 @@ export const getRestaurantImages = (restaurant: Restaurant): RestaurantImage[] =
   const folder = restaurant.zone === 'Albaicín' ? 'albaicin' : 'granada';
   return Array.from({ length: restaurant.imageCount }, (_, index) => {
     const number = String(index + 1).padStart(2, '0');
-    const extension = restaurant.imageExtensions?.[index] ?? 'jpg';
+    const extension = restaurant.imageExtensions?.[index] ?? 'webp';
     return {
       src: `/restaurantes/${folder}/${restaurant.slug}/${restaurant.slug}-${number}.${extension}`,
       alt: `${restaurant.name}: ${index === 0 ? restaurant.specialty : `imagen ${index + 1}`}`,
     };
   });
+};
+
+export const getRestaurantCardImage = (restaurant: Restaurant): RestaurantImage | undefined => {
+  if (restaurant.imageCount === 0) return undefined;
+  const folder = restaurant.zone === 'Albaicín' ? 'albaicin' : 'granada';
+  return {
+    src: `/restaurantes/${folder}/${restaurant.slug}/${restaurant.slug}-card.webp`,
+    alt: `${restaurant.name}: ${restaurant.specialty}`,
+  };
 };
 
 export const getRestaurantMapUrl = (restaurant: Restaurant) =>

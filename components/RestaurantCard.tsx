@@ -1,15 +1,15 @@
 import Image from 'next/image';
 import { Link } from './Link';
 import { PendingPhoto } from './ReviewNotice';
-import { getRestaurantImages, type Restaurant } from '@/data/restaurants';
+import { getRestaurantCardImage, type Restaurant } from '@/data/restaurants';
 
 export function RestaurantCard({ restaurant, index }: { restaurant: Restaurant; index: number }) {
-  const image = getRestaurantImages(restaurant)[0];
+  const image = getRestaurantCardImage(restaurant);
 
-  return <Link href={`/restaurantes/${restaurant.slug}`} className="property-card restaurant-card" aria-label={`Ver ${restaurant.name}`}>
+  return <Link href={`/restaurantes/${restaurant.slug}`} prefetch={false} className="property-card restaurant-card" aria-label={`Ver ${restaurant.name}`}>
     <div className="property-image-wrap">
       {image
-        ? <Image src={image.src} alt={image.alt} fill sizes="(max-width: 760px) 100vw, 33vw" />
+        ? <Image src={image.src} alt={image.alt} fill sizes="(max-width: 760px) 100vw, 33vw" loading="lazy" decoding="async" unoptimized />
         : <PendingPhoto compact />}
       <span className="restaurant-zone-chip">{restaurant.zone}</span>
     </div>

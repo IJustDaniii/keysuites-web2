@@ -18,7 +18,7 @@ export default function RestaurantsPage() {
           <p>Sabores que merecen una parada: desde el tapeo más auténtico del Albaicín hasta mesas especiales en el centro de Granada.</p>
         </div>
         <div className="restaurant-hero-image">
-          <Image src="/restaurantes/albaicin/carmen-aben-humeya/carmen-aben-humeya-01.jpg" alt="Mesa con vistas en un restaurante del Albaicín" fill priority sizes="(max-width: 720px) 100vw, 35vw" />
+          <Image src="/restaurantes/albaicin/carmen-aben-humeya/carmen-aben-humeya-01.webp" alt="Mesa con vistas en un restaurante del Albaicín" fill priority sizes="(max-width: 720px) 100vw, 35vw" unoptimized />
         </div>
       </div>
     </section>

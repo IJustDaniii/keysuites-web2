@@ -10,7 +10,8 @@
     "build": "vinext build",
     "deploy:cloudflare": "wrangler deploy --config dist/server/wrangler.json",
     "start": "vinext start",
-    "lint": "eslint . --ignore-pattern dist --ignore-pattern .next"
+    "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
+    "test": "node --test"
   },
   "dependencies": {
     "next": "16.2.6",

@@ -63,8 +63,8 @@ export function GalleryModal({ images, propertyName }: { images: PropertyImage[]
 
   return <>
     <button className="gallery-button" type="button" onClick={() => setOpen(true)}>{siteContent.gallery.open}</button>
-    <div className={`gallery-modal ${open ? 'open' : ''} ${selectedImage ? 'is-lightbox-open' : ''}`} aria-hidden={!open}>
-      <button className="gallery-backdrop" type="button" aria-label={siteContent.gallery.close} onClick={closeGallery} tabIndex={open ? 0 : -1} />
+    {open && <div className={`gallery-modal open ${selectedImage ? 'is-lightbox-open' : ''}`}>
+      <button className="gallery-backdrop" type="button" aria-label={siteContent.gallery.close} onClick={closeGallery} />
       <section role="dialog" aria-modal="true" aria-label={`Galería de ${propertyName}`}>
         <header>
           <div><small>{siteContent.gallery.title}</small><h2>{propertyName}</h2></div>
@@ -72,7 +72,7 @@ export function GalleryModal({ images, propertyName }: { images: PropertyImage[]
         </header>
         <div className="gallery-modal-grid">
           {images.map((image, index) => <button className="gallery-thumbnail" type="button" key={image.src} onClick={() => setSelectedIndex(index)} aria-label={`Ampliar foto ${index + 1}: ${image.alt}`}>
-            <span><Image src={image.src} alt={image.alt} fill sizes="(max-width: 720px) 50vw, (max-width: 1100px) 33vw, 25vw" /></span>
+            <span><Image src={image.src} alt={image.alt} fill sizes="(max-width: 720px) 50vw, (max-width: 1100px) 33vw, 25vw" unoptimized /></span>
             <small>{String(index + 1).padStart(2, '0')}</small>
           </button>)}
         </div>
@@ -83,12 +83,12 @@ export function GalleryModal({ images, propertyName }: { images: PropertyImage[]
           <button className="gallery-lightbox-close" type="button" onClick={() => setSelectedIndex(null)} aria-label="Cerrar imagen ampliada">×</button>
           <button className="gallery-lightbox-nav previous" type="button" onClick={showPrevious} aria-label="Foto anterior">←</button>
           <figure>
-            <div key={selectedImage.src} className="gallery-lightbox-image"><Image src={selectedImage.src} alt={selectedImage.alt} fill sizes="100vw" priority /></div>
+            <div key={selectedImage.src} className="gallery-lightbox-image"><Image src={selectedImage.src} alt={selectedImage.alt} fill sizes="100vw" priority unoptimized /></div>
             <figcaption><span>{String(selectedIndex + 1).padStart(2, '0')} / {String(images.length).padStart(2, '0')}</span>{selectedImage.alt}</figcaption>
           </figure>
           <button className="gallery-lightbox-nav next" type="button" onClick={showNext} aria-label="Foto siguiente">→</button>
         </div>
       </div>}
-    </div>
+    </div>}
   </>;
 }
