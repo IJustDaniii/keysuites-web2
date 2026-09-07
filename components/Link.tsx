@@ -1,13 +1,17 @@
-import NextLink from 'next/link';
-import type { ComponentProps } from 'react';
+import type { AnchorHTMLAttributes } from 'react';
 
-type LinkProps = ComponentProps<typeof NextLink>;
+type LinkProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'href'> & {
+  href: string;
+};
 
 /**
- * Enlace interno con navegación cliente y precarga automática de Next.js.
- * NextLink sigue renderizando un enlace HTML real, por lo que conserva las
- * acciones nativas del navegador y funciona aunque JavaScript todavía no cargue.
+ * Internal links intentionally use normal document navigation.
+ *
+ * On the Cloudflare Worker, the Next/Vinext client transition can wait several
+ * seconds for an RSC response even when the next document is available in a
+ * few hundred milliseconds. A real anchor avoids that wait, keeps history and
+ * accessibility behavior, and still works before JavaScript is ready.
  */
-export function Link(props: LinkProps) {
-  return <NextLink {...props} />;
+export function Link({ href, ...props }: LinkProps) {
+  return <a href={href} {...props} />;
 }

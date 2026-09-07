@@ -60,6 +60,7 @@ export function GalleryModal({ images, propertyName }: { images: PropertyImage[]
 
   if (images.length < 2) return null;
   const selectedImage = selectedIndex === null ? null : images[selectedIndex];
+  const selectedImageNumber = selectedIndex === null ? 0 : selectedIndex + 1;
 
   return <>
     <button className="gallery-button" type="button" onClick={() => setOpen(true)}>{siteContent.gallery.open}</button>
@@ -77,14 +78,14 @@ export function GalleryModal({ images, propertyName }: { images: PropertyImage[]
           </button>)}
         </div>
       </section>
-      {selectedImage && <div className="gallery-lightbox" role="dialog" aria-modal="true" aria-label={`Imagen ${selectedIndex + 1} de ${images.length}`}>
+      {selectedImage && <div className="gallery-lightbox" role="dialog" aria-modal="true" aria-label={`Imagen ${selectedImageNumber} de ${images.length}`}>
         <button className="gallery-lightbox-backdrop" type="button" aria-label="Cerrar imagen ampliada" onClick={() => setSelectedIndex(null)} />
         <div className="gallery-lightbox-content" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd} onTouchMove={(event) => event.preventDefault()}>
           <button className="gallery-lightbox-close" type="button" onClick={() => setSelectedIndex(null)} aria-label="Cerrar imagen ampliada">×</button>
           <button className="gallery-lightbox-nav previous" type="button" onClick={showPrevious} aria-label="Foto anterior">←</button>
           <figure>
             <div key={selectedImage.src} className="gallery-lightbox-image"><Image src={selectedImage.src} alt={selectedImage.alt} fill sizes="100vw" priority unoptimized /></div>
-            <figcaption><span>{String(selectedIndex + 1).padStart(2, '0')} / {String(images.length).padStart(2, '0')}</span>{selectedImage.alt}</figcaption>
+            <figcaption><span>{String(selectedImageNumber).padStart(2, '0')} / {String(images.length).padStart(2, '0')}</span>{selectedImage.alt}</figcaption>
           </figure>
           <button className="gallery-lightbox-nav next" type="button" onClick={showNext} aria-label="Foto siguiente">→</button>
         </div>

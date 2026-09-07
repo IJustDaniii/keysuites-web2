@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import { Link } from './Link';
 import { PendingPhoto } from './ReviewNotice';
 import { getRestaurantCardImage, type Restaurant } from '@/data/restaurants';
 
@@ -7,7 +6,7 @@ export function RestaurantCard({ restaurant, index }: { restaurant: Restaurant; 
   const image = getRestaurantCardImage(restaurant);
   const href = `/restaurantes/${restaurant.slug}`;
 
-  return <Link href={href} prefetch={false} data-restaurant-link className="property-card restaurant-card" aria-label={`Ver ${restaurant.name}`}>
+  return <a href={href} className="property-card restaurant-card" aria-label={`Ver ${restaurant.name}`}>
     <div className="property-image-wrap">
       {image
         ? <Image src={image.src} alt={image.alt} fill sizes="(max-width: 760px) 100vw, 33vw" loading="lazy" decoding="async" fetchPriority="low" unoptimized />
@@ -22,5 +21,5 @@ export function RestaurantCard({ restaurant, index }: { restaurant: Restaurant; 
       </div>
       <p className="property-facts">{restaurant.specialty}<span aria-hidden="true">→</span></p>
     </div>
-  </Link>;
+  </a>;
 }

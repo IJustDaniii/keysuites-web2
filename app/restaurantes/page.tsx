@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import { RestaurantCard } from '@/components/RestaurantCard';
-import { RestaurantNavigationPrefetch } from '@/components/RestaurantNavigationPrefetch';
 import { restaurantZones, restaurants } from '@/data/restaurants';
 
 export const metadata: Metadata = {
@@ -11,7 +10,6 @@ export const metadata: Metadata = {
 
 export default function RestaurantsPage() {
   return <main className="listing-page restaurant-listing-page">
-    <RestaurantNavigationPrefetch />
     <section className="page-hero section-shell restaurant-page-hero">
       <span className="section-kicker">GUÍA LOCAL · {restaurants.length} RECOMENDACIONES</span>
       <div className="listing-title-row">

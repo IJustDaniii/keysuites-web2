@@ -51,9 +51,16 @@ test('restaurant gallery photos have web-ready variants', async () => {
   }
 });
 
-test('restaurant cards do not eagerly prefetch every detail page', async () => {
+test('restaurant cards use a direct document navigation', async () => {
   const source = await readFile(path.join(process.cwd(), 'components', 'RestaurantCard.tsx'), 'utf8');
-  assert.match(source, /<Link\b[^>]*\bprefetch=\{false\}/s);
+  assert.match(source, /<a\b[^>]*\bhref=\{href\}/s);
+  assert.doesNotMatch(source, /router\.prefetch|<Link\b/);
+});
+
+test('shared internal links avoid slow client RSC transitions', async () => {
+  const source = await readFile(path.join(process.cwd(), 'components', 'Link.tsx'), 'utf8');
+  assert.match(source, /return <a href=\{href\}/);
+  assert.doesNotMatch(source, /next\/link|NextLink/);
 });
 
 test('restaurant detail routes are statically generated from the local catalogue', async () => {
@@ -62,13 +69,10 @@ test('restaurant detail routes are statically generated from the local catalogue
   assert.match(source, /export const dynamicParams = false/);
 });
 
-test('restaurant cards prefetch only after user intent and keep card media low priority', async () => {
+test('restaurant card media stays low priority without client prefetch work', async () => {
   const source = await readFile(path.join(process.cwd(), 'components', 'RestaurantCard.tsx'), 'utf8');
-  const prefetchSource = await readFile(path.join(process.cwd(), 'components', 'RestaurantNavigationPrefetch.tsx'), 'utf8');
-  assert.match(source, /data-restaurant-link/);
-  assert.match(prefetchSource, /router\.prefetch\(href\)/);
-  assert.match(prefetchSource, /pointerover/);
-  assert.match(prefetchSource, /pointerdown/);
+  const listingSource = await readFile(path.join(process.cwd(), 'app', 'restaurantes', 'page.tsx'), 'utf8');
+  assert.doesNotMatch(listingSource, /RestaurantNavigationPrefetch/);
   assert.match(source, /fetchPriority="low"/);
 });
 
