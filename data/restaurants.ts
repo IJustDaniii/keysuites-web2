@@ -140,7 +140,7 @@ export const restaurants: Restaurant[] = [
     address: 'Plaza de Cauchiles, 4, Granada', specialty: 'Hamburguesas a la parrilla de carbón con carne de vaca nacional.',
     why: 'Por sus hamburguesas al carbón, opciones vegetarianas y veganas y menú infantil.',
     description: 'Una propuesta informal nacida en 2008 y muy cómoda para comer en pleno centro.',
-    website: 'https://sanchocasualburger.com/', imageCount: 0, tags: ['Hamburguesas', 'Vegetariano', 'Familias'],
+    website: 'https://sanchocasualburger.com/', imageCount: 10, tags: ['Hamburguesas', 'Vegetariano', 'Familias'],
   }),
   granada({
     slug: 'arroceria-maese-pio', name: 'Arrocería Maese Pío', category: 'Arroces y paellas',
@@ -182,7 +182,7 @@ export const restaurants: Restaurant[] = [
     address: 'Plaza Nueva, Plaza Bib-Rambla y Calle Navas, Granada', specialty: 'Pescado y marisco frito al momento.',
     why: 'Por ser una referencia granadina del pescaíto frito y una experiencia de barra con mucho ambiente.',
     description: 'Varias sedes en el centro; Plaza Nueva y Bib-Rambla suelen funcionar sin reserva.',
-    website: 'https://losdiamantes.es/ubicaciones/', imageCount: 0, tags: ['Pescado', 'Tapas', 'Sin reserva'],
+    website: 'https://losdiamantes.es/ubicaciones/', imageCount: 10, tags: ['Pescado', 'Tapas', 'Sin reserva'],
   }),
   granada({
     slug: 'rosario-varela', name: 'Rosario Varela', category: 'Bar gastronómico',
@@ -224,7 +224,7 @@ export const restaurants: Restaurant[] = [
     address: 'Calle San Sebastián, 4, Granada', specialty: 'Bocadillos de jamón serrano, Montijano, Perrito, Nivero, Africano y San Francisco.',
     why: 'Por probar una institución granadina fundada en 1947 y resolver una comida rápida con mucho carácter.',
     description: 'Bocadillos clásicos y combinaciones propias en pleno centro de Granada.',
-    website: 'https://www.bar-aliatar.es/', imageCount: 0, tags: ['Bocadillos', 'Histórico', 'Informal'],
+    website: 'https://www.bar-aliatar.es/', imageCount: 10, tags: ['Bocadillos', 'Histórico', 'Informal'],
   }),
   granada({
     slug: 'el-rincon-de-rodri', name: 'Rincón de Rodri', category: 'Pescados y mariscos',
