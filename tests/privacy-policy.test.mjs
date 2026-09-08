@@ -19,6 +19,21 @@ test('the footer links the legal notice to its dedicated route', async () => {
   assert.match(footer, />Aviso legal</);
 });
 
+test('the footer links the cookies policy to its dedicated route', async () => {
+  const footer = await readFile(path.join(root, 'components', 'Footer.tsx'), 'utf8');
+
+  assert.match(footer, /href=["']\/cookies["']/);
+  assert.match(footer, />Cookies</);
+});
+
+test('the header and footer no longer render preliminary legal notices', async () => {
+  const header = await readFile(path.join(root, 'components', 'Header.tsx'), 'utf8');
+  const footer = await readFile(path.join(root, 'components', 'Footer.tsx'), 'utf8');
+
+  assert.doesNotMatch(header, /REVIEW_MODE|review-bar|reviewLabel/);
+  assert.doesNotMatch(footer, /REVIEW_MODE|legalPending|Datos legales pendientes/);
+});
+
 test('the privacy policy route exposes the complete legal structure', async () => {
   const page = await readFile(path.join(root, 'app', 'politica-de-privacidad', 'page.tsx'), 'utf8');
 
@@ -53,4 +68,33 @@ test('the legal notice data preserves every required section', async () => {
   assert.deepEqual(sectionNumbers, Array.from({ length: 9 }, (_, index) => index + 1));
   assert.match(notice, /Ley 34\/2002/);
   assert.match(notice, /Turismo Vacacional Granada S\.L\./);
+});
+
+test('the cookies route exposes the complete legal structure', async () => {
+  const page = await readFile(path.join(root, 'app', 'cookies', 'page.tsx'), 'utf8');
+
+  assert.match(page, /<h1>Política de Cookies<\/h1>/);
+  assert.match(page, /cookiePolicySections\.map/);
+  assert.match(page, /aria-label="Índice de la política de cookies"/);
+  assert.match(page, /dateTime="2026-09-08"/);
+});
+
+test('the cookies data preserves every required section and table row', async () => {
+  const policy = await readFile(path.join(root, 'data', 'cookie-policy.ts'), 'utf8');
+  const sectionNumbers = [...policy.matchAll(/number:\s*(\d+),/g)].map((match) => Number(match[1]));
+
+  assert.deepEqual(sectionNumbers, Array.from({ length: 8 }, (_, index) => index + 1));
+  assert.match(policy, /Tecnologías técnicas de sesión/);
+  assert.match(policy, /Cookies publicitarias o de perfiles/);
+  assert.match(policy, /keysuites-web3\.danielgameromartinezzz\.workers\.dev/);
+});
+
+test('the root layout keeps short pages flush with the footer', async () => {
+  const layout = await readFile(path.join(root, 'app', 'layout.tsx'), 'utf8');
+  const styles = await readFile(path.join(root, 'app', 'globals.css'), 'utf8');
+
+  assert.match(layout, /<body className=/);
+  assert.match(styles, /body\s*\{[^}]*min-height:100dvh[^}]*display:flex[^}]*flex-direction:column/s);
+  assert.match(styles, /body>main\s*\{[^}]*flex:1/s);
+  assert.match(styles, /body::before,body::after\s*\{[^}]*position:fixed/s);
 });

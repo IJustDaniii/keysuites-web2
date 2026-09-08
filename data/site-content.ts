@@ -26,8 +26,6 @@ export const siteContent = {
     socialDescription: 'Alojamientos en Granada y alrededores',
   },
   header: {
-    reviewLabel: 'Versión preliminar',
-    reviewText: 'Algunos datos están pendientes de validación por OKEY SUITES.',
     cta: 'Ver alojamientos',
   },
   home: {
@@ -149,8 +147,6 @@ export const siteContent = {
     exploreTitle: 'Explorar',
     brandTitle: 'OKEY SUITES',
     legalTitle: 'Información legal',
-    legalItems: ['Política de privacidad', 'Aviso legal', 'Cookies'],
-    legalPending: 'Datos legales pendientes',
     location: 'Granada · España',
   },
   futurePages: {
