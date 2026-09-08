@@ -26,6 +26,24 @@ test('the footer links the cookies policy to its dedicated route', async () => {
   assert.match(footer, />Cookies</);
 });
 
+test('the footer does not render Booking or Airbnb as standalone labels', async () => {
+  const footer = await readFile(path.join(root, 'components', 'Footer.tsx'), 'utf8');
+
+  assert.doesNotMatch(footer, />\s*(?:Booking|Airbnb)\s*</);
+});
+
+test('the spectacle page uses official imagery, a gallery, and the booking QR', async () => {
+  const page = await readFile(path.join(root, 'app', 'espectaculos', 'page.tsx'), 'utf8');
+
+  assert.match(page, /import Image from ['"]next\/image['"]/);
+  assert.match(page, /import \{ GalleryModal \} from ['"]@\/components\/GalleryModal['"]/);
+  assert.match(page, /const spectacleImages/);
+  assert.match(page, /spectacle-gallery/);
+  assert.match(page, /flamencogranada\.com\/fotos/);
+  assert.match(page, /reserva-jardines-zoraya\.svg/);
+  assert.match(page, /show\.flamencogranada\.com\/es\/838-web-tablao/);
+});
+
 test('the header and footer no longer render preliminary legal notices', async () => {
   const header = await readFile(path.join(root, 'components', 'Header.tsx'), 'utf8');
   const footer = await readFile(path.join(root, 'components', 'Footer.tsx'), 'utf8');

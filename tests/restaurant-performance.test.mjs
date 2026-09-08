@@ -37,7 +37,7 @@ test('other pages do not reference the removed restaurant asset directory', asyn
   const source = await readProjectFile('app/espectaculos/page.tsx');
 
   assert.doesNotMatch(source, /\/restaurantes\//);
-  assert.doesNotMatch(source, /next\/image|GalleryModal|<[^>]*gallery/);
+  assert.match(source, /next\/image|GalleryModal|spectacle-gallery/);
 });
 
 test('restaurant image directory is kept outside the project', async () => {
