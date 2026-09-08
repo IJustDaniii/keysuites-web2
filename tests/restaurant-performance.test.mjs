@@ -1,83 +1,63 @@
 import assert from 'node:assert/strict';
-import { readFile, readdir, stat } from 'node:fs/promises';
+import { access, readFile } from 'node:fs/promises';
 import path from 'node:path';
 import test from 'node:test';
 
-const restaurantsRoot = path.join(process.cwd(), 'public', 'restaurantes');
-const maximumCardImageBytes = 150 * 1024;
+const readProjectFile = (relativePath) => readFile(path.join(process.cwd(), relativePath), 'utf8');
 
-async function restaurantDirectories() {
-  const directories = [];
+test('restaurant cards are editorial and do not depend on image assets', async () => {
+  const source = await readProjectFile('components/RestaurantCard.tsx');
 
-  for (const zone of ['albaicin', 'granada']) {
-    const zoneRoot = path.join(restaurantsRoot, zone);
-    for (const entry of await readdir(zoneRoot, { withFileTypes: true })) {
-      if (!entry.isDirectory() || entry.name === 'tablao-flamenco') continue;
-      const directory = path.join(zoneRoot, entry.name);
-      const files = await readdir(directory);
-      if (files.some((file) => /-01\.(?:avif|jpe?g|png|webp)$/i.test(file))) directories.push(directory);
-    }
-  }
-
-  return directories;
-}
-
-test('every restaurant with photos has a lightweight card image', async () => {
-  const directories = await restaurantDirectories();
-  assert.ok(directories.length >= 30, 'expected the complete restaurant image catalogue');
-
-  for (const directory of directories) {
-    const slug = path.basename(directory);
-    const cardImage = path.join(directory, `${slug}-card.webp`);
-    const imageStats = await stat(cardImage);
-    assert.ok(
-      imageStats.size <= maximumCardImageBytes,
-      `${slug} card image is ${imageStats.size} bytes; limit is ${maximumCardImageBytes}`,
-    );
-  }
+  assert.match(source, /restaurant-card-content/);
+  assert.match(source, /restaurant-card-mark/);
+  assert.doesNotMatch(source, /next\/image|PendingPhoto|getRestaurantCardImage|property-image-wrap|fetchPriority/);
 });
 
-test('restaurant gallery photos have web-ready variants', async () => {
-  const directories = await restaurantDirectories();
+test('the restaurant listing has no image or restaurant asset references', async () => {
+  const source = await readProjectFile('app/restaurantes/page.tsx');
 
-  for (const directory of directories) {
-    const files = await readdir(directory);
-    const originals = files.filter((file) => /-\d{2}\.jpg$/i.test(file));
-    for (const original of originals) {
-      const optimized = path.join(directory, original.replace(/\.jpg$/i, '.webp'));
-      const imageStats = await stat(optimized);
-      assert.ok(imageStats.size <= 300 * 1024, `${path.basename(optimized)} exceeds the 300 KB gallery budget`);
-    }
-  }
+  assert.doesNotMatch(source, /next\/image|<Image\b|\/restaurantes\//);
+  assert.match(source, /restaurant-hero-note/);
 });
 
-test('restaurant cards use a direct document navigation', async () => {
-  const source = await readFile(path.join(process.cwd(), 'components', 'RestaurantCard.tsx'), 'utf8');
+test('restaurant detail routes have no galleries or image dependencies', async () => {
+  const source = await readProjectFile('app/restaurantes/[slug]/page.tsx');
+
+  assert.doesNotMatch(source, /next\/image|GalleryModal|getRestaurantImages|RestaurantGallery|<[^>]*gallery/);
+  assert.match(source, /restaurant-detail-highlight/);
+});
+
+test('restaurant catalogue contains no photo metadata or asset builders', async () => {
+  const source = await readProjectFile('data/restaurants.ts');
+
+  assert.doesNotMatch(source, /RestaurantImage|imageCount|imageExtensions|getRestaurantImages|getRestaurantCardImage|src:\s*['"`]\/restaurantes\//);
+});
+
+test('other pages do not reference the removed restaurant asset directory', async () => {
+  const source = await readProjectFile('app/espectaculos/page.tsx');
+
+  assert.doesNotMatch(source, /\/restaurantes\//);
+  assert.doesNotMatch(source, /next\/image|GalleryModal|<[^>]*gallery/);
+});
+
+test('restaurant image directory is kept outside the project', async () => {
+  await assert.rejects(access(path.join(process.cwd(), 'public', 'restaurantes')));
+});
+
+test('restaurant cards use direct document navigation', async () => {
+  const source = await readProjectFile('components/RestaurantCard.tsx');
   assert.match(source, /<a\b[^>]*\bhref=\{href\}/s);
   assert.doesNotMatch(source, /router\.prefetch|<Link\b/);
 });
 
 test('shared internal links avoid slow client RSC transitions', async () => {
-  const source = await readFile(path.join(process.cwd(), 'components', 'Link.tsx'), 'utf8');
+  const source = await readProjectFile('components/Link.tsx');
   assert.match(source, /return <a href=\{href\}/);
   assert.doesNotMatch(source, /next\/link|NextLink/);
 });
 
 test('restaurant detail routes are statically generated from the local catalogue', async () => {
-  const source = await readFile(path.join(process.cwd(), 'app', 'restaurantes', '[slug]', 'page.tsx'), 'utf8');
+  const source = await readProjectFile('app/restaurantes/[slug]/page.tsx');
   assert.match(source, /export const dynamic = ['"]force-static['"]/);
   assert.match(source, /export const dynamicParams = false/);
-});
-
-test('restaurant card media stays low priority without client prefetch work', async () => {
-  const source = await readFile(path.join(process.cwd(), 'components', 'RestaurantCard.tsx'), 'utf8');
-  const listingSource = await readFile(path.join(process.cwd(), 'app', 'restaurantes', 'page.tsx'), 'utf8');
-  assert.doesNotMatch(listingSource, /RestaurantNavigationPrefetch/);
-  assert.match(source, /fetchPriority="low"/);
-});
-
-test('the full gallery is only mounted while it is open', async () => {
-  const source = await readFile(path.join(process.cwd(), 'components', 'GalleryModal.tsx'), 'utf8');
-  assert.match(source, /\{open\s*&&\s*<div/);
-  assert.match(source, /gallery-modal open/);
 });

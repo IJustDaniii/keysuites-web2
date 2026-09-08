@@ -1,12 +1,8 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import { notFound } from 'next/navigation';
-import { GalleryModal } from '@/components/GalleryModal';
 import { Link } from '@/components/Link';
 import { ExternalLinkIcon } from '@/components/LinkIcons';
-import { PendingPhoto } from '@/components/ReviewNotice';
-import { getRestaurant, getRestaurantImages, getRestaurantMapUrl, restaurants, type RestaurantImage } from '@/data/restaurants';
-import { siteContent } from '@/data/site-content';
+import { getRestaurant, getRestaurantMapUrl, restaurants } from '@/data/restaurants';
 
 // Todas las fichas salen del catálogo local; se pueden servir como HTML estático
 // y así la navegación no tiene que esperar un render en el Worker.
@@ -21,7 +17,6 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const restaurant = getRestaurant(slug);
   if (!restaurant) return {};
-  const image = getRestaurantImages(restaurant)[0];
   return {
     title: `${restaurant.name} | Restaurantes recomendados`,
     description: restaurant.why,
@@ -29,27 +24,14 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     openGraph: {
       title: `${restaurant.name} | OKEY SUITES`,
       description: restaurant.why,
-      images: image ? [{ url: new URL(image.src, siteContent.seo.siteUrl).toString(), alt: image.alt }] : [],
     },
   };
-}
-
-function RestaurantGallery({ images, name }: { images: RestaurantImage[]; name: string }) {
-  if (images.length === 0) return <section className="restaurant-empty-gallery section-shell" aria-label={`Galería de ${name}`}><PendingPhoto /></section>;
-  return <section className={`gallery section-shell gallery-${Math.min(images.length, 3)}`} id="galeria">
-    <div className="gallery-main"><Image src={images[0].src} alt={images[0].alt} fill priority sizes="(max-width: 800px) 100vw, 70vw" unoptimized /></div>
-    {images.length > 1 && <div className="gallery-side">
-      {images.slice(1, 3).map((image) => <div key={image.src}><Image src={image.src} alt={image.alt} fill sizes="(max-width: 720px) 1px, 30vw" unoptimized /></div>)}
-    </div>}
-    <GalleryModal images={images} propertyName={name} />
-  </section>;
 }
 
 export default async function RestaurantDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const restaurant = getRestaurant(slug);
   if (!restaurant) notFound();
-  const images = getRestaurantImages(restaurant);
   const mapsUrl = getRestaurantMapUrl(restaurant);
 
   return <main className="detail-page restaurant-detail-page">
@@ -61,7 +43,21 @@ export default async function RestaurantDetailPage({ params }: { params: Promise
         <a className="primary-button" href={restaurant.website} target="_blank" rel="noopener noreferrer">Ver web o carta <ExternalLinkIcon /></a>
       </div>
     </section>
-    <RestaurantGallery images={images} name={restaurant.name} />
+
+    <section className="restaurant-detail-highlight section-shell" aria-label="Resumen de la recomendación">
+      <div>
+        <span className="section-kicker">SELECCIÓN OKEY SUITES</span>
+        <strong>{restaurant.zone}</strong>
+        <p>{restaurant.category}</p>
+      </div>
+      <div className="restaurant-detail-highlight-note">
+        <span>UNA DIRECCIÓN PARA RECORDAR</span>
+        <p>{restaurant.why}</p>
+      </div>
+      <div className="restaurant-detail-highlight-tags" aria-label="Características destacadas">
+        {restaurant.tags.map((tag) => <span key={tag}>{tag}</span>)}
+      </div>
+    </section>
 
     <section className="restaurant-overview section-shell">
       <div className="restaurant-main-copy">
@@ -72,10 +68,6 @@ export default async function RestaurantDetailPage({ params }: { params: Promise
         <div className="content-block">
           <div className="block-heading"><span>01</span><h3>Lo que no te puedes perder</h3></div>
           <p className="restaurant-specialty">{restaurant.specialty}</p>
-        </div>
-
-        <div className="restaurant-tags" aria-label="Características">
-          {restaurant.tags.map((tag) => <span key={tag}>{tag}</span>)}
         </div>
       </div>
 

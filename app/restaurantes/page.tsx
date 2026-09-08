@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import { RestaurantCard } from '@/components/RestaurantCard';
 import { restaurantZones, restaurants } from '@/data/restaurants';
 
@@ -17,9 +16,11 @@ export default function RestaurantsPage() {
           <h1>OkeySuites<br /><span className="restaurant-page-title-line">te recomienda</span></h1>
           <p>Sabores que merecen una parada: desde el tapeo más auténtico del Albaicín hasta mesas especiales en el centro de Granada.</p>
         </div>
-        <div className="restaurant-hero-image">
-          <Image src="/restaurantes/albaicin/carmen-aben-humeya/carmen-aben-humeya-01.webp" alt="Mesa con vistas en un restaurante del Albaicín" fill priority sizes="(max-width: 720px) 100vw, 35vw" unoptimized />
-        </div>
+        <aside className="restaurant-hero-note" aria-label="Selección gastronómica local">
+          <span>SELECCIÓN LOCAL</span>
+          <strong>Una mesa distinta<br /><em>en cada barrio.</em></strong>
+          <p>Direcciones elegidas para disfrutar Granada a tu ritmo, sin artificios.</p>
+        </aside>
       </div>
     </section>
 

@@ -1,18 +1,7 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
-import { GalleryModal } from '@/components/GalleryModal';
 import { ArrowDownIcon, ExternalLinkIcon } from '@/components/LinkIcons';
 
 const bookingUrl = 'https://show.flamencogranada.com/es/838-web-tablao/4721-entrada-espectaculo-flamenco?aff=www.okeysuites.com&utm_medium=afiliados&utm_campaign=Afiliados&utm_source=okeysuites.com';
-
-const images = [
-  { src: '/restaurantes/albaicin/tablao-flamenco/tablao-flamenco-01.jpg', alt: 'Baile flamenco en directo en Jardines de Zoraya' },
-  { src: '/restaurantes/albaicin/tablao-flamenco/tablao-flamenco-02.jpg', alt: 'Artistas sobre el escenario del tablao Jardines de Zoraya' },
-  { src: '/restaurantes/albaicin/tablao-flamenco/tablao-flamenco-03.jpg', alt: 'Espectáculo flamenco con baile, cante y guitarra' },
-  { src: '/restaurantes/albaicin/tablao-flamenco/tablao-flamenco-04.jpg', alt: 'Actuación flamenca en el corazón del Albaicín' },
-  { src: '/restaurantes/albaicin/tablao-flamenco/tablao-flamenco-05.webp', alt: 'Ambiente del tablao flamenco Jardines de Zoraya' },
-  { src: '/restaurantes/albaicin/tablao-flamenco/tablao-flamenco-06.avif', alt: 'Jardín y experiencia de Jardines de Zoraya' },
-];
 
 export const metadata: Metadata = {
   title: 'Flamenco en Jardines de Zoraya',
@@ -22,7 +11,7 @@ export const metadata: Metadata = {
 export default function SpectaclesPage() {
   return <main className="spectacle-page">
     <section className="spectacle-hero">
-      <Image src={images[0].src} alt={images[0].alt} fill priority sizes="100vw" />
+      <div className="spectacle-hero-art" aria-hidden="true"><span>DUENDE</span><strong>01</strong></div>
       <div className="spectacle-hero-shade" />
       <div className="spectacle-hero-content section-shell">
         <span className="spectacle-kicker">OKEYSUITES TE RECOMIENDA · ALBAICÍN</span>
@@ -48,12 +37,10 @@ export default function SpectaclesPage() {
       <div><p>Cante, guitarra, baile, palmas y taconeo se encuentran en un espectáculo cercano e intenso. La programación cambia cada semana para reunir distintos artistas y palos flamencos.</p><p>El tablao está cerca del Mirador de San Nicolás, la Iglesia de El Salvador y Plaza Larga: una ubicación perfecta para completar un paseo por el Albaicín.</p></div>
     </section>
 
-    <section className="spectacle-gallery section-shell" aria-label="Galería de Jardines de Zoraya">
-      <div className="spectacle-gallery-main"><Image src={images[1].src} alt={images[1].alt} fill sizes="(max-width: 720px) 100vw, 62vw" /></div>
-      <div className="spectacle-gallery-side">
-        {images.slice(2, 4).map((image) => <div key={image.src}><Image src={image.src} alt={image.alt} fill sizes="(max-width: 720px) 50vw, 28vw" /></div>)}
-      </div>
-      <GalleryModal images={images} propertyName="Jardines de Zoraya" />
+    <section className="spectacle-experience-card section-shell" aria-label="El ambiente del tablao">
+      <div className="spectacle-experience-stamp" aria-hidden="true"><span>JARDINES</span><strong>DE<br />ZORAYA</strong></div>
+      <div><span className="spectacle-kicker">UNA NOCHE EN EL CARMEN</span><h2>La cercanía del escenario lo cambia todo.</h2><p>Un espacio íntimo, de luz cálida y compás, pensado para vivir el flamenco a pocos metros de los artistas.</p></div>
+      <div className="spectacle-experience-rhythm" aria-hidden="true"><span /><span /><span /><span /><span /></div>
     </section>
 
     <section className="spectacle-details">
@@ -68,7 +55,7 @@ export default function SpectaclesPage() {
     </section>
 
     <section className="spectacle-dinner section-shell">
-      <div className="spectacle-dinner-image"><Image src={images[4].src} alt={images[4].alt} fill sizes="(max-width: 720px) 100vw, 45vw" /></div>
+      <div className="spectacle-dinner-art" aria-hidden="true"><span>MENU</span><strong>ANDALUZ<br />Y MEDITERRÁNEO</strong></div>
       <div className="spectacle-dinner-copy">
         <span className="spectacle-kicker">FLAMENCO Y GASTRONOMÍA</span>
         <h2>Haz de la función una noche completa.</h2>
@@ -90,8 +77,8 @@ export default function SpectaclesPage() {
           <div className="spectacle-contact"><span>Calle Panaderos, 32 · 18010 Granada</span><a href="tel:+34958206266">+34 958 206 266</a><a href="https://flamencogranada.com/como-llegar-al-tablao/" target="_blank" rel="noopener noreferrer">Cómo llegar <ExternalLinkIcon /></a></div>
         </div>
         <figure className="spectacle-qr">
-          <div><Image src="/restaurantes/albaicin/tablao-flamenco/reserva-jardines-zoraya.svg" alt="Código QR para reservar Jardines de Zoraya" width={720} height={720} /></div>
-          <figcaption><strong>Escanea y reserva</strong><span>Apunta con la cámara de tu móvil</span></figcaption>
+          <div className="spectacle-qr-symbol" aria-hidden="true"><span>RESERVA</span><strong>→</strong></div>
+          <figcaption><strong>Reserva online</strong><span>Consulta sesiones y disponibilidad</span></figcaption>
         </figure>
       </div>
     </section>
