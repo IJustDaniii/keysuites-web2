@@ -1092,7 +1092,7 @@ body:has(.spectacle-page) .review-bar span { border-color:#e9b8bb; }
 .spectacle-gallery { height:clamp(520px,52vw,720px); position:relative; display:grid; grid-template-columns:1.65fr .85fr; gap:10px; }
 .spectacle-gallery-main,.spectacle-gallery-side>div { position:relative; overflow:hidden; background:#171717; }
 .spectacle-gallery-main { border-radius:24px 0 0 24px; }
-.spectacle-gallery-side { display:grid; grid-template-rows:1fr 1fr; gap:10px; }
+.spectacle-gallery-side { display:grid; grid-template-rows:repeat(3,1fr); gap:10px; }
 .spectacle-gallery-side>div:first-child { border-radius:0 24px 0 0; }
 .spectacle-gallery-side>div:last-child { border-radius:0 0 24px 0; }
 .spectacle-gallery img { object-fit:cover; transition:transform .45s ease; }

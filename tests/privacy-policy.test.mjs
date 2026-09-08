@@ -40,6 +40,9 @@ test('the spectacle page uses official imagery, a gallery, and the booking QR', 
   assert.match(page, /const spectacleImages/);
   assert.match(page, /spectacle-gallery/);
   assert.match(page, /flamencogranada\.com\/fotos/);
+  for (const filename of ['01-portada\.jpg', '02-baile\.jpg', '03-guitarra\.jpg', '04-baile-sala\.jpg']) {
+    assert.match(page, new RegExp(filename));
+  }
   assert.match(page, /reserva-jardines-zoraya\.svg/);
   assert.match(page, /show\.flamencogranada\.com\/es\/838-web-tablao/);
 });

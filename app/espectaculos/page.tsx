@@ -7,10 +7,10 @@ const bookingUrl = 'https://show.flamencogranada.com/es/838-web-tablao/4721-entr
 
 // Imágenes oficiales de la galería de Jardines de Zoraya: https://flamencogranada.com/fotos/
 const spectacleImages = [
-  { src: '/espectaculos/jardines-zoraya/01-portada.webp', alt: 'Escenario de Jardines de Zoraya entre cortinas rojas' },
-  { src: '/espectaculos/jardines-zoraya/02-baile.webp', alt: 'Bailaora durante una actuación flamenca' },
-  { src: '/espectaculos/jardines-zoraya/03-artista.webp', alt: 'Artista flamenco en directo' },
-  { src: '/espectaculos/jardines-zoraya/04-musica.webp', alt: 'Guitarristas tocando en el tablao' },
+  { src: '/espectaculos/jardines-zoraya/01-portada.jpg', alt: 'Bailaora en directo entre las cortinas rojas de Jardines de Zoraya' },
+  { src: '/espectaculos/jardines-zoraya/02-baile.jpg', alt: 'Bailarín durante una actuación flamenca en Jardines de Zoraya' },
+  { src: '/espectaculos/jardines-zoraya/03-guitarra.jpg', alt: 'Guitarrista flamenco tocando en el escenario' },
+  { src: '/espectaculos/jardines-zoraya/04-baile-sala.jpg', alt: 'Bailarín actuando frente al público del tablao' },
   { src: '/espectaculos/jardines-zoraya/05-sala.webp', alt: 'Interior de la sala de Jardines de Zoraya' },
   { src: '/espectaculos/jardines-zoraya/06-escenario.webp', alt: 'Sala y escenario de Jardines de Zoraya' },
 ];
@@ -55,8 +55,9 @@ export default function SpectaclesPage() {
         <GalleryModal images={spectacleImages} propertyName="Jardines de Zoraya" />
       </div>
       <div className="spectacle-gallery">
-        <div className="spectacle-gallery-main"><Image src={spectacleImages[1].src} alt={spectacleImages[1].alt} fill sizes="(max-width: 720px) 100vw, 65vw" /></div>
+        <div className="spectacle-gallery-main"><Image src={spectacleImages[0].src} alt={spectacleImages[0].alt} fill sizes="(max-width: 720px) 100vw, 65vw" /></div>
         <div className="spectacle-gallery-side">
+          <div><Image src={spectacleImages[1].src} alt={spectacleImages[1].alt} fill sizes="(max-width: 720px) 100vw, 35vw" /></div>
           <div><Image src={spectacleImages[2].src} alt={spectacleImages[2].alt} fill sizes="(max-width: 720px) 100vw, 35vw" /></div>
           <div><Image src={spectacleImages[3].src} alt={spectacleImages[3].alt} fill sizes="(max-width: 720px) 100vw, 35vw" /></div>
         </div>
