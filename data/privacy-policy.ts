@@ -2,6 +2,7 @@ export type PrivacyPolicySection = {
   number: number;
   title: string;
   paragraphs?: readonly string[];
+  afterDetails?: readonly string[];
   items?: readonly string[];
   details?: readonly { label: string; value: string; href?: string }[];
   subsections?: readonly {
