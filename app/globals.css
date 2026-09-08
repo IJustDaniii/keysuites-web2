@@ -629,6 +629,68 @@ body { background:var(--paper); color:var(--ink); }
 
 .site-footer { width:100%; margin:0; border-radius:0; box-shadow:none; }
 
+/* Política de privacidad: lectura editorial, clara y coherente con OKEY SUITES. */
+.privacy-page { padding:22px 0 clamp(100px,10vw,150px); }
+.privacy-hero { min-height:450px; padding:clamp(64px,8vw,110px) clamp(32px,6vw,92px); display:grid; grid-template-columns:minmax(0,1fr) auto; gap:48px; align-items:end; overflow:hidden; position:relative; border:1px solid rgba(17,25,29,.05); border-radius:40px 130px 40px 40px; background:#fff; }
+.privacy-hero::after { content:""; width:280px; height:280px; position:absolute; right:-70px; bottom:-100px; border:1px solid rgba(19,183,196,.28); border-radius:50%; background:rgba(19,183,196,.05); pointer-events:none; }
+.privacy-hero>div { position:relative; z-index:1; }
+.privacy-hero h1 { max-width:800px; margin:0; font-family:var(--font-editorial),Georgia,serif; font-size:clamp(62px,8vw,116px); font-weight:400; line-height:.9; letter-spacing:-.025em; text-wrap:balance; }
+.privacy-hero p { max-width:570px; margin:30px 0 0; color:var(--muted); font-size:16px; line-height:1.75; }
+.privacy-update { min-width:210px; padding:22px 24px; border-left:2px solid var(--aqua); background:var(--soft); }
+.privacy-update span,.privacy-update time { display:block; }
+.privacy-update span { margin-bottom:8px; color:var(--deep); font-size:9px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; }
+.privacy-update time { font-family:var(--font-editorial),Georgia,serif; font-size:20px; line-height:1.25; }
+.privacy-layout { padding-top:clamp(72px,8vw,110px); display:grid; grid-template-columns:280px minmax(0,820px); gap:clamp(56px,8vw,120px); align-items:start; justify-content:center; }
+.privacy-index { max-height:calc(100vh - 130px); position:sticky; top:120px; overflow:auto; scrollbar-width:thin; }
+.privacy-index>span { display:block; padding-bottom:16px; border-bottom:1px solid var(--ink); color:var(--deep); font-size:10px; font-weight:800; letter-spacing:.16em; text-transform:uppercase; }
+.privacy-index ol { margin:0; padding:10px 0 0; list-style:none; }
+.privacy-index a { padding:9px 0; display:grid; grid-template-columns:30px 1fr; gap:8px; color:var(--muted); font-size:10px; line-height:1.4; transition:color var(--motion-fast),transform var(--motion-fast); }
+.privacy-index a span { color:var(--deep); font-weight:800; }
+.privacy-index a:hover { color:var(--ink); transform:translateX(3px); }
+.privacy-lead { margin:0 0 clamp(70px,8vw,100px); padding:clamp(28px,4vw,42px); border-left:3px solid var(--aqua); background:var(--soft); color:var(--ink); font-family:var(--font-editorial),Georgia,serif; font-size:clamp(23px,2.4vw,32px); line-height:1.35; }
+.privacy-section { padding:0 0 clamp(70px,8vw,100px); scroll-margin-top:130px; }
+.privacy-section+.privacy-section { padding-top:clamp(70px,8vw,100px); border-top:1px solid var(--line); }
+.privacy-section-heading { display:grid; grid-template-columns:52px minmax(0,1fr); gap:18px; align-items:start; margin-bottom:34px; }
+.privacy-section-heading>span { padding-top:9px; color:var(--deep); font-size:10px; font-weight:800; letter-spacing:.14em; }
+.privacy-section h2 { margin:0; font-family:var(--font-editorial),Georgia,serif; font-size:clamp(38px,4vw,56px); font-weight:400; line-height:1.03; letter-spacing:-.02em; text-wrap:balance; }
+.privacy-section p { margin:0 0 18px; color:#4f5957; font-size:15px; line-height:1.85; }
+.legal-line { display:block; }
+.legal-inline-link,.privacy-details a { color:var(--deep); font-weight:750; overflow-wrap:anywhere; border-bottom:1px solid rgba(21,158,164,.4); }
+.legal-inline-link:hover,.privacy-details a:hover { color:var(--aqua); }
+.privacy-details { margin:30px 0 34px; border-top:1px solid var(--line); }
+.privacy-details>div { padding:16px 0; display:grid; grid-template-columns:minmax(180px,.7fr) minmax(0,1.3fr); gap:28px; border-bottom:1px solid var(--line); }
+.privacy-details dt { color:var(--muted); font-size:10px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; }
+.privacy-details dd { margin:0; font-size:14px; line-height:1.55; }
+.privacy-list { margin:26px 0 30px; padding:0; list-style:none; }
+.privacy-list li { padding:13px 0 13px 28px; position:relative; border-bottom:1px solid var(--line); color:#4f5957; font-size:14px; line-height:1.75; }
+.privacy-list li::before { content:""; width:7px; height:7px; position:absolute; top:22px; left:2px; border:1px solid var(--aqua); border-radius:50%; }
+.privacy-subsection { margin-top:38px; padding:30px clamp(22px,4vw,38px); border-left:1px solid var(--aqua); background:#f4f9f8; }
+.privacy-subsection h3 { margin:0 0 22px; font-family:var(--font-editorial),Georgia,serif; font-size:clamp(24px,2.4vw,32px); font-weight:400; line-height:1.2; }
+
+@media (max-width:980px) {
+  .privacy-hero { grid-template-columns:1fr; align-items:start; border-radius:34px 100px 34px 34px; }
+  .privacy-update { width:min(100%,360px); }
+  .privacy-layout { grid-template-columns:1fr; }
+  .privacy-index { max-height:none; position:static; overflow:visible; }
+  .privacy-index ol { columns:2; column-gap:38px; }
+  .privacy-index li { break-inside:avoid; }
+}
+
+@media (max-width:720px) {
+  .privacy-page { padding-top:10px; }
+  .privacy-hero { width:calc(100% - 20px); min-height:0; margin-inline:auto; padding:68px 24px; gap:36px; border-radius:26px 64px 26px 26px; }
+  .privacy-hero::after { width:180px; height:180px; }
+  .privacy-hero h1 { font-size:clamp(48px,14vw,70px); }
+  .privacy-layout { padding-top:64px; gap:64px; }
+  .privacy-index ol { columns:1; }
+  .privacy-index a { padding-block:10px; }
+  .privacy-lead { margin-bottom:70px; font-size:23px; }
+  .privacy-section-heading { grid-template-columns:36px minmax(0,1fr); gap:10px; }
+  .privacy-section h2 { font-size:clamp(34px,10vw,44px); }
+  .privacy-details>div { grid-template-columns:1fr; gap:7px; }
+  .privacy-subsection { margin-inline:-6px; }
+}
+
 @media (max-width:980px) {
   .site-header { width:calc(100% - 28px); height:78px; grid-template-columns:1fr auto; border-radius:22px; }
   .hero,.destinations,.closing-cta,.gallery,.group-information,.principles,.booking-section,.site-footer { width:calc(100% - 28px); }
