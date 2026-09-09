@@ -723,7 +723,7 @@ body { background:var(--paper); color:var(--ink); }
   .section-shell { width:calc(100% - 32px); }
   .site-header { width:calc(100% - 20px); height:68px; margin-top:8px; top:8px; padding-inline:14px; border-radius:18px; }
   .hero,.destinations,.closing-cta,.gallery,.group-information,.principles,.booking-section,.site-footer { width:calc(100% - 20px); }
-  .hero { min-height:510px; margin-top:10px; border-radius:24px 48px 24px 24px; }
+  .hero { min-height:510px; margin-top:88px; border-radius:24px 48px 24px 24px; }
   .hero-content { width:100%; padding:42px 20px 58px; }
   .hero h1 { font-size:clamp(44px,12.4vw,50px); line-height:.94; }
   .hero-content>p { max-width:34ch; margin-bottom:20px; font-size:14px; line-height:1.6; text-wrap:pretty; }
