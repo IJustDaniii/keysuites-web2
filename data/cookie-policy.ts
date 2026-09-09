@@ -29,7 +29,7 @@ export const cookiePolicySections: readonly CookiePolicySection[] = [
       { label: 'Correo electrónico', value: 'turismovacacionalgranada@gmail.com', href: 'mailto:turismovacacionalgranada@gmail.com' },
       { label: 'Correo electrónico adicional', value: 'manuelopezgil@gmail.com', href: 'mailto:manuelopezgil@gmail.com' },
       { label: 'Teléfono / WhatsApp', value: '+34 687 86 40 72 / +34 631 99 45 25' },
-      { label: 'Sitio web', value: 'https://keysuites-web3.danielgameromartinezzz.workers.dev/', href: 'https://keysuites-web3.danielgameromartinezzz.workers.dev/' },
+      { label: 'Sitio web', value: 'https://okeysuites.es/', href: 'https://okeysuites.es/' },
     ],
   },
   {

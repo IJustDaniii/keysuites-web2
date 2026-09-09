@@ -107,7 +107,16 @@ test('the cookies data preserves every required section and table row', async ()
   assert.deepEqual(sectionNumbers, Array.from({ length: 8 }, (_, index) => index + 1));
   assert.match(policy, /Tecnologías técnicas de sesión/);
   assert.match(policy, /Cookies publicitarias o de perfiles/);
-  assert.match(policy, /keysuites-web3\.danielgameromartinezzz\.workers\.dev/);
+  assert.match(policy, /https:\/\/okeysuites\.es\//);
+});
+
+test('the site uses the production domain for SEO and site links', async () => {
+  const siteContent = await readFile(path.join(root, 'data', 'site-content.ts'), 'utf8');
+  const cookiePolicy = await readFile(path.join(root, 'data', 'cookie-policy.ts'), 'utf8');
+
+  assert.match(siteContent, /siteUrl:\s*['"]https:\/\/okeysuites\.es\/['"]/);
+  assert.match(cookiePolicy, /value:\s*['"]https:\/\/okeysuites\.es\/['"]/);
+  assert.match(cookiePolicy, /href:\s*['"]https:\/\/okeysuites\.es\/['"]/);
 });
 
 test('the cookies table has labelled cells for an accessible mobile layout', async () => {

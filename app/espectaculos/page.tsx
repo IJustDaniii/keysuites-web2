@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { GalleryModal } from '@/components/GalleryModal';
 import { ArrowDownIcon, ExternalLinkIcon } from '@/components/LinkIcons';
 
-const bookingUrl = 'https://show.flamencogranada.com/es/838-web-tablao/4721-entrada-espectaculo-flamenco?aff=www.okeysuites.com&utm_medium=afiliados&utm_campaign=Afiliados&utm_source=okeysuites.com';
+const bookingUrl = 'https://show.flamencogranada.com/es/838-web-tablao/4721-entrada-espectaculo-flamenco?aff=www.okeysuites.es&utm_medium=afiliados&utm_campaign=Afiliados&utm_source=okeysuites.es';
 
 // Imágenes oficiales de la galería de Jardines de Zoraya: https://flamencogranada.com/fotos/
 const spectacleImages = [

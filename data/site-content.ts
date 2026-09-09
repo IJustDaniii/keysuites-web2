@@ -18,7 +18,7 @@ export const navigationLinks = [
 
 export const siteContent = {
   seo: {
-    siteUrl: 'https://keysuites-web3.danielgameromartinezzz.workers.dev/',
+    siteUrl: 'https://okeysuites.es/',
     title: 'OKEY SUITES | Alojamientos en Granada y alrededores',
     titleTemplate: '%s | OKEY SUITES',
     description: 'Apartamentos, suites y casas gestionadas por OKEY SUITES en Granada, el Albaicín, sus alrededores y la Costa Tropical.',
