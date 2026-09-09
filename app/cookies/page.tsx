@@ -43,7 +43,7 @@ export default function CookiesPage() {
           {section.paragraphs?.map((paragraph) => <div key={paragraph}>{renderParagraph(paragraph)}</div>)}
           {section.details && <dl className="privacy-details">{section.details.map((detail) => <div key={detail.label}><dt>{detail.label}</dt><dd>{detail.href ? <a href={detail.href}>{detail.value}</a> : detail.value}</dd></div>)}</dl>}
           {section.items && <ul className="privacy-list">{section.items.map((item) => <li key={item}>{item}</li>)}</ul>}
-          {section.table && <div className="cookie-table-wrap"><table className="cookie-table"><thead><tr><th scope="col">Tipo</th><th scope="col">Finalidad</th><th scope="col">Duración</th><th scope="col">Consentimiento</th></tr></thead><tbody>{section.table.map((row) => <tr key={row.type}><th scope="row">{row.type}</th><td>{row.purpose}</td><td>{row.duration}</td><td>{row.consent}</td></tr>)}</tbody></table></div>}
+          {section.table && <div className="cookie-table-wrap"><table className="cookie-table"><thead><tr><th scope="col">Tipo</th><th scope="col">Finalidad</th><th scope="col">Duración</th><th scope="col">Consentimiento</th></tr></thead><tbody>{section.table.map((row) => <tr key={row.type}><th scope="row" data-label="Tipo">{row.type}</th><td data-label="Finalidad">{row.purpose}</td><td data-label="Duración">{row.duration}</td><td data-label="Consentimiento">{row.consent}</td></tr>)}</tbody></table></div>}
         </section>)}
       </article>
     </div>

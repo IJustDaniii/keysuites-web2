@@ -110,6 +110,19 @@ test('the cookies data preserves every required section and table row', async ()
   assert.match(policy, /keysuites-web3\.danielgameromartinezzz\.workers\.dev/);
 });
 
+test('the cookies table has labelled cells for an accessible mobile layout', async () => {
+  const page = await readFile(path.join(root, 'app', 'cookies', 'page.tsx'), 'utf8');
+  const styles = await readFile(path.join(root, 'app', 'globals.css'), 'utf8');
+
+  assert.match(page, /data-label="Tipo"/);
+  assert.match(page, /data-label="Finalidad"/);
+  assert.match(page, /data-label="Duración"/);
+  assert.match(page, /data-label="Consentimiento"/);
+  assert.match(styles, /@media \(max-width:720px\)[\s\S]*\.cookie-table-wrap[\s\S]*overflow:visible/);
+  assert.match(styles, /\.cookie-table tbody\s*\{[^}]*display:grid/s);
+  assert.match(styles, /\.cookie-table tbody th::before,\.cookie-table tbody td::before/);
+});
+
 test('the root layout keeps short pages flush with the footer', async () => {
   const layout = await readFile(path.join(root, 'app', 'layout.tsx'), 'utf8');
   const styles = await readFile(path.join(root, 'app', 'globals.css'), 'utf8');
